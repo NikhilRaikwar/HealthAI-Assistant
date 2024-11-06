@@ -1,16 +1,27 @@
 # HealthAI Assistant 🏥
 
-An AI-powered healthcare assistant that provides medical information, symptom analysis, and health recommendations using Google's Gemini AI.
+An AI-powered healthcare assistant that provides medical information, symptom analysis, and health recommendations using Google's Gemini AI. Supporting multiple languages for global accessibility! 🌍
 
-## Features ✨
+## Key Features ✨
 
+- **Multilingual Support**: Get healthcare assistance in multiple languages
 - **Symptom Analyzer**: Advanced analysis of symptoms to help understand potential health conditions
 - **Drug Interactions**: Check for potential interactions between different medications
 - **Medical Terms Dictionary**: Easy-to-understand explanations of medical terminology
 - **Report Summarizer**: Convert complex medical reports into simple, understandable summaries
-- **24/7 Availability**: Get assistance anytime, anywhere
-- **User-Friendly Interface**: Simple and intuitive design
-- **Privacy Focused**: Your health data stays secure
+- **User-Friendly Interface**: Simple and intuitive design for easy navigation
+- **Privacy Focused**: Your health data stays secure and private
+
+## Supported Languages 🌐
+
+- English
+- Hindi
+- Spanish
+- French
+- German
+- Chinese
+- Japanese
+- And more...
 
 ## Tech Stack 🛠️
 
@@ -87,7 +98,6 @@ Nikhil Raikwar - [@NikhilRaikwar](https://github.com/NikhilRaikwar)
 
 Project Link: [https://github.com/NikhilRaikwar/HealthAI-Assistant](https://github.com/NikhilRaikwar/HealthAI-Assistant)
 
-Live Link: [https://health-ai-assistant.vercel.app/](https://health-ai-assistant.vercel.app/)
 
 ## Acknowledgments 🙏
 
