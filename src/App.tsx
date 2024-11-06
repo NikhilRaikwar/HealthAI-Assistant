@@ -6,6 +6,7 @@ import MedicalTermExplainer from './components/MedicalTermExplainer';
 import ReportSummarizer from './components/ReportSummarizer';
 import About from './components/About';
 import HealthcareLogo from './components/HealthcareLogo';
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const [activeTab, setActiveTab] = useState('symptoms');
