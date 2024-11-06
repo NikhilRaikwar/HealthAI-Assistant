@@ -18,8 +18,8 @@ export default function About() {
           <h3 className="text-2xl font-semibold text-gray-800 mb-4">About the Developer</h3>
           <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <img
-                src="https://nikhilraikwar.vercel.app/assets/nikhil-raikwar.jpg"
+            <img
+                src="/src/components/nikhil.png"
                 alt="Nikhil Raikwar"
                 className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg"
               />
@@ -33,7 +33,7 @@ export default function About() {
                     href="https://nikhilraikwar.vercel.app/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-blue-600 hover:text-blue-700 transition-colors"
+                    className="flex items-center gap-2 text-gray-600 hover:text-blue-700 transition-colors"
                   >
                     <Globe className="w-5 h-5" />
                     <span>Portfolio</span>
@@ -42,14 +42,14 @@ export default function About() {
                     href="https://github.com/nikhilraikwar"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-600 hover:text-gray-700 transition-colors"
+                    className="flex items-center gap-2 text-gray-600 hover:text-blue-700 transition-colors"
                   >
                     <Github className="w-5 h-5" />
                     <span>GitHub</span>
                   </a>
                   <a
-                    href="mailto:contact@nikhilraikwar.com"
-                    className="flex items-center gap-2 text-gray-600 hover:text-gray-700 transition-colors"
+                    href="mailto:raikwarnikhil80@gmail.com"
+                    className="flex items-center gap-2 text-gray-600 hover:text-blue-700 transition-colors"
                   >
                     <Mail className="w-5 h-5" />
                     <span>Contact</span>
