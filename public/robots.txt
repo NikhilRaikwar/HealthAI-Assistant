@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://healthai-assistant.netlify.app/sitemap.xml
+
+# Prevent access to API endpoints
+Disallow: /api/
+
+# Allow all static assets
+Allow: /*.js
+Allow: /*.css
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.svg
+Allow: /*.ico
+
+# Prevent caching of service worker
+Disallow: /sw.js

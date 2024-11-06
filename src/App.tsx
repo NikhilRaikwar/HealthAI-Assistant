@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Activity, Menu, X, Stethoscope, Pill, BookOpen, FileText, Info } from 'lucide-react';
+import { Menu, X, Stethoscope, Pill, BookOpen, FileText, Info } from 'lucide-react';
 import SymptomAnalyzer from './components/SymptomAnalyzer';
 import DrugInteraction from './components/DrugInteraction';
 import MedicalTermExplainer from './components/MedicalTermExplainer';
 import ReportSummarizer from './components/ReportSummarizer';
 import About from './components/About';
+import HealthcareLogo from './components/HealthcareLogo';
 
 function App() {
   const [activeTab, setActiveTab] = useState('symptoms');
@@ -45,7 +46,7 @@ function App() {
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500">
-                  <Activity className="h-6 w-6 text-white" />
+                  <HealthcareLogo className="w-6 h-6 text-white" />
                 </div>
               </div>
               <div className="ml-3">
@@ -111,7 +112,7 @@ function App() {
           <div className="h-full flex flex-col">
             <div className="flex items-center justify-between px-4 h-16 border-b border-gray-200">
               <div className="flex items-center space-x-2">
-                <Activity className="h-6 w-6 text-blue-600" />
+                <HealthcareLogo className="w-6 h-6 text-blue-600" />
                 <div>
                   <span className="font-semibold text-gray-900">HealthAI Assistant</span>
                   <p className="text-sm text-gray-500">Your Health Analysis Tool</p>
@@ -168,7 +169,7 @@ function App() {
         <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center space-x-2">
             <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500">
-              <Activity className="h-5 w-5 text-white" />
+              <HealthcareLogo className="w-5 h-5 text-white" />
             </div>
             <span className="text-gray-900 font-semibold text-sm sm:text-base">HealthAI Assistant</span>
             <span className="text-gray-500 text-xs sm:text-sm">© {new Date().getFullYear()}</span>
