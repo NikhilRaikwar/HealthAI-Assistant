@@ -10,6 +10,8 @@ export default function MedicalTermExplainer() {
 
   const handleExplain = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!term.trim()) return;
+    
     setLoading(true);
     try {
       const result = await explainMedicalTerm(term);
@@ -22,25 +24,36 @@ export default function MedicalTermExplainer() {
   };
 
   return (
-    <div className="w-full max-w-2xl p-6 bg-white rounded-xl shadow-lg">
-      <div className="flex items-center gap-2 mb-6">
+    <div className="w-full max-w-2xl mx-auto p-6 bg-white rounded-xl shadow-lg">
+      <div className="flex items-center justify-center gap-2 mb-6">
         <BookOpen className="w-6 h-6 text-blue-600" />
-        <h2 className="text-2xl font-bold text-gray-800">Medical Term Explainer</h2>
+        <h2 className="text-2xl font-bold text-gray-800 text-center">Medical Term Explainer</h2>
       </div>
 
       <form onSubmit={handleExplain} className="space-y-4">
-        <input
-          type="text"
-          value={term}
-          onChange={(e) => setTerm(e.target.value)}
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          placeholder="Enter a medical term..."
-        />
+        <div className="relative">
+          <input
+            type="text"
+            value={term}
+            onChange={(e) => setTerm(e.target.value)}
+            className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-12"
+            placeholder="Enter a medical term..."
+          />
+          {term && (
+            <button
+              type="button"
+              onClick={() => setTerm('')}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+            >
+              ×
+            </button>
+          )}
+        </div>
 
         <button
           type="submit"
-          disabled={loading || !term}
-          className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          disabled={loading || !term.trim()}
+          className="w-full py-3 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-colors duration-200"
         >
           {loading ? (
             <>
@@ -54,13 +67,20 @@ export default function MedicalTermExplainer() {
       </form>
 
       {explanation && (
-        <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-          <h3 className="text-lg font-semibold mb-2 text-gray-800">Explanation:</h3>
+        <div className="mt-6 p-6 bg-gray-50 rounded-lg border border-gray-100">
+          <h3 className="text-lg font-semibold mb-4 text-gray-800">Explanation:</h3>
           <div className="prose prose-blue max-w-none">
             <ReactMarkdown>{explanation}</ReactMarkdown>
           </div>
         </div>
       )}
+
+      <div className="mt-8 p-4 bg-blue-50 rounded-lg">
+        <h4 className="text-sm font-semibold text-blue-800 mb-2">Pro Tip:</h4>
+        <p className="text-sm text-blue-600">
+          You can enter medical terms in multiple languages. The explanation will be provided in the same language as your input.
+        </p>
+      </div>
     </div>
   );
 }

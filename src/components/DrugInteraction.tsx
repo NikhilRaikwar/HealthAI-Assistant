@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, KeyboardEvent } from 'react';
 import { Pill, Plus, X, Loader } from 'lucide-react';
 import { checkDrugInteraction } from '../lib/gemini';
 import ReactMarkdown from 'react-markdown';
@@ -10,9 +10,16 @@ export default function DrugInteraction() {
   const [loading, setLoading] = useState(false);
 
   const addDrug = () => {
-    if (currentDrug && !drugs.includes(currentDrug)) {
-      setDrugs([...drugs, currentDrug]);
+    if (currentDrug.trim() && !drugs.includes(currentDrug.trim())) {
+      setDrugs([...drugs, currentDrug.trim()]);
       setCurrentDrug('');
+    }
+  };
+
+  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      addDrug();
     }
   };
 
@@ -34,10 +41,10 @@ export default function DrugInteraction() {
   };
 
   return (
-    <div className="w-full max-w-2xl p-6 bg-white rounded-xl shadow-lg">
-      <div className="flex items-center gap-2 mb-6">
+    <div className="w-full max-w-2xl mx-auto p-6 bg-white rounded-xl shadow-lg">
+      <div className="flex items-center justify-center gap-2 mb-6">
         <Pill className="w-6 h-6 text-blue-600" />
-        <h2 className="text-2xl font-bold text-gray-800">Drug Interaction Checker</h2>
+        <h2 className="text-2xl font-bold text-gray-800 text-center">Drug Interaction Checker</h2>
       </div>
 
       <div className="flex gap-2 mb-4">
@@ -45,27 +52,28 @@ export default function DrugInteraction() {
           type="text"
           value={currentDrug}
           onChange={(e) => setCurrentDrug(e.target.value)}
-          className="flex-1 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          placeholder="Enter medication name"
+          onKeyPress={handleKeyPress}
+          className="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          placeholder="Enter medication name and press Enter"
         />
         <button
           onClick={addDrug}
-          className="p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          className="p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
         >
           <Plus className="w-5 h-5" />
         </button>
       </div>
 
-      <div className="flex flex-wrap gap-2 mb-4">
+      <div className="flex flex-wrap gap-2 mb-4 min-h-[50px]">
         {drugs.map((drug, index) => (
           <div
             key={index}
-            className="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full"
+            className="flex items-center gap-2 bg-gray-100 px-3 py-1.5 rounded-full group hover:bg-gray-200 transition-colors duration-200"
           >
-            <span>{drug}</span>
+            <span className="text-gray-700">{drug}</span>
             <button
               onClick={() => removeDrug(index)}
-              className="text-gray-500 hover:text-red-500"
+              className="text-gray-400 hover:text-red-500 transition-colors duration-200"
             >
               <X className="w-4 h-4" />
             </button>
@@ -76,7 +84,7 @@ export default function DrugInteraction() {
       <button
         onClick={handleCheck}
         disabled={loading || drugs.length < 2}
-        className="w-full py-2 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        className="w-full py-3 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-colors duration-200"
       >
         {loading ? (
           <>
@@ -89,7 +97,7 @@ export default function DrugInteraction() {
       </button>
 
       {analysis && (
-        <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+        <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-100">
           <h3 className="text-lg font-semibold mb-2 text-gray-800">Interaction Analysis:</h3>
           <div className="prose prose-blue max-w-none">
             <ReactMarkdown>{analysis}</ReactMarkdown>

@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
-import { Menu, X, Stethoscope, Pill, BookOpen, FileText, Info } from 'lucide-react';
+import { Menu, X, Stethoscope, Pill, BookOpen, FileText, Info, Home, Camera } from 'lucide-react';
 import SymptomAnalyzer from './components/SymptomAnalyzer';
 import DrugInteraction from './components/DrugInteraction';
 import MedicalTermExplainer from './components/MedicalTermExplainer';
 import ReportSummarizer from './components/ReportSummarizer';
 import About from './components/About';
+import Homepage from './components/Homepage';
 import HealthcareLogo from './components/HealthcareLogo';
-import { Analytics } from "@vercel/analytics/react";
+import { NavigationProvider, useNavigationContext } from './context/NavigationContext';
 
-function App() {
-  const [activeTab, setActiveTab] = useState('symptoms');
+function AppContent() {
+  const { activeTab, setActiveTab } = useNavigationContext();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const tabs = [
+    { id: 'home', name: 'Home', icon: Home },
     { id: 'symptoms', name: 'Symptom Analyzer', icon: Stethoscope },
     { id: 'drugs', name: 'Drug Interactions', icon: Pill },
     { id: 'terms', name: 'Medical Terms', icon: BookOpen },
@@ -22,6 +24,8 @@ function App() {
 
   const renderContent = () => {
     switch (activeTab) {
+      case 'home':
+        return <Homepage />;
       case 'symptoms':
         return <SymptomAnalyzer />;
       case 'drugs':
@@ -33,7 +37,7 @@ function App() {
       case 'about':
         return <About />;
       default:
-        return <SymptomAnalyzer />;
+        return <Homepage />;
     }
   };
 
@@ -43,8 +47,11 @@ function App() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto">
           <div className="flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-            {/* Logo and Title */}
-            <div className="flex items-center">
+            {/* Logo and Title - Aligned to the left */}
+            <div 
+              className="flex items-center cursor-pointer hover:opacity-80 transition-opacity duration-200" 
+              onClick={() => setActiveTab('home')}
+            >
               <div className="flex-shrink-0">
                 <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500">
                   <HealthcareLogo className="w-6 h-6 text-white" />
@@ -56,8 +63,8 @@ function App() {
               </div>
             </div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex lg:items-center lg:justify-end lg:flex-1 lg:space-x-8">
+            {/* Desktop Navigation - Aligned to the right */}
+            <nav className="hidden lg:flex lg:items-center lg:justify-end space-x-1">
               {tabs.map((tab) => {
                 const Icon = tab.icon;
                 return (
@@ -66,11 +73,11 @@ function App() {
                     onClick={() => setActiveTab(tab.id)}
                     className={`${
                       activeTab === tab.id
-                        ? 'text-blue-600 border-b-2 border-blue-500'
-                        : 'text-gray-500 hover:text-gray-900'
-                    } flex items-center px-3 py-2 text-sm font-medium transition-colors duration-150 -mb-[2px]`}
+                        ? 'text-blue-600 bg-blue-50'
+                        : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+                    } flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors duration-150`}
                   >
-                    <Icon className={`mr-2 h-5 w-5 ${
+                    <Icon className={`mr-1.5 h-5 w-5 ${
                       activeTab === tab.id ? 'text-blue-500' : 'text-gray-400 group-hover:text-gray-500'
                     }`} />
                     {tab.name}
@@ -104,7 +111,10 @@ function App() {
           isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
       >
-        <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
+        <div 
+          className="absolute inset-0 bg-black/20 backdrop-blur-sm" 
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
         <div
           className={`absolute inset-y-0 left-0 w-64 bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${
             isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
@@ -114,10 +124,7 @@ function App() {
             <div className="flex items-center justify-between px-4 h-16 border-b border-gray-200">
               <div className="flex items-center space-x-2">
                 <HealthcareLogo className="w-6 h-6 text-blue-600" />
-                <div>
-                  <span className="font-semibold text-gray-900">HealthAI Assistant</span>
-                  <p className="text-sm text-gray-500">Your Health Analysis Tool</p>
-                </div>
+                <span className="font-semibold text-gray-900">HealthAI Assistant</span>
               </div>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -138,7 +145,7 @@ function App() {
                     }}
                     className={`${
                       activeTab === tab.id
-                        ? 'bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700'
+                        ? 'bg-blue-50 text-blue-700'
                         : 'text-gray-600 hover:bg-gray-50'
                     } group flex items-center w-full px-3 py-2 text-base font-medium rounded-md transition-colors duration-150`}
                   >
@@ -158,7 +165,7 @@ function App() {
       <main className="flex-grow pt-20 pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center">
-            <div className="w-full max-w-2xl animate-fadeIn">
+            <div className="w-full animate-fadeIn">
               {renderContent()}
             </div>
           </div>
@@ -178,6 +185,14 @@ function App() {
         </div>
       </footer>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <NavigationProvider>
+      <AppContent />
+    </NavigationProvider>
   );
 }
 
