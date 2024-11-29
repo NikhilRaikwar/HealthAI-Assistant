@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BookOpen, Loader } from 'lucide-react';
+import { BookOpen, Loader, AlertCircle } from 'lucide-react';
 import { explainMedicalTerm } from '../lib/gemini';
 import ReactMarkdown from 'react-markdown';
 
@@ -7,18 +7,23 @@ export default function MedicalTermExplainer() {
   const [term, setTerm] = useState('');
   const [explanation, setExplanation] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleExplain = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!term.trim()) return;
+    if (!term.trim()) {
+      setError('Please enter a medical term to explain.');
+      return;
+    }
     
     setLoading(true);
+    setError('');
     try {
       const result = await explainMedicalTerm(term);
       setExplanation(result);
     } catch (error) {
-      console.error(error);
-      setExplanation('Error explaining term. Please try again.');
+      setError(error instanceof Error ? error.message : 'Error explaining term. Please try again.');
+      setExplanation('');
     }
     setLoading(false);
   };
@@ -35,20 +40,33 @@ export default function MedicalTermExplainer() {
           <input
             type="text"
             value={term}
-            onChange={(e) => setTerm(e.target.value)}
+            onChange={(e) => {
+              setTerm(e.target.value);
+              setError('');
+            }}
             className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-12"
             placeholder="Enter a medical term..."
           />
           {term && (
             <button
               type="button"
-              onClick={() => setTerm('')}
+              onClick={() => {
+                setTerm('');
+                setError('');
+              }}
               className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
             >
               ×
             </button>
           )}
         </div>
+
+        {error && (
+          <div className="p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-red-600">
+            <AlertCircle className="w-5 h-5" />
+            <span>{error}</span>
+          </div>
+        )}
 
         <button
           type="submit"

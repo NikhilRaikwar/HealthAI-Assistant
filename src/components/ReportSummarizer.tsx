@@ -1,70 +1,83 @@
-import React, { useState } from 'react';
-import { FileText, Loader } from 'lucide-react';
+import React, { useState, useCallback } from 'react';
+import { FileText, Loader, Upload } from 'lucide-react';
 import { summarizeMedicalReport } from '../lib/gemini';
 import ReactMarkdown from 'react-markdown';
+import { useDropzone } from 'react-dropzone';
+import { extractTextFromPdf } from '../utils/pdfUtils';
+import { PageContainer } from './ui/PageContainer';
 
 export default function ReportSummarizer() {
-  const [report, setReport] = useState('');
   const [summary, setSummary] = useState('');
   const [loading, setLoading] = useState(false);
+  const [fileName, setFileName] = useState('');
 
-  const handleSummarize = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onDrop = useCallback(async (acceptedFiles: File[]) => {
+    const file = acceptedFiles[0];
+    if (!file) return;
+
     setLoading(true);
+    setFileName(file.name);
+    
     try {
-      const result = await summarizeMedicalReport(report);
+      const text = await extractTextFromPdf(file);
+      const result = await summarizeMedicalReport(text);
       setSummary(result);
     } catch (error) {
       console.error(error);
-      setSummary('Error summarizing report. Please try again.');
+      setSummary('Error processing the report. Please try again.');
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
-  };
+  }, []);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: {
+      'application/pdf': ['.pdf'],
+    },
+    multiple: false,
+  });
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-6 bg-white rounded-xl shadow-lg">
-      <div className="flex items-center justify-center gap-2 mb-6">
-        <FileText className="w-6 h-6 text-blue-600" />
-        <h2 className="text-2xl font-bold text-gray-800 text-center">Medical Report Summarizer</h2>
-      </div>
-
-      <form onSubmit={handleSummarize} className="space-y-4">
-        <div className="relative">
-          <textarea
-            value={report}
-            onChange={(e) => setReport(e.target.value)}
-            className="w-full h-32 p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-            placeholder="Paste your medical report here..."
-          />
-          <div className="absolute bottom-3 right-3 text-xs text-gray-400">
-            {report.length}/1000 {/* Adjust the character limit as needed */}
-          </div>
-        </div>
-
-        <button
-          type="submit"
-          disabled={loading || !report.trim()}
-          className="w-full py-3 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-colors duration-200"
+    <PageContainer
+      icon={<FileText className="w-6 h-6 text-blue-600" />}
+      title="Medical Report Summarizer"
+    >
+      <div className="space-y-6">
+        <div
+          {...getRootProps()}
+          className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
+            isDragActive
+              ? 'border-blue-500 bg-blue-50'
+              : 'border-gray-300 hover:border-blue-400'
+          }`}
         >
-          {loading ? (
-            <>
-              <Loader className="w-5 h-5 animate-spin" />
-              Summarizing...
-            </>
-          ) : (
-            'Summarize Report'
+          <input {...getInputProps()} />
+          <Upload className="mx-auto h-12 w-12 text-gray-400" />
+          <p className="mt-2 text-sm text-gray-600">
+            Drag and drop your medical report PDF here, or click to select
+          </p>
+          {fileName && (
+            <p className="mt-2 text-sm text-blue-600 font-medium">{fileName}</p>
           )}
-        </button>
-      </form>
-
-      {summary && (
-        <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-100">
-          <h3 className="text-lg font-semibold mb-2 text-gray-800">Summary:</h3>
-          <div className="prose prose-blue max-w-none">
-            <ReactMarkdown>{summary}</ReactMarkdown>
-          </div>
         </div>
-      )}
-    </div>
+
+        {loading && (
+          <div className="flex items-center justify-center space-x-2 text-gray-600">
+            <Loader className="w-5 h-5 animate-spin" />
+            <span>Analyzing report...</span>
+          </div>
+        )}
+
+        {summary && (
+          <div className="p-6 bg-gray-50 rounded-lg border border-gray-100">
+            <h3 className="text-lg font-semibold mb-4 text-gray-800">Summary:</h3>
+            <div className="prose prose-blue max-w-none">
+              <ReactMarkdown>{summary}</ReactMarkdown>
+            </div>
+          </div>
+        )}
+      </div>
+    </PageContainer>
   );
 }

@@ -1,5 +1,5 @@
-import React, { useState, KeyboardEvent } from 'react';
-import { Pill, Plus, X, Loader } from 'lucide-react';
+import React, { useState } from 'react';
+import { Pill, Plus, X, Loader, AlertCircle } from 'lucide-react';
 import { checkDrugInteraction } from '../lib/gemini';
 import ReactMarkdown from 'react-markdown';
 
@@ -8,15 +8,17 @@ export default function DrugInteraction() {
   const [currentDrug, setCurrentDrug] = useState('');
   const [analysis, setAnalysis] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const addDrug = () => {
     if (currentDrug.trim() && !drugs.includes(currentDrug.trim())) {
       setDrugs([...drugs, currentDrug.trim()]);
       setCurrentDrug('');
+      setError('');
     }
   };
 
-  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       e.preventDefault();
       addDrug();
@@ -25,17 +27,23 @@ export default function DrugInteraction() {
 
   const removeDrug = (index: number) => {
     setDrugs(drugs.filter((_, i) => i !== index));
+    setError('');
   };
 
   const handleCheck = async () => {
-    if (drugs.length < 2) return;
+    if (drugs.length < 2) {
+      setError('Please enter at least two medications to check for interactions.');
+      return;
+    }
+
     setLoading(true);
+    setError('');
     try {
       const result = await checkDrugInteraction(drugs);
       setAnalysis(result);
     } catch (error) {
-      console.error(error);
-      setAnalysis('Error checking drug interactions. Please try again.');
+      setError(error instanceof Error ? error.message : 'Error checking drug interactions. Please try again.');
+      setAnalysis('');
     }
     setLoading(false);
   };
@@ -63,6 +71,13 @@ export default function DrugInteraction() {
           <Plus className="w-5 h-5" />
         </button>
       </div>
+
+      {error && (
+        <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-red-600">
+          <AlertCircle className="w-5 h-5" />
+          <span>{error}</span>
+        </div>
+      )}
 
       <div className="flex flex-wrap gap-2 mb-4 min-h-[50px]">
         {drugs.map((drug, index) => (

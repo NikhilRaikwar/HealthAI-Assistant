@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Activity, Shield, Brain, Users } from 'lucide-react';
+import { ArrowRight, Activity, Shield, Brain, Users, MessageSquare } from 'lucide-react';
 import { useNavigationContext } from '../context/NavigationContext';
 
 export default function Homepage() {
@@ -31,8 +31,14 @@ export default function Homepage() {
     {
       id: 'reports',
       name: 'Report Summary',
-      description: 'Convert complex medical reports into easy-to-understand summaries.',
+      description: 'Upload medical reports for instant AI-powered summaries.',
       icon: Users,
+    },
+    {
+      id: 'chat',
+      name: 'Healthcare Chat',
+      description: 'Chat with our AI assistant for instant health-related answers.',
+      icon: MessageSquare,
     },
   ];
 
@@ -76,7 +82,7 @@ export default function Homepage() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
               <button
                 key={feature.id}
