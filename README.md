@@ -5,12 +5,13 @@ An AI-powered healthcare assistant that provides medical information, symptom an
 ## Key Features ✨
 
 - **Multilingual Support**: Get healthcare assistance in multiple languages
-- **Symptom Analyzer**: Advanced analysis of symptoms to help understand potential health conditions
-- **Drug Interactions**: Check for potential interactions between different medications
-- **Medical Terms Dictionary**: Easy-to-understand explanations of medical terminology
-- **Report Summarizer**: Convert complex medical reports into simple, understandable summaries
-- **User-Friendly Interface**: Simple and intuitive design for easy navigation
-- **Privacy Focused**: Your health data stays secure and private
+- **Symptom Analysis**: Get instant AI-powered analysis of symptoms with severity assessment 
+    and recommendations
+- **Drug Interaction Checker**: Check potential interactions between multiple medications
+- **Medical Term Explainer**: Understand complex medical terminology in simple language
+- **Report Summarizer**: Upload and get AI-powered summaries of medical reports
+- **Healthcare Chat**: Interactive chat with AI for health-related queries
+- **Emergency Contacts**: Quick access to important emergenc
 
 ## Supported Languages 🌐
 
@@ -78,6 +79,11 @@ npm run dev
    - Upload or input medical reports
    - Get simplified summaries
    - Understand key findings easily
+     
+5. **Healthcare Chat**
+   - Access the Chat interface
+   - Ask health-related questions
+   - Receive detailed AI responses
 
 
 ## Contributing 🤝
