@@ -121,3 +121,45 @@ export const getAIResponse = async (message: string) => {
     throw new Error("Failed to process your question. Please try again.");
   }
 };
+export const queryPolicyDocument = async (query: string, policyText: string) => {
+  if (!query.trim()) {
+    throw new Error("Please enter your policy question.");
+  }
+
+  if (!policyText.trim()) {
+    throw new Error("No policy document provided to analyze.");
+  }
+
+  const prompt = `You are an expert policy analysis assistant. Analyze the following policy document and answer the user's query with detailed information.
+
+POLICY DOCUMENT:
+${policyText}
+
+USER QUERY: ${query}
+
+Please provide a comprehensive response that includes:
+1. **Decision**: Clear answer (Approved/Rejected/Covered/Not Covered/etc.)
+2. **Amount**: If applicable, mention any monetary amounts, limits, or percentages
+3. **Justification**: Detailed explanation of your decision
+4. **Policy Clauses**: Reference specific sections or clauses from the policy that support your answer
+5. **Additional Information**: Any relevant conditions, waiting periods, or requirements
+
+Parse the query to identify key details like:
+- Age and demographics
+- Medical procedure or condition
+- Location
+- Policy duration/age
+- Any other relevant factors
+
+Use semantic understanding to find relevant information even if the query is vague or incomplete. Always reference specific policy clauses and provide clear justification for your decisions.
+
+Format your response in a clear, structured manner with proper headings and bullet points where appropriate.`;
+
+  try {
+    const result = await model.generateContent(getPromptInLanguage(prompt, query));
+    return result.response.text();
+  } catch (error) {
+    console.error("Error querying policy document:", error);
+    throw new Error("Failed to analyze the policy query. Please try again.");
+  }
+};

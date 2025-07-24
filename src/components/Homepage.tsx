@@ -35,6 +35,12 @@ export default function Homepage() {
       icon: Users,
     },
     {
+      id: 'policy',
+      name: 'Policy Query Assistant',
+      description: 'Upload policy documents and ask questions in natural language.',
+      icon: Shield,
+    },
+    {
       id: 'chat',
       name: 'Healthcare Chat',
       description: 'Chat with our AI assistant for instant health-related answers.',

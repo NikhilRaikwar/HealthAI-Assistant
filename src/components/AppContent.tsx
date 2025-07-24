@@ -4,6 +4,7 @@ import SymptomAnalyzer from './SymptomAnalyzer';
 import DrugInteraction from './DrugInteraction';
 import MedicalTermExplainer from './MedicalTermExplainer';
 import ReportSummarizer from './ReportSummarizer';
+import PolicyQueryAssistant from './PolicyQueryAssistant';
 import About from './About';
 import Homepage from './Homepage';
 import HealthcareChat from './HealthcareChat';
@@ -26,6 +27,8 @@ export default function AppContent() {
         return <MedicalTermExplainer />;
       case 'reports':
         return <ReportSummarizer />;
+      case 'policy':
+        return <PolicyQueryAssistant />;
       case 'chat':
         return <HealthcareChat />;
       case 'emergency':
