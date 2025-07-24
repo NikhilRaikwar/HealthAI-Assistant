@@ -26,6 +26,7 @@ export const navigationItems: NavItem[] = [
     icon: Brain,
     dropdown: [
       { id: 'reports', name: 'Report Summarizer', icon: FileText },
+      { id: 'policy', name: 'Policy Query Assistant', icon: FileText },
       { id: 'emergency', name: 'Emergency Contacts', icon: Phone },
     ]
   },
