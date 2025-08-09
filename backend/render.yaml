@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: healthai-policy-assistant
+    env: python
+    plan: free  # 512MB RAM, 750 hours/month - perfect for OpenAI API
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn api:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false  # Set manually in Render dashboard for security
+      - key: GEMINI_API_KEY  
+        sync: false  # Set manually in Render dashboard for security
+    scaling:
+      minInstances: 1
+      maxInstances: 1
