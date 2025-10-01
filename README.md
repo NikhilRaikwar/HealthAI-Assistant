@@ -11,6 +11,38 @@ An AI-powered healthcare assistant that provides medical information, symptom an
 
 We're excited to participate in Hacktoberfest 2025! This is the perfect opportunity for open source developers to contribute to a meaningful healthcare project. Whether you're fixing bugs, adding features, improving documentation, or enhancing the UI, your contributions are welcome!
 
+### 🎉 All Contributions Welcome!
+
+**We accept ALL types of meaningful contributions for Hacktoberfest:**
+- 💻 **Code Contributions**: Bug fixes, new features, refactoring
+- 🎨 **UI/UX Redesigns**: Design improvements, responsive fixes, accessibility enhancements
+- 📚 **Documentation**: README updates, code comments, guides, tutorials
+- 🧪 **Testing**: Writing tests, improving test coverage
+- 🐛 **Bug Reports**: Finding and reporting issues with detailed information
+- 💡 **Feature Proposals**: Well-thought-out feature requests
+- 🌍 **Translations**: Adding language support
+- ♿ **Accessibility**: Making the app more accessible
+
+### ⚠️ Important: Quality Over Quantity!
+
+**We Do NOT Accept:**
+- ❌ **Spammy PRs**: Minor changes just to get a PR count (e.g., adding single spaces, removing empty lines)
+- ❌ **Low-Effort Contributions**: Changes that add no real value to the project
+- ❌ **Copy-Paste Code**: Directly copying code from other projects without adaptation or understanding
+- ❌ **Unnecessary Changes**: Modifying files that don't need modification
+- ❌ **Incomplete Work**: PRs that are half-done or don't work properly
+- ❌ **README Only Changes**: Just adding your name without meaningful contribution
+
+**Your PR may be marked as "invalid" or "spam" if it doesn't provide meaningful value to the project.**
+
+### ✅ What Makes a Good Contribution?
+
+- **Well-documented**: Clear description of what and why
+- **Tested**: You've tested your changes locally
+- **Focused**: Addresses one specific issue or feature
+- **Quality code**: Follows project conventions and best practices
+- **Meaningful**: Adds real value to the project and its users
+
 ### 🚀 Quick Start for Hacktoberfest Contributors
 
 1. **Find an issue** - Check our [Good First Issues](https://github.com/NikhilRaikwar/HealthAI-Assistant/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) or [Hacktoberfest](https://github.com/NikhilRaikwar/HealthAI-Assistant/issues?q=is%3Aopen+is%3Aissue+label%3AHacktoberfest) labeled issues
