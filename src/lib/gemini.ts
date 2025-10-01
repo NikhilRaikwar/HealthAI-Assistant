@@ -163,3 +163,45 @@ Format your response in a clear, structured manner with proper headings and bull
     throw new Error("Failed to analyze the policy query. Please try again.");
   }
 };
+
+export const queryMedicalReport = async (query: string, reportText: string) => {
+  if (!query.trim()) {
+    throw new Error("Please enter your question about the medical report.");
+  }
+
+  if (!reportText.trim()) {
+    throw new Error("No medical report provided to analyze.");
+  }
+
+  const prompt = `You are an expert medical report analysis assistant. Analyze the following medical report and answer the user's query with detailed, easy-to-understand information.
+
+MEDICAL REPORT:
+${reportText}
+
+USER QUERY: ${query}
+
+Please provide a comprehensive response that includes:
+1. **Direct Answer**: Clear, concise answer to the user's question
+2. **Detailed Explanation**: In-depth explanation in simple, non-technical language
+3. **Key Findings**: Highlight any important test results, diagnoses, or observations relevant to the query
+4. **Report References**: Quote specific sections or values from the report that support your answer
+5. **Clinical Significance**: Explain what the findings mean for the patient's health
+6. **Recommendations**: If applicable, suggest follow-up questions or areas to discuss with a doctor
+
+Important guidelines:
+- Explain medical terminology in simple terms
+- Provide context for test results (normal ranges, significance)
+- Be empathetic and clear
+- If uncertain, suggest consulting with a healthcare provider
+- Identify trends or patterns in the report data
+
+Format your response in a clear, structured manner with proper headings and bullet points where appropriate.`;
+
+  try {
+    const result = await model.generateContent(getPromptInLanguage(prompt, query));
+    return result.response.text();
+  } catch (error) {
+    console.error("Error querying medical report:", error);
+    throw new Error("Failed to analyze your medical report query. Please try again.");
+  }
+};
