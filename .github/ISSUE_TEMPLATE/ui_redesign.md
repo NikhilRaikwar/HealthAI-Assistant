@@ -139,12 +139,6 @@ assignees: ''
 - [ ] No new dependencies
 - [ ] New libraries needed: ___________
 
-### Estimated Effort
-<!-- How complex is this redesign? -->
-
-- [ ] Small (< 2 hours)
-- [ ] Medium (2-5 hours)
-- [ ] Large (> 5 hours)
 
 ---
 
@@ -199,9 +193,6 @@ If you implement this redesign, don't forget to add yourself to [CONTRIBUTORS.md
 
 - 
 - 
-
-### Design Rationale
-<!-- Why is this redesign better? What UX principles does it follow? -->
 
 ### Related Issues/PRs
 <!-- Link to related issues or pull requests -->
