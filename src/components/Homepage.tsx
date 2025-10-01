@@ -1,6 +1,6 @@
-import React from 'react';
-import { ArrowRight, Activity, Shield, Brain, Users, MessageSquare } from 'lucide-react';
+import { ArrowRight, Activity, Shield, Brain, Users, MessageSquare, FileText } from 'lucide-react';
 import { useNavigationContext } from '../context/NavigationContext';
+import { BentoCard, BentoGrid } from '@/components/ui/bento-grid';
 
 export default function Homepage() {
   const { setActiveTab } = useNavigationContext();
@@ -15,36 +15,60 @@ export default function Homepage() {
       name: 'Symptom Analysis',
       description: 'Get instant analysis of your symptoms with AI-powered insights.',
       icon: Activity,
+      className: 'lg:col-span-1 lg:row-span-1',
+      background: (
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20" />
+      ),
     },
     {
       id: 'drugs',
       name: 'Drug Interactions',
       description: 'Check potential interactions between different medications.',
       icon: Shield,
+      className: 'lg:col-span-1 lg:row-span-1',
+      background: (
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20" />
+      ),
     },
     {
       id: 'terms',
       name: 'Medical Terms',
       description: 'Understand complex medical terminology in simple language.',
       icon: Brain,
+      className: 'lg:col-span-1 lg:row-span-1',
+      background: (
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20" />
+      ),
     },
     {
       id: 'reports',
       name: 'Report Summary',
       description: 'Upload medical reports for instant AI-powered summaries.',
-      icon: Users,
+      icon: FileText,
+      className: 'lg:col-span-1 lg:row-span-1',
+      background: (
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20" />
+      ),
     },
     {
       id: 'policy',
       name: 'Policy Query Assistant',
       description: 'Upload policy documents and ask questions in natural language.',
-      icon: Shield,
+      icon: Users,
+      className: 'lg:col-span-1 lg:row-span-1',
+      background: (
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-900/20 dark:to-blue-900/20" />
+      ),
     },
     {
       id: 'chat',
       name: 'Healthcare Chat',
       description: 'Chat with our AI assistant for instant health-related answers.',
       icon: MessageSquare,
+      className: 'lg:col-span-1 lg:row-span-1',
+      background: (
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20" />
+      ),
     },
   ];
 
@@ -77,35 +101,30 @@ export default function Homepage() {
       </section>
 
       {/* Features Section */}
-      <section className="bg-white py-16 sm:py-24">
+      <section className="bg-white dark:bg-gray-900 py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
               Why Choose HealthAI Assistant?
             </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">
+            <p className="mx-auto mt-3 max-w-2xl text-xl text-gray-500 dark:text-gray-400 sm:mt-4">
               Comprehensive health analysis tools powered by advanced AI technology
             </p>
           </div>
 
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <BentoGrid className="mt-12 auto-rows-[16rem] sm:auto-rows-[18rem] lg:auto-rows-[20rem] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             {features.map((feature) => (
-              <button
+              <BentoCard
                 key={feature.id}
+                name={feature.name}
+                className={feature.className}
+                background={feature.background}
+                Icon={feature.icon}
+                description={feature.description}
                 onClick={() => setActiveTab(feature.id)}
-                className="relative rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-lg hover:border-blue-200 hover:bg-blue-50/50 text-left group"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500 text-white group-hover:bg-blue-600 transition-colors">
-                  {<feature.icon className="h-6 w-6" />}
-                </div>
-                <h3 className="mt-4 text-lg font-medium text-gray-900 group-hover:text-blue-600">{feature.name}</h3>
-                <p className="mt-2 text-base text-gray-500">{feature.description}</p>
-                <div className="absolute bottom-6 right-6 opacity-0 transform translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">
-                  <ArrowRight className="h-5 w-5 text-blue-500" />
-                </div>
-              </button>
+              />
             ))}
-          </div>
+          </BentoGrid>
         </div>
       </section>
 
