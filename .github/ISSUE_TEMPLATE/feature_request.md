@@ -1,14 +1,17 @@
 ---
-name: Feature Request
-about: Suggest a new feature or enhancement
+name: ✨ Feature Request
+about: Suggest an idea for this project
 title: '[FEATURE] '
 labels: enhancement
 assignees: ''
 ---
 
 ## 🎃 Hacktoberfest Participation
-- [ ] This feature is related to Hacktoberfest contributions
-- [ ] This is a Hacktoberfest feature/change
+- [ ] This feature request is related to Hacktoberfest
+- [ ] I would like to implement this feature for Hacktoberfest
+
+## 👥 Recognition
+If you implement this feature, don't forget to add yourself to [CONTRIBUTORS.md](../../CONTRIBUTORS.md) in your pull request!
 
 ## 💡 Feature Description
 A clear and concise description of the feature you'd like to see.

@@ -6,6 +6,12 @@ Provide a brief description of the changes in this PR.
 - [ ] This PR includes Hacktoberfest-related features/changes
 - [ ] I am participating in Hacktoberfest 2025
 
+## 👥 Contributors
+- [ ] I have added myself to the [CONTRIBUTORS.md](../CONTRIBUTORS.md) file in the appropriate section
+- [ ] I have included details about my contribution (type, description, PR link)
+
+**Note**: Please add yourself to the CONTRIBUTORS.md file following the format provided. This helps us recognize and celebrate all contributors!
+
 ## 🔗 Related Issues
 Fixes #(issue number)
 Closes #(issue number)

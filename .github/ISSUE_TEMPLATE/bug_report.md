@@ -1,6 +1,6 @@
 ---
-name: Bug Report
-about: Report a bug or unexpected behavior
+name: 🐛 Bug Report
+about: Report a bug to help us improve
 title: '[BUG] '
 labels: bug
 assignees: ''
@@ -8,7 +8,10 @@ assignees: ''
 
 ## 🎃 Hacktoberfest Participation
 - [ ] This issue is related to Hacktoberfest contributions
-- [ ] This is a Hacktoberfest feature/change
+- [ ] I would like to work on this issue for Hacktoberfest
+
+## 👥 Recognition
+If you report this bug and it's confirmed, consider adding yourself to [CONTRIBUTORS.md](../../CONTRIBUTORS.md) under the "Bug Hunters" section!
 
 ## 🐛 Bug Description
 A clear and concise description of what the bug is.
