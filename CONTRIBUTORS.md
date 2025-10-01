@@ -20,7 +20,7 @@ When you make a contribution, please add yourself to this file in your pull requ
 
 | Name | GitHub | Contributions | PR Link |
 |------|--------|---------------|---------|
-| Example Contributor | [@example](https://github.com/example) | Fixed bug in navbar component | [#1](https://github.com/yourrepo/pull/1) |
+| Dipanshu Rawat | [@dipanshurdev](https://github.com/dipanshurdev) | Added Copy Analysis feature in <SymptomAnalyzer /> component | [#7](https://github.com/yourrepo/pull/7) |
 
 ### 💻 Code Contributors
 
