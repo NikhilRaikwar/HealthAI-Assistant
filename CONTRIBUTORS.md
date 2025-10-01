@@ -14,7 +14,7 @@ When you make a contribution, please add yourself to this file in your pull requ
 
 | Name | GitHub | Contributions |
 |------|--------|---------------|
-| [Your Name] | [@username](https://github.com/username) | Project creator, core maintainer |
+| Nikhil Raikwar| [@NikhilRaikwar](https://github.com/NikhilRaikwar) | Project creator, core maintainer |
 
 ### 🎃 Hacktoberfest 2025 Contributors
 
@@ -26,7 +26,7 @@ When you make a contribution, please add yourself to this file in your pull requ
 
 | Name | GitHub | Contributions | Type | Date |
 |------|--------|---------------|------|------|
-| [Add yourself here] | [@username](https://github.com/username) | Description of your contribution | Feature/Bug/Docs | YYYY-MM-DD |
+| [Add yourself here] | [@username](https://github.com/username) | Description of your contribution | Feature/Bug/Docs |
 
 ### 📚 Documentation Contributors
 
