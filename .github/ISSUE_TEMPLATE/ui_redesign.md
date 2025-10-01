@@ -48,33 +48,18 @@ assignees: ''
 2. 
 3. 
 
-### Visual Design Changes
-<!-- Describe the visual changes you're proposing -->
-
-**Colors**:
-<!-- New color palette or changes -->
-
-**Typography**:
-<!-- Font changes, sizes, weights -->
-
-**Spacing & Layout**:
-<!-- Margins, padding, grid/flexbox changes -->
-
-**Components**:
-<!-- New UI components or modifications -->
-
 ---
 
 ## 🖼️ Mockups & Screenshots
 
 ### Current UI
 <!-- Attach screenshot of current design -->
-![Current Design](url-here)
+
 
 ### Proposed UI
 <!-- Attach mockup/screenshot of proposed design -->
 <!-- You can use tools like Figma, Sketch, or even hand-drawn sketches -->
-![Proposed Design](url-here)
+
 
 ---
 
@@ -141,15 +126,6 @@ assignees: ''
 
 
 ---
-
-## 🧪 Testing Checklist
-
-### How to Test
-<!-- Steps to verify the redesign works correctly -->
-
-1. 
-2. 
-3. 
 
 ### Browser Testing
 <!-- Which browsers should be tested? -->
