@@ -20,13 +20,13 @@ When you make a contribution, please add yourself to this file in your pull requ
 
 | Name | GitHub | Contributions | PR Link |
 |------|--------|---------------|---------|
-| Example Contributor | [@example](https://github.com/example) | Fixed bug in navbar component | [#1](https://github.com/yourrepo/pull/1) |
+| Sumit Raikwar | [@SumitRaikwar18](https://github.com/SumitRaikwar18) | Add interactive medical report chat with session management | [#5](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/5) |
 
 ### 💻 Code Contributors
 
 | Name | GitHub | Contributions | Type | Date |
 |------|--------|---------------|------|------|
-| [Add yourself here] | [@username](https://github.com/username) | Description of your contribution | Feature/Bug/Docs |
+| Sumit Raikwar | [@SumitRaikwar18](https://github.com/SumitRaikwar18) | Add interactive medical report chat with session management | Feature |
 
 ### 📚 Documentation Contributors
 
