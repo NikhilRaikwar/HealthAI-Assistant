@@ -339,4 +339,21 @@ We're thrilled to be part of Hacktoberfest 2025! Here's what makes our project g
 
 **Let's build something amazing together! 🚀**
 
+
+---
+
+## 🌟 Contributors
+
+We love our contributors! All contributors are shown below with their GitHub profile images. Your face could be here too—just contribute! 😄
+
+<p align="center">
+   <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/graphs/contributors">
+      <img src="https://contrib.rocks/image?repo=NikhilRaikwar/HealthAI-Assistant" alt="Contributors"/>
+   </a>
+</p>
+
+---
+
+⭐ **If you like this project, please consider [starring the repo](https://github.com/NikhilRaikwar/HealthAI-Assistant)!** ⭐
+
 *Remember: This application provides AI-powered health information and should not replace professional medical advice. Always consult healthcare professionals for medical concerns.*
