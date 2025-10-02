@@ -205,3 +205,54 @@ Format your response in a clear, structured manner with proper headings and bull
     throw new Error("Failed to analyze your medical report query. Please try again.");
   }
 };
+
+// ============================================
+// STREAMING CHAT FUNCTIONS FOR ENHANCED UI
+// ============================================
+
+interface Message {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+// Build context from last 5 messages only (for speed)
+const buildContext = (messages: Message[]): string => {
+  const recentMessages = messages.slice(-5);
+  return recentMessages
+    .map(m => `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.content}`)
+    .join('\n');
+};
+
+// Healthcare-specific system prompt (concise for speed)
+const SYSTEM_PROMPT = `You are a helpful healthcare AI assistant. Provide concise, accurate health information. Keep responses under 150 words unless specifically asked for details. Always remind users this is educational information, not medical diagnosis.`;
+
+// STREAMING RESPONSE - Shows response as it's generated (feels faster!)
+export async function* streamAIResponse(
+  userMessage: string,
+  conversationHistory: Message[] = []
+): AsyncGenerator<string, void, unknown> {
+  try {
+    const context = buildContext(conversationHistory);
+    const prompt = `${SYSTEM_PROMPT}\n\nConversation History:\n${context}\n\nUser: ${userMessage}\n\nAssistant:`;
+
+    const result = await model.generateContentStream(prompt);
+
+    for await (const chunk of result.stream) {
+      const chunkText = chunk.text();
+      yield chunkText;
+    }
+  } catch (error) {
+    console.error('Gemini API Streaming Error:', error);
+    throw new Error('Failed to stream response from AI');
+  }
+}
+
+// Cancel current request
+let currentController: AbortController | null = null;
+
+export function cancelCurrentRequest() {
+  if (currentController) {
+    currentController.abort();
+    currentController = null;
+  }
+}
