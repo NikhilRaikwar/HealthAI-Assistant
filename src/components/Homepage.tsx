@@ -75,15 +75,15 @@ export default function Homepage() {
   return (
     <div className="w-full animate-fadeIn">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 to-white py-16 sm:py-24 dark:from-gray-900 ">
+      <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 to-white dark:from-gray-900 dark:to-gray-900 py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-12 lg:gap-8">
             <div className="sm:text-center md:mx-auto lg:col-span-12 lg:text-center">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
                 Your Personal
-                <span className="block text-blue-600">Health Assistant</span>
+                <span className="block text-blue-600 dark:text-blue-400">Health Assistant</span>
               </h1>
-              <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl max-w-3xl mx-auto">
+              <p className="mt-3 text-base text-gray-500 dark:text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl max-w-3xl mx-auto">
                 Powered by advanced AI technology to help you understand your health better. Get instant analysis of symptoms, drug interactions, and medical terms.
               </p>
               <div className="mt-8 sm:mt-12">
