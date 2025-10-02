@@ -21,12 +21,16 @@ When you make a contribution, please add yourself to this file in your pull requ
 | Name | GitHub | Contributions | PR Link |
 |------|--------|---------------|---------|
 | Sumit Raikwar | [@SumitRaikwar18](https://github.com/SumitRaikwar18) | Add interactive medical report chat with session management | [#5](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/5) |
+| Koustubh Badshah | [@koustubhbadshah](https://github.com/koustubhbadshah) | Added dark mode | [#10](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/10) |
+
 
 ### 💻 Code Contributors
 
 | Name | GitHub | Contributions | Type | Date |
 |------|--------|---------------|------|------|
 | Sumit Raikwar | [@SumitRaikwar18](https://github.com/SumitRaikwar18) | Add interactive medical report chat with session management | Feature |
+| Koustubh Badshah | [@koustubhbadshah](https://github.com/koustubhbadshah) | Added dark mode | [#10](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/10) |
+
 
 ### 📚 Documentation Contributors
 
@@ -38,7 +42,7 @@ When you make a contribution, please add yourself to this file in your pull requ
 
 | Name | GitHub | Contributions | PR Link |
 |------|--------|---------------|---------|
-| [Add yourself here] | [@username](https://github.com/username) | Description of design improvements | [#PR](link) |
+| Koustubh Badshah | [@koustubhbadshah](https://github.com/koustubhbadshah) | Added dark mode | [#10](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/10) |
 
 ### 🐛 Bug Hunters
 
