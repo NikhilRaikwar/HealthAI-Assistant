@@ -49,10 +49,10 @@ export default function DrugInteraction() {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-6 bg-white rounded-xl shadow-lg">
+    <div className="w-full max-w-2xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
       <div className="flex items-center justify-center gap-2 mb-6">
         <Pill className="w-6 h-6 text-blue-600" />
-        <h2 className="text-2xl font-bold text-gray-800 text-center">Drug Interaction Checker</h2>
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200 text-center">Drug Interaction Checker</h2>
       </div>
 
       <div className="flex gap-2 mb-4">
@@ -61,7 +61,7 @@ export default function DrugInteraction() {
           value={currentDrug}
           onChange={(e) => setCurrentDrug(e.target.value)}
           onKeyPress={handleKeyPress}
-          className="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="flex-1 p-3 border border-gray-300 dark:border-gray-600 dark:bg-slate-500 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           placeholder="Enter medication name and press Enter"
         />
         <button
@@ -73,7 +73,7 @@ export default function DrugInteraction() {
       </div>
 
       {error && (
-        <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-red-600">
+        <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-500/30 rounded-lg flex items-center gap-2 text-red-600 dark:text-red-400">
           <AlertCircle className="w-5 h-5" />
           <span>{error}</span>
         </div>
@@ -83,12 +83,12 @@ export default function DrugInteraction() {
         {drugs.map((drug, index) => (
           <div
             key={index}
-            className="flex items-center gap-2 bg-gray-100 px-3 py-1.5 rounded-full group hover:bg-gray-200 transition-colors duration-200"
+            className="flex items-center gap-2 bg-gray-100 dark:bg-gray-700 px-3 py-1.5 rounded-full group hover:bg-gray-200 transition-colors duration-200"
           >
-            <span className="text-gray-700">{drug}</span>
+            <span className="text-gray-700 dark:text-gray-300">{drug}</span>
             <button
               onClick={() => removeDrug(index)}
-              className="text-gray-400 hover:text-red-500 transition-colors duration-200"
+              className="text-gray-400 dark:text-gray-500 hover:text-red-500 transition-colors duration-200"
             >
               <X className="w-4 h-4" />
             </button>
@@ -112,8 +112,8 @@ export default function DrugInteraction() {
       </button>
 
       {analysis && (
-        <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-100">
-          <h3 className="text-lg font-semibold mb-2 text-gray-800">Interaction Analysis:</h3>
+        <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-900/50 rounded-lg border border-gray-100 dark:border-gray-700">
+          <h3 className="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">Interaction Analysis:</h3>
           <div className="prose prose-blue max-w-none">
             <ReactMarkdown>{analysis}</ReactMarkdown>
           </div>

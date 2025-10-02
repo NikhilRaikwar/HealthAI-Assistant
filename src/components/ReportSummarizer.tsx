@@ -121,10 +121,10 @@ export default function ReportSummarizer() {
   };
 
   const renderChatInterface = () => (
-    <div className="mt-6 flex flex-col h-[500px] bg-gray-50 rounded-lg border border-gray-200">
+    <div className="mt-6 flex flex-col h-[500px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.length === 0 && reportText && (
-          <div className="text-center text-gray-500 mt-8">
+          <div className="text-center text-gray-500 dark:text-gray-400 mt-8">
             <MessageSquare className="w-12 h-12 mx-auto mb-4 text-blue-500" />
             <p className="text-lg font-medium">Medical Report Assistant Ready!</p>
             <p className="mt-2">Ask me anything about your uploaded medical report.</p>
@@ -142,25 +142,25 @@ export default function ReportSummarizer() {
               }`}
             >
               <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
-                message.type === 'user' ? 'bg-blue-100' : 'bg-gray-200'
+                message.type === 'user' ? 'bg-blue-100 dark:bg-blue-900/50' : 'bg-gray-200 dark:bg-gray-700'
               }`}>
                 {message.type === 'user' ? (
                   <User className="w-5 h-5 text-blue-600" />
                 ) : (
-                  <Bot className="w-5 h-5 text-gray-600" />
+                  <Bot className="w-5 h-5 text-gray-600 dark:text-gray-300" />
                 )}
               </div>
               <div
                 className={`p-4 rounded-lg ${
                   message.type === 'user'
-                    ? 'bg-blue-100 text-blue-900'
-                    : 'bg-white border border-gray-200'
+                    ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-900 dark:text-blue-200'
+                    : 'bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700'
                 }`}
               >
                 {message.isTyping ? (
                   <div className="flex items-center space-x-2">
                     <Loader className="w-4 h-4 animate-spin text-blue-600" />
-                    <span className="text-gray-500">Analyzing report...</span>
+                    <span className="text-gray-500 dark:text-gray-400">Analyzing report...</span>
                   </div>
                 ) : (
                   <>
@@ -168,7 +168,7 @@ export default function ReportSummarizer() {
                       <ReactMarkdown>{message.content}</ReactMarkdown>
                     </div>
                     <div className={`text-xs mt-2 ${
-                      message.type === 'user' ? 'text-blue-600' : 'text-gray-400'
+                      message.type === 'user' ? 'text-blue-600 dark:text-blue-400' : 'text-gray-400 dark:text-gray-500'
                     }`}>
                       {message.timestamp.toLocaleTimeString()}
                     </div>
@@ -183,14 +183,14 @@ export default function ReportSummarizer() {
 
       <form 
         onSubmit={handleSubmit} 
-        className="flex gap-3 p-4 bg-white border-t border-gray-200"
+        className="flex gap-3 p-4 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700"
       >
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask about your medical report (e.g., 'What are my blood test results?')"
-          className="flex-1 px-4 py-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-gray-400"
+          className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-gray-400 dark:placeholder-gray-500"
           disabled={loading || !reportText}
         />
         <button
@@ -226,29 +226,29 @@ export default function ReportSummarizer() {
             {...getRootProps()}
             className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
               isDragActive
-                ? 'border-blue-500 bg-blue-50'
-                : 'border-gray-300 hover:border-blue-400'
-            } ${reportText ? 'bg-green-50 border-green-300' : ''}`}
+                ? 'border-blue-500 dark:border-blue-400 bg-blue-50 dark:bg-blue-900/20'
+                : 'border-gray-300 dark:border-gray-600 hover:border-blue-400'
+            } ${reportText ? 'bg-green-50 dark:bg-green-900/20 border-green-300 dark:border-green-500/30' : ''}`}
           >
             <input {...getInputProps()} />
-            <Upload className={`mx-auto h-12 w-12 ${reportText ? 'text-green-500' : 'text-gray-400'}`} />
+            <Upload className={`mx-auto h-12 w-12 ${reportText ? 'text-green-500 dark:text-green-400' : 'text-gray-400 dark:text-gray-500'}`} />
             {uploadLoading ? (
               <div className="mt-4">
                 <Loader className="w-6 h-6 animate-spin mx-auto text-blue-600" />
-                <p className="mt-2 text-sm text-blue-600">Processing medical report...</p>
+                <p className="mt-2 text-sm text-blue-600 dark:text-blue-400">Processing medical report...</p>
               </div>
             ) : reportText ? (
               <div className="mt-4">
-                <p className="text-sm text-green-600 font-medium">✅ Medical report uploaded successfully!</p>
-                <p className="text-xs text-gray-500 mt-1">{fileName}</p>
-                <p className="text-xs text-gray-500 mt-2">Click to upload a different report</p>
+                <p className="text-sm text-green-600 dark:text-green-400 font-medium">✅ Medical report uploaded successfully!</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{fileName}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">Click to upload a different report</p>
               </div>
             ) : (
               <div className="mt-4">
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-600 dark:text-gray-300">
                   Drag and drop your medical report PDF here, or click to select
                 </p>
-                <p className="text-xs text-gray-500 mt-2">
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
                   Supports PDF files up to 50MB
                 </p>
               </div>
@@ -259,7 +259,7 @@ export default function ReportSummarizer() {
           {reportText && (
             <button
               onClick={handleClearSession}
-              className="absolute top-4 right-4 px-4 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors duration-200 flex items-center gap-2 text-sm font-medium"
+              className="absolute top-4 right-4 px-4 py-2 bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-400 rounded-lg hover:bg-red-200 transition-colors duration-200 flex items-center gap-2 text-sm font-medium"
             >
               <RefreshCw className="w-4 h-4" />
               New Session
@@ -268,16 +268,16 @@ export default function ReportSummarizer() {
         </div>
 
         {error && (
-          <div className="p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-red-600">
+          <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-500/30 rounded-lg flex items-center gap-2 text-red-600 dark:text-red-400">
             <AlertCircle className="w-5 h-5" />
             <span>{error}</span>
           </div>
         )}
 
         {/* Instructions */}
-        <div className="bg-blue-50 rounded-lg p-6">
-          <h3 className="text-lg font-semibold text-blue-800 mb-3">How to Use Medical Report Assistant</h3>
-          <div className="space-y-2 text-sm text-blue-700">
+        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6">
+          <h3 className="text-lg font-semibold text-blue-800 dark:text-blue-300 mb-3">How to Use Medical Report Assistant</h3>
+          <div className="space-y-2 text-sm text-blue-700 dark:text-blue-400">
             <p><strong>1. Upload:</strong> Upload your medical report (PDF format)</p>
             <p><strong>2. Chat:</strong> Ask questions in natural language about your report</p>
             <p><strong>3. Get Answers:</strong> Receive detailed, easy-to-understand explanations</p>
@@ -285,8 +285,8 @@ export default function ReportSummarizer() {
           </div>
           
           <div className="mt-4">
-            <h4 className="font-medium text-blue-800 mb-2">Sample Questions:</h4>
-            <ul className="text-xs text-blue-600 space-y-1">
+            <h4 className="font-medium text-blue-800 dark:text-blue-300 mb-2">Sample Questions:</h4>
+            <ul className="text-xs text-blue-600 dark:text-blue-400 space-y-1">
               <li>• "What are my blood test results?"</li>
               <li>• "Explain the diagnosis in simple terms"</li>
               <li>• "Are there any abnormal findings?"</li>
