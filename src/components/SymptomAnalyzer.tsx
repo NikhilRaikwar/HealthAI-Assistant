@@ -41,7 +41,6 @@ export default function SymptomAnalyzer() {
     digestive: [
       "Nausea and stomach pain after eating",
       "Diarrhea and cramping",
-      "Heartburn and acid reflux",
       "Loss of appetite and weight loss"
     ],
     musculoskeletal: [
