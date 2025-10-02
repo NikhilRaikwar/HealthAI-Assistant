@@ -22,6 +22,7 @@ When you make a contribution, please add yourself to this file in your pull requ
 |------|--------|---------------|---------|
 | Sumit Raikwar | [@SumitRaikwar18](https://github.com/SumitRaikwar18) | Add interactive medical report chat with session management, Add Bento Grid layout with animated hover effects | [#5](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/5) [#9](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/9) |
 | Koustubh Badshah | [@koustubhbadshah](https://github.com/koustubhbadshah) | Added dark mode | [#10](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/10) |
+| Shivam Soni | [@ShivamSoni20](https://github.com/ShivamSoni20) | Complete chat UI redesign with glassmorphism, streaming responses, and full responsiveness | [#PR](link) |
 
 
 ### 💻 Code Contributors
@@ -29,7 +30,8 @@ When you make a contribution, please add yourself to this file in your pull requ
 | Name | GitHub | Contributions | Type | Date |
 |------|--------|---------------|------|------|
 | Sumit Raikwar | [@SumitRaikwar18](https://github.com/SumitRaikwar18) | Add interactive medical report chat with session management, Add Bento Grid layout with animated hover effects | Feature |
-| Koustubh Badshah | [@koustubhbadshah](https://github.com/koustubhbadshah) | Added dark mode | [#10](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/10) |
+| Koustubh Badshah | [@koustubhbadshah](https://github.com/koustubhbadshah) | Added dark mode | Feature | 2025-10-02 |
+| Shivam Soni | [@ShivamSoni20](https://github.com/ShivamSoni20) | Implemented Gemini streaming API, redesigned chat with glassmorphism UI, added session management and 10+ UX features | Feature | 2025-10-02 |
 
 
 ### 📚 Documentation Contributors
@@ -44,6 +46,7 @@ When you make a contribution, please add yourself to this file in your pull requ
 |------|--------|---------------|---------|
 | Koustubh Badshah | [@koustubhbadshah](https://github.com/koustubhbadshah) | Added dark mode | [#10](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/10) |
 | Sumit Raikwar | [@SumitRaikwar18](https://github.com/SumitRaikwar18) | Add Bento Grid layout with animated hover effects | [#9](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/9) |
+| Shivam Soni | [@ShivamSoni20](https://github.com/ShivamSoni20) | Complete UI redesign with modern glassmorphism, custom animations, responsive design, and accessibility improvements | [#PR](link) |
 
 ### 🐛 Bug Hunters
 
