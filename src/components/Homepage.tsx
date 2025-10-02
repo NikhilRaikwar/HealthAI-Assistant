@@ -75,7 +75,7 @@ export default function Homepage() {
   return (
     <div className="w-full animate-fadeIn">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 to-white py-16 sm:py-24">
+      <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 to-white py-16 sm:py-24 dark:from-gray-900 ">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-12 lg:gap-8">
             <div className="sm:text-center md:mx-auto lg:col-span-12 lg:text-center">

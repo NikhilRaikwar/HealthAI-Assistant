@@ -16,8 +16,8 @@ export function NavLogo() {
         </div>
       </div>
       <div className="ml-3 mr-8">
-        <h1 className="text-lg sm:text-xl font-bold text-gray-900">HealthAI Assistant</h1>
-        <p className="text-xs sm:text-sm text-gray-500">Your Personal Health Analysis Tool</p>
+        <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-200">HealthAI Assistant</h1>
+        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Your Personal Health Analysis Tool</p>
       </div>
     </div>
   );

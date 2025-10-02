@@ -17,23 +17,23 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       }`}
     >
       <div 
-        className="absolute inset-0 bg-black/20 backdrop-blur-sm" 
+        className="absolute inset-0 bg-black/20 dark:bg-black/50 backdrop-blur-sm" 
         onClick={onClose}
       />
       <div
-        className={`absolute inset-y-0 left-0 w-64 bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${
+        className={`absolute inset-y-0 left-0 w-64 bg-white dark:bg-gray-800 shadow-xl transform transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         <div className="h-full flex flex-col">
-          <div className="flex items-center justify-between px-4 h-16 border-b border-gray-200">
+          <div className="flex items-center justify-between px-4 h-16 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center space-x-2">
               <HealthcareLogo className="w-6 h-6 text-blue-600" />
-              <span className="font-semibold text-gray-900">HealthAI Assistant</span>
+              <span className="font-semibold text-gray-900 dark:text-gray-200">HealthAI Assistant</span>
             </div>
             <button
               onClick={onClose}
-              className="p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100"
+              className="p-2 rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               <X className="h-5 w-5" />
             </button>

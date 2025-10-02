@@ -29,10 +29,10 @@ export default function MedicalTermExplainer() {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-6 bg-white rounded-xl shadow-lg">
+    <div className="w-full max-w-2xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
       <div className="flex items-center justify-center gap-2 mb-6">
         <BookOpen className="w-6 h-6 text-blue-600" />
-        <h2 className="text-2xl font-bold text-gray-800 text-center">Medical Term Explainer</h2>
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200 text-center">Medical Term Explainer</h2>
       </div>
 
       <form onSubmit={handleExplain} className="space-y-4">
@@ -44,7 +44,7 @@ export default function MedicalTermExplainer() {
               setTerm(e.target.value);
               setError('');
             }}
-            className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-12"
+            className="w-full p-4 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-12 dark:bg-slate-500 dark:text-white"
             placeholder="Enter a medical term..."
           />
           {term && (
@@ -54,7 +54,7 @@ export default function MedicalTermExplainer() {
                 setTerm('');
                 setError('');
               }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-gray-600"
             >
               ×
             </button>
@@ -62,7 +62,7 @@ export default function MedicalTermExplainer() {
         </div>
 
         {error && (
-          <div className="p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-red-600">
+          <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-500/30 rounded-lg flex items-center gap-2 text-red-600 dark:text-red-400">
             <AlertCircle className="w-5 h-5" />
             <span>{error}</span>
           </div>
@@ -85,17 +85,17 @@ export default function MedicalTermExplainer() {
       </form>
 
       {explanation && (
-        <div className="mt-6 p-6 bg-gray-50 rounded-lg border border-gray-100">
-          <h3 className="text-lg font-semibold mb-4 text-gray-800">Explanation:</h3>
+        <div className="mt-6 p-6 bg-gray-50 dark:bg-gray-900/50 rounded-lg border border-gray-100 dark:border-gray-700">
+          <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-gray-200">Explanation:</h3>
           <div className="prose prose-blue max-w-none">
             <ReactMarkdown>{explanation}</ReactMarkdown>
           </div>
         </div>
       )}
 
-      <div className="mt-8 p-4 bg-blue-50 rounded-lg">
-        <h4 className="text-sm font-semibold text-blue-800 mb-2">Pro Tip:</h4>
-        <p className="text-sm text-blue-600">
+      <div className="mt-8 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+        <h4 className="text-sm font-semibold text-blue-800 dark:text-blue-300 mb-2">Pro Tip:</h4>
+        <p className="text-sm text-blue-600 dark:text-blue-400">
           You can enter medical terms in multiple languages. The explanation will be provided in the same language as your input.
         </p>
       </div>

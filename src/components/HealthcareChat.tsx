@@ -75,7 +75,7 @@ export default function HealthcareChat() {
       icon={<MessageSquare className="w-6 h-6 text-blue-600" />}
       title="Healthcare Chat Assistant"
     >
-      <div className="flex flex-col h-[calc(100vh-16rem)] max-h-[600px] bg-gray-50 rounded-lg border border-gray-200">
+      <div className="flex flex-col h-[calc(100vh-16rem)] max-h-[600px] bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
         <MessageList messages={messages} messagesEndRef={messagesEndRef} />
         <ChatInput
           input={input}
