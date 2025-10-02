@@ -20,7 +20,7 @@ When you make a contribution, please add yourself to this file in your pull requ
 
 | Name | GitHub | Contributions | PR Link |
 |------|--------|---------------|---------|
-| Sumit Raikwar | [@SumitRaikwar18](https://github.com/SumitRaikwar18) | Add interactive medical report chat with session management | [#5](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/5) |
+| Sumit Raikwar | [@SumitRaikwar18](https://github.com/SumitRaikwar18) | Add interactive medical report chat with session management, Add Bento Grid layout with animated hover effects | [#5](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/5) [#9](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/9) |
 | Koustubh Badshah | [@koustubhbadshah](https://github.com/koustubhbadshah) | Added dark mode | [#10](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/10) |
 
 
@@ -28,7 +28,7 @@ When you make a contribution, please add yourself to this file in your pull requ
 
 | Name | GitHub | Contributions | Type | Date |
 |------|--------|---------------|------|------|
-| Sumit Raikwar | [@SumitRaikwar18](https://github.com/SumitRaikwar18) | Add interactive medical report chat with session management | Feature |
+| Sumit Raikwar | [@SumitRaikwar18](https://github.com/SumitRaikwar18) | Add interactive medical report chat with session management, Add Bento Grid layout with animated hover effects | Feature |
 | Koustubh Badshah | [@koustubhbadshah](https://github.com/koustubhbadshah) | Added dark mode | [#10](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/10) |
 
 
@@ -43,6 +43,7 @@ When you make a contribution, please add yourself to this file in your pull requ
 | Name | GitHub | Contributions | PR Link |
 |------|--------|---------------|---------|
 | Koustubh Badshah | [@koustubhbadshah](https://github.com/koustubhbadshah) | Added dark mode | [#10](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/10) |
+| Sumit Raikwar | [@SumitRaikwar18](https://github.com/SumitRaikwar18) | Add Bento Grid layout with animated hover effects | [#9](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/9) |
 
 ### 🐛 Bug Hunters
 
@@ -54,7 +55,7 @@ When you make a contribution, please add yourself to this file in your pull requ
 
 ## 📊 Contribution Stats
 
-- **Total Contributors**: 0
+- **Total Contributors**: 
 - **Hacktoberfest 2025 Contributors**: 0
 - **Total Pull Requests**: 0
 - **Total Issues Created**: 0
