@@ -1,4 +1,4 @@
-import { ArrowRight, Activity, Shield, Brain, Users, MessageSquare, FileText } from 'lucide-react';
+import { ArrowRight, Activity, Shield, Brain, Users, MessageSquare, FileText, Scan, Camera } from 'lucide-react';
 import { useNavigationContext } from '../context/NavigationContext';
 import { BentoCard, BentoGrid } from '@/components/ui/bento-grid';
 
@@ -38,6 +38,26 @@ export default function Homepage() {
       className: 'lg:col-span-1 lg:row-span-1',
       background: (
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20" />
+      ),
+    },
+    {
+      id: 'medical-image',
+      name: 'Medical Image Analyzer',
+      description: 'Upload X-rays, CT scans, MRI, or ultrasound images for AI analysis.',
+      icon: Scan,
+      className: 'lg:col-span-1 lg:row-span-1',
+      background: (
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20" />
+      ),
+    },
+    {
+      id: 'medicine',
+      name: 'Medicine Analyzer',
+      description: 'Scan medicine packages to get detailed information and usage guidance.',
+      icon: Camera,
+      className: 'lg:col-span-1 lg:row-span-1',
+      background: (
+        <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20" />
       ),
     },
     {
@@ -87,7 +107,7 @@ export default function Homepage() {
                 Powered by advanced AI technology to help you understand your health better. Get instant analysis of symptoms, drug interactions, and medical terms.
               </p>
               <div className="mt-8 sm:mt-12">
-                <button 
+                <button
                   onClick={handleGetStarted}
                   className="inline-flex items-center rounded-lg bg-blue-600 px-6 py-3 text-base font-medium text-white shadow-lg transition-all hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 >
@@ -138,7 +158,7 @@ export default function Homepage() {
             </h2>
             <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0 lg:justify-end">
               <div className="inline-flex rounded-lg shadow">
-                <button 
+                <button
                   onClick={handleGetStarted}
                   className="inline-flex items-center rounded-lg bg-white px-6 py-3 text-base font-medium text-blue-600 hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 >

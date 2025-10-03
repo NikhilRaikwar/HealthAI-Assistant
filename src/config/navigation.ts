@@ -1,4 +1,4 @@
-import { Home, Stethoscope, Pill, BookOpen, FileText, MessageSquare, Info, Phone, Activity, Brain } from 'lucide-react';
+import { Home, Stethoscope, Pill, BookOpen, FileText, MessageSquare, Info, Phone, Activity, Brain, Camera, Scan } from 'lucide-react';
 
 export interface NavItem {
   id: string;
@@ -17,6 +17,8 @@ export const navigationItems: NavItem[] = [
       { id: 'symptoms', name: 'Symptom Analyzer', icon: Stethoscope },
       { id: 'drugs', name: 'Drug Interactions', icon: Pill },
       { id: 'terms', name: 'Medical Terms', icon: BookOpen },
+      { id: 'medical-image', name: 'Medical Image Analyzer', icon: Scan },
+      { id: 'medicine', name: 'Medicine Analyzer', icon: Camera },
     ]
   },
   { id: 'chat', name: 'Chat Assistant', icon: MessageSquare },

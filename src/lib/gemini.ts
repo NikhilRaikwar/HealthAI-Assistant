@@ -25,7 +25,7 @@ const detectLanguage = (text: string): string => {
 
 const getPromptInLanguage = (prompt: string, inputText: string): string => {
   const lang = detectLanguage(inputText);
-  
+
   switch (lang) {
     case "zh":
       return `作为医疗AI助手，${prompt}`;
@@ -50,7 +50,9 @@ export const analyzeSymptoms = async (symptoms: string) => {
   const prompt = `Please analyze these symptoms: ${symptoms}`;
 
   try {
-    const result = await model.generateContent(getPromptInLanguage(prompt, symptoms));
+    const result = await model.generateContent(
+      getPromptInLanguage(prompt, symptoms)
+    );
     return result.response.text();
   } catch (error) {
     console.error("Error analyzing symptoms:", error);
@@ -64,7 +66,7 @@ export const checkDrugInteraction = async (drugs: string[]) => {
   }
 
   let prompt: string;
-  
+
   if (drugs.length === 1) {
     // Single drug - provide comprehensive information
     prompt = `Provide detailed information about the medication "${drugs[0]}" including:
@@ -76,7 +78,9 @@ export const checkDrugInteraction = async (drugs: string[]) => {
 Format the response in a clear, organized manner.`;
   } else {
     // Multiple drugs - check for interactions
-    prompt = `Analyze potential drug interactions between these medications: ${drugs.join(", ")}
+    prompt = `Analyze potential drug interactions between these medications: ${drugs.join(
+      ", "
+    )}
 
 Provide:
 1. **Interaction Summary**: Are there any known interactions?
@@ -89,7 +93,9 @@ Format the response clearly with proper headings.`;
   }
 
   try {
-    const result = await model.generateContent(getPromptInLanguage(prompt, drugs.join(", ")));
+    const result = await model.generateContent(
+      getPromptInLanguage(prompt, drugs.join(", "))
+    );
     return result.response.text();
   } catch (error) {
     console.error("Error checking drug interactions:", error);
@@ -105,7 +111,9 @@ export const explainMedicalTerm = async (term: string) => {
   const prompt = `Explain: ${term}`;
 
   try {
-    const result = await model.generateContent(getPromptInLanguage(prompt, term));
+    const result = await model.generateContent(
+      getPromptInLanguage(prompt, term)
+    );
     return result.response.text();
   } catch (error) {
     console.error("Error explaining medical term:", error);
@@ -121,11 +129,15 @@ export const summarizeMedicalReport = async (report: string) => {
   const prompt = `Summarize this medical report: ${report}`;
 
   try {
-    const result = await model.generateContent(getPromptInLanguage(prompt, report));
+    const result = await model.generateContent(
+      getPromptInLanguage(prompt, report)
+    );
     return result.response.text();
   } catch (error) {
     console.error("Error summarizing medical report:", error);
-    throw new Error("Failed to summarize the medical report. Please try again.");
+    throw new Error(
+      "Failed to summarize the medical report. Please try again."
+    );
   }
 };
 
@@ -137,14 +149,19 @@ export const getAIResponse = async (message: string) => {
   const prompt = `Respond to this question: ${message}`;
 
   try {
-    const result = await model.generateContent(getPromptInLanguage(prompt, message));
+    const result = await model.generateContent(
+      getPromptInLanguage(prompt, message)
+    );
     return result.response.text();
   } catch (error) {
     console.error("Error getting AI response:", error);
     throw new Error("Failed to process your question. Please try again.");
   }
 };
-export const queryPolicyDocument = async (query: string, policyText: string) => {
+export const queryPolicyDocument = async (
+  query: string,
+  policyText: string
+) => {
   if (!query.trim()) {
     throw new Error("Please enter your policy question.");
   }
@@ -179,7 +196,9 @@ Use semantic understanding to find relevant information even if the query is vag
 Format your response in a clear, structured manner with proper headings and bullet points where appropriate.`;
 
   try {
-    const result = await model.generateContent(getPromptInLanguage(prompt, query));
+    const result = await model.generateContent(
+      getPromptInLanguage(prompt, query)
+    );
     return result.response.text();
   } catch (error) {
     console.error("Error querying policy document:", error);
@@ -187,7 +206,9 @@ Format your response in a clear, structured manner with proper headings and bull
   }
 };
 
-export const validateMedicationName = async (drugName: string): Promise<boolean> => {
+export const validateMedicationName = async (
+  drugName: string
+): Promise<boolean> => {
   if (!drugName.trim()) {
     return false;
   }
@@ -215,11 +236,23 @@ TERM TO VALIDATE: ${drugName}`;
   try {
     const result = await model.generateContent(prompt);
     const response = result.response.text().trim().toUpperCase();
-    return response.includes('VALID') && !response.includes('INVALID');
+    return response.includes("VALID") && !response.includes("INVALID");
   } catch (error) {
     console.error("Error validating medication name:", error);
     // If API fails, use a simple client-side check as fallback
-    const nonMedicalTerms = ['maths', 'math', 'physics', 'chemistry', 'biology', 'history', 'geography', 'english', 'science', 'art', 'music'];
+    const nonMedicalTerms = [
+      "maths",
+      "math",
+      "physics",
+      "chemistry",
+      "biology",
+      "history",
+      "geography",
+      "english",
+      "science",
+      "art",
+      "music",
+    ];
     return !nonMedicalTerms.includes(drugName.toLowerCase().trim());
   }
 };
@@ -256,7 +289,7 @@ ${text.substring(0, 2000)}`;
   try {
     const result = await model.generateContent(prompt);
     const response = result.response.text().trim().toUpperCase();
-    return response.includes('VALID') && !response.includes('INVALID');
+    return response.includes("VALID") && !response.includes("INVALID");
   } catch (error) {
     console.error("Error validating medical report:", error);
     return false;
@@ -297,11 +330,15 @@ Important guidelines:
 Format your response in a clear, structured manner with proper headings and bullet points where appropriate.`;
 
   try {
-    const result = await model.generateContent(getPromptInLanguage(prompt, query));
+    const result = await model.generateContent(
+      getPromptInLanguage(prompt, query)
+    );
     return result.response.text();
   } catch (error) {
     console.error("Error querying medical report:", error);
-    throw new Error("Failed to analyze your medical report query. Please try again.");
+    throw new Error(
+      "Failed to analyze your medical report query. Please try again."
+    );
   }
 };
 
@@ -310,7 +347,7 @@ Format your response in a clear, structured manner with proper headings and bull
 // ============================================
 
 interface Message {
-  role: 'user' | 'assistant';
+  role: "user" | "assistant";
   content: string;
 }
 
@@ -318,8 +355,8 @@ interface Message {
 const buildContext = (messages: Message[]): string => {
   const recentMessages = messages.slice(-5);
   return recentMessages
-    .map(m => `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.content}`)
-    .join('\n');
+    .map((m) => `${m.role === "user" ? "User" : "Assistant"}: ${m.content}`)
+    .join("\n");
 };
 
 // Healthcare-specific system prompt (concise for speed)
@@ -341,8 +378,8 @@ export async function* streamAIResponse(
       yield chunkText;
     }
   } catch (error) {
-    console.error('Gemini API Streaming Error:', error);
-    throw new Error('Failed to stream response from AI');
+    console.error("Gemini API Streaming Error:", error);
+    throw new Error("Failed to stream response from AI");
   }
 }
 
@@ -355,3 +392,178 @@ export function cancelCurrentRequest() {
     currentController = null;
   }
 }
+
+export const analyzeMedicalImage = async (
+  imageBase64: string,
+  additionalInfo?: string
+) => {
+  if (!imageBase64) {
+    throw new Error("Please upload a medical image.");
+  }
+
+  const contextPrompt = additionalInfo
+    ? `\n\nPatient Context: ${additionalInfo}`
+    : "";
+
+  const prompt = `You are an expert medical AI assistant specializing in medical image analysis. Analyze the medical image provided and give comprehensive insights.${contextPrompt}
+
+Please analyze the medical image and provide detailed information in the following JSON format:
+
+{
+  "imageType": "X-Ray/CT Scan/MRI/Ultrasound/ECG/etc.",
+  "bodyPart": "Affected body part or organ system",
+  "keyFindings": [
+    {
+      "finding": "Description of the finding",
+      "location": "Specific location in the image",
+      "severity": "Normal" | "Mild" | "Moderate" | "Severe" | "Critical",
+      "significance": "What this finding means clinically"
+    }
+  ],
+  "overallAssessment": {
+    "status": "Normal" | "Attention Needed" | "Urgent Care Required",
+    "summary": "Overall summary of the image findings",
+    "urgencyLevel": "Low" | "Medium" | "High"
+  },
+  "recommendations": {
+    "immediate": ["Immediate actions needed if any"],
+    "followUp": ["Follow-up tests or consultations needed"],
+    "lifestyle": ["Lifestyle modifications based on findings"]
+  },
+  "differentialDiagnosis": ["Possible conditions based on findings"],
+  "redFlags": ["Critical findings that need immediate attention"],
+  "nextSteps": ["Ordered list of next steps for the patient"],
+  "confidence": 85
+}
+
+Analysis Guidelines:
+1. Identify the type of medical imaging (X-ray, CT, MRI, Ultrasound, ECG, etc.)
+2. Analyze all visible anatomical structures and abnormalities
+3. Identify any pathological findings, fractures, masses, or irregularities
+4. Assess the severity and clinical significance of findings
+5. Provide differential diagnosis based on visible findings
+6. Highlight any critical findings requiring immediate attention
+7. Consider the patient context if provided
+8. Suggest appropriate follow-up imaging or consultations
+9. Always err on the side of caution for patient safety
+10. Be specific about urgency levels and timeframes
+
+Return ONLY the JSON object, no additional text.`;
+
+  try {
+    const imagePart = {
+      inlineData: {
+        data: imageBase64,
+        mimeType: "image/jpeg",
+      },
+    };
+
+    const result = await model.generateContent([prompt, imagePart]);
+    const response = result.response.text();
+
+    let cleanedResponse = response.trim();
+    if (cleanedResponse.startsWith("```json")) {
+      cleanedResponse = cleanedResponse
+        .replace(/^```json\s*/, "")
+        .replace(/\s*```$/, "");
+    } else if (cleanedResponse.startsWith("```")) {
+      cleanedResponse = cleanedResponse
+        .replace(/^```\s*/, "")
+        .replace(/\s*```$/, "");
+    }
+
+    const analysis = JSON.parse(cleanedResponse);
+
+    if (!analysis.imageType) {
+      throw new Error("Could not identify image type");
+    }
+
+    return analysis;
+  } catch (error) {
+    console.error("Error analyzing medical image:", error);
+    throw new Error("Failed to analyze medical image. Please try again.");
+  }
+};
+
+export const analyzeMedicine = async (
+  imageBase64: string,
+  additionalInfo?: string
+) => {
+  if (!imageBase64) {
+    throw new Error("Please upload a medicine image.");
+  }
+
+  const contextPrompt = additionalInfo
+    ? `\n\nAdditional patient information: ${additionalInfo}`
+    : "";
+
+  const prompt = `You are a highly advanced pharmaceutical AI assistant. Analyze the medicine image provided and give comprehensive information about the medication.${contextPrompt}
+
+Please analyze the medicine in the image and provide detailed information in the following JSON format:
+
+{
+  "medicineName": "Full name of the medicine",
+  "activeIngredients": ["list", "of", "active", "ingredients"],
+  "whatItHelps": ["condition1", "condition2", "what this medicine treats"],
+  "severity": "Low" | "Medium" | "High",
+  "doctorConsultationRequired": true | false,
+  "whenToTake": {
+    "timing": ["morning", "evening", "specific times"],
+    "withFood": "Before" | "After" | "With" | "Doesn't matter",
+    "frequency": "how often to take"
+  },
+  "sideEffects": {
+    "common": ["common side effects"],
+    "serious": ["serious side effects that require immediate medical attention"],
+    "patientSpecific": ["side effects specific to patient's mentioned conditions"]
+  },
+  "precautions": ["important precautions and warnings"],
+  "interactions": ["drug interactions to be aware of"],
+  "confidence": 85
+}
+
+Important guidelines:
+1. If you cannot clearly identify the medicine, indicate lower confidence
+2. Consider the patient's additional information when providing patient-specific advice
+3. Always err on the side of caution for safety recommendations
+4. Provide practical, actionable information
+5. Consider both generic and brand names if visible
+6. Be specific about timing and dosage instructions
+7. Include relevant warnings based on the medicine type
+
+Return ONLY the JSON object, no additional text.`;
+
+  try {
+    const imagePart = {
+      inlineData: {
+        data: imageBase64,
+        mimeType: "image/jpeg",
+      },
+    };
+
+    const result = await model.generateContent([prompt, imagePart]);
+    const response = result.response.text();
+
+    let cleanedResponse = response.trim();
+    if (cleanedResponse.startsWith("```json")) {
+      cleanedResponse = cleanedResponse
+        .replace(/^```json\s*/, "")
+        .replace(/\s*```$/, "");
+    } else if (cleanedResponse.startsWith("```")) {
+      cleanedResponse = cleanedResponse
+        .replace(/^```\s*/, "")
+        .replace(/\s*```$/, "");
+    }
+
+    const analysis = JSON.parse(cleanedResponse);
+
+    if (!analysis.medicineName) {
+      throw new Error("Could not identify medicine name");
+    }
+
+    return analysis;
+  } catch (error) {
+    console.error("Error analyzing medicine:", error);
+    throw new Error("Failed to analyze medicine. Please try again.");
+  }
+};
