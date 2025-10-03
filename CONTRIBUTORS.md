@@ -77,6 +77,17 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
       <br />
       💻 🎨 ⚡
     </td>
+    <td align="center">
+      <a href="https://github.com/Jyothishree2k5">
+        <img src="https://github.com/Jyothishree2k5.png" width="80px;" alt="Jyothishree Rajkumar"/>
+        <br />
+        <sub><b>Jyothishree Rajkumar</b></sub>
+      </a>
+      <br />
+      <sub>Medical Report Validation</sub>
+      <br />
+      💻 💡
+    </td>
   </tr>
 </table>
 
@@ -140,6 +151,17 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
       <sub>Dark Mode Theme</sub>
       <br />
       <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/10">#10</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Jyothishree2k5">
+        <img src="https://github.com/Jyothishree2k5.png" width="80px;" alt="Jyothishree Rajkumar"/>
+        <br />
+        <sub><b>Jyothishree Rajkumar</b></sub>
+      </a>
+      <br />
+      <sub>Medical Report Validation</sub>
+      <br />
+      <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/15">#15</a>
     </td>
   </tr>
 </table>
@@ -381,6 +403,15 @@ When you make a contribution, add yourself to the appropriate section using this
 **Impact:** Modernized chat interface with real-time streaming and enhanced user experience
 
 ---
+
+### Jyothishree Rajkumar ([@Jyothishree2k5](https://github.com/Jyothishree2k5))
+**Contributions:**
+- Implemented AI-powered medical report validation system
+- Added validateMedicalReport function with intelligent content detection
+- Enhanced ReportSummarizer with validation error handling and user feedback
+
+**Impact:** Improved data quality and user experience by preventing invalid document uploads with clear error messaging
+
 
 ## 🙏 Thank You
 
