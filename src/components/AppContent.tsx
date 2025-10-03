@@ -1,5 +1,4 @@
-import React from 'react';
-import { useNavigationContext } from '../context/NavigationContext';
+import { Routes, Route } from 'react-router-dom';
 import SymptomAnalyzer from './SymptomAnalyzer';
 import DrugInteraction from './DrugInteraction';
 import MedicalTermExplainer from './MedicalTermExplainer';
@@ -15,37 +14,6 @@ import { Navbar } from './navigation/Navbar';
 import HealthcareLogo from './HealthcareLogo';
 
 export default function AppContent() {
-  const { activeTab } = useNavigationContext();
-
-  const renderContent = () => {
-    switch (activeTab) {
-      case 'home':
-        return <Homepage />;
-      case 'symptoms':
-        return <SymptomAnalyzer />;
-      case 'drugs':
-        return <DrugInteraction />;
-      case 'terms':
-        return <MedicalTermExplainer />;
-      case 'reports':
-        return <ReportSummarizer />;
-      case 'policy':
-        return <PolicyQueryAssistant />;
-      case 'chat':
-        return <HealthcareChat />;
-      case 'emergency':
-        return <Emergency />;
-      case 'medical-image':
-        return <MedicalImageAnalyzer />;
-      case 'medicine':
-        return <MedicineAnalyzer />;
-      case 'about':
-        return <About />;
-      default:
-        return <Homepage />;
-    }
-  };
-
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-200">
       <Navbar />
@@ -54,7 +22,19 @@ export default function AppContent() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center">
             <div className="w-full animate-fadeIn">
-              {renderContent()}
+              <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/symptom-analyzer" element={<SymptomAnalyzer />} />
+                <Route path="/drug-interactions" element={<DrugInteraction />} />
+                <Route path="/medical-terms" element={<MedicalTermExplainer />} />
+                <Route path="/medical-image-analyzer" element={<MedicalImageAnalyzer />} />
+                <Route path="/medicine-analyzer" element={<MedicineAnalyzer />} />
+                <Route path="/chat" element={<HealthcareChat />} />
+                <Route path="/report-summarizer" element={<ReportSummarizer />} />
+                <Route path="/policy-query" element={<PolicyQueryAssistant />} />
+                <Route path="/emergency" element={<Emergency />} />
+                <Route path="/about" element={<About />} />
+              </Routes>
             </div>
           </div>
         </div>

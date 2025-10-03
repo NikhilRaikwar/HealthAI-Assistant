@@ -51,9 +51,9 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
         <sub><b>Sumit Raikwar</b></sub>
       </a>
       <br />
-      <sub>Medical Report Chat & Bento Grid</sub>
+      <sub>Medical Report Chat, Bento Grid & React Router</sub>
       <br />
-      💻 🎨
+      💻 🎨 🚀
     </td>
     <td align="center">
       <a href="https://github.com/frustateduser">
@@ -154,9 +154,9 @@ _People who have made significant code contributions_
         <sub><b>Sumit Raikwar</b></sub>
       </a>
       <br />
-      <sub>Report Chat & Bento Grid</sub>
+      <sub>Report Chat, Bento Grid & React Router</sub>
       <br />
-      💻 🎨
+      💻 🎨 🚀
     </td>
   </tr>
 </table>
@@ -174,7 +174,7 @@ _Contributors who added new features_
         <sub><b>Sumit Raikwar</b></sub>
       </a>
       <br />
-      <sub>Medical Report Chat</sub>
+      <sub>Medical Report Chat, Bento Grid & React Router Navigation</sub>
       <br />
       <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/5">#5</a>
     </td>
@@ -224,7 +224,6 @@ _Contributors who added new features_
       <br />
       <a href="#">#TBD</a>
     </td>
-  </tr>
 </table>
 
 ### Bug Fixers
@@ -253,7 +252,7 @@ _Contributors who squashed bugs_
       <br />
       <sub>Policy PDF Validation Bug Fix</sub>
       <br />
-      <a href="#">#TBD</a>
+      <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/29">#29</a>
     </td>
   </tr>
 </table>
@@ -384,7 +383,7 @@ _Regular contributors who consistently help improve the project_
 
 _Active contributors making meaningful improvements_
 
-- **Sumit Raikwar** - @SumitRaikwar18 - 2 PRs merged
+- **Sumit Raikwar** - @SumitRaikwar18 - 3 PRs merged
 
 ### ⭐ Rising Stars (1 PR merged)
 
@@ -469,13 +468,14 @@ _The first people to contribute in each category_
 
 _Contributor with the most merged PRs this month_
 
-- **October 2025:** Sumit Raikwar - 2 PRs
+- **October 2025:** Sumit Raikwar - 3 PRs
 
 ### 💡 Best Feature Addition
 
 _Most impactful feature added_
 
 - **Medical Report Chat Assistant** by Sumit Raikwar - Interactive chat interface for medical reports
+- **React Router Navigation System** by Sumit Raikwar - Complete URL-based routing with browser navigation support
 - **Live Voice Input** by Durva Kadam - Enhanced accessibility with speech-to-text
 - **AI-powered medical report validation system** by Jyothishree Rajkumar - Implemented AI-powered medical report validation system
 
@@ -495,9 +495,10 @@ _Most critical bug resolution_
 
 - Add interactive medical report chat with session management - PR #5
 - Add Bento Grid layout with animated hover effects - PR #9
-- Fixed Policy Query Assistant accepting non-policy PDFs with AI-powered validation - PR #TBD
+- Fixed Policy Query Assistant accepting non-policy PDFs with AI-powered validation - PR #29
+- Implemented React Router for URL-based navigation system - PR #31
 
-**Impact:** Enhanced user experience with modern UI patterns and interactive features. Improved data integrity by implementing policy document validation to prevent invalid PDF uploads
+**Impact:** Enhanced user experience with modern UI patterns and interactive features. Improved data integrity by implementing policy document validation to prevent invalid PDF uploads. Transformed navigation architecture by implementing React Router, enabling proper URL routing, browser back/forward functionality, bookmarking support, and direct page access via URLs
 
 ---
 
