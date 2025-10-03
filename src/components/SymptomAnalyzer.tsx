@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
-import { Stethoscope, Loader } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Stethoscope, Loader, Mic, MicOff } from 'lucide-react';
 import { analyzeSymptoms } from '../lib/gemini';
 import ReactMarkdown from 'react-markdown';
 
 export default function SymptomAnalyzer() {
   const [symptoms, setSymptoms] = useState('');
+  const [interimText, setInterimText] = useState('');
   const [analysis, setAnalysis] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isListening, setIsListening] = useState(false);
+  const recognitionRef = useRef<any>(null);
 
   const handleAnalyze = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!symptoms.trim()) return;
-    
+
     setLoading(true);
     try {
       const result = await analyzeSymptoms(symptoms);
@@ -23,26 +26,87 @@ export default function SymptomAnalyzer() {
     setLoading(false);
   };
 
+  const startVoiceInput = () => {
+    if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+      alert('Speech recognition is not supported in your browser.');
+      return;
+    }
+
+    const SpeechRecognition =
+      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+
+    if (!recognitionRef.current) {
+      const recognition = new SpeechRecognition();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = 'en-US';
+
+      recognition.onstart = () => setIsListening(true);
+      recognition.onend = () => {
+        setIsListening(false);
+        setInterimText(''); // clear interim text when stopped
+      };
+
+      recognition.onresult = (event: any) => {
+        let interimTranscript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          const transcript = event.results[i][0].transcript;
+          if (event.results[i].isFinal) {
+            setSymptoms(prev => prev + transcript + ' ');
+          } else {
+            interimTranscript += transcript;
+          }
+        }
+        setInterimText(interimTranscript); // live typing effect
+      };
+
+      recognitionRef.current = recognition;
+      recognition.start();
+    } else {
+      recognitionRef.current.stop();
+      recognitionRef.current = null;
+      setIsListening(false);
+    }
+  };
+
   return (
     <div className="w-full max-w-2xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
       <div className="flex items-center justify-center gap-2 mb-6">
         <Stethoscope className="w-6 h-6 text-blue-600" />
         <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200 text-center">Symptom Analyzer</h2>
       </div>
-      
+
       <form onSubmit={handleAnalyze} className="space-y-4">
         <div className="relative">
           <textarea
-            value={symptoms}
+            value={symptoms + interimText} // show live transcript
             onChange={(e) => setSymptoms(e.target.value)}
             className="w-full h-32 p-4 border border-gray-300 dark:border-gray-600 dark:bg-slate-500 dark:text-gray-900 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
             placeholder="Describe your symptoms in detail..."
           />
           <div className="absolute bottom-3 right-3 text-xs text-gray-400 dark:text-gray-900">
-            {symptoms.length}/1000
+            {symptoms.length + interimText.length}/1000
           </div>
         </div>
-        
+
+        <button
+          type="button"
+          onClick={startVoiceInput}
+          className="flex items-center gap-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+        >
+          {isListening ? (
+            <>
+              <MicOff className="w-5 h-5 animate-pulse" />
+              Stop Listening
+            </>
+          ) : (
+            <>
+              <Mic className="w-5 h-5" />
+              Speak 
+            </>
+          )}
+        </button>
+
         <button
           type="submit"
           disabled={loading || !symptoms.trim()}
