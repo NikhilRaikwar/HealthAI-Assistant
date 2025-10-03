@@ -9,6 +9,8 @@ import About from './About';
 import Homepage from './Homepage';
 import HealthcareChat from './HealthcareChat';
 import Emergency from './Emergency';
+import MedicalImageAnalyzer from './MedicalImageAnalyzer';
+import MedicineAnalyzer from './MedicineAnalyzer';
 import { Navbar } from './navigation/Navbar';
 import HealthcareLogo from './HealthcareLogo';
 
@@ -33,6 +35,10 @@ export default function AppContent() {
         return <HealthcareChat />;
       case 'emergency':
         return <Emergency />;
+      case 'medical-image':
+        return <MedicalImageAnalyzer />;
+      case 'medicine':
+        return <MedicineAnalyzer />;
       case 'about':
         return <About />;
       default:
