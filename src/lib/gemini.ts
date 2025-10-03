@@ -296,6 +296,90 @@ ${text.substring(0, 2000)}`;
   }
 };
 
+export const validatePolicyDocument = async (text: string): Promise<boolean> => {
+  if (!text.trim()) {
+    return false;
+  }
+
+  const prompt = `Analyze the following text and determine if it is a legitimate health insurance policy or health policy document.
+
+Look for these health policy indicators:
+- Insurance policy terminology (coverage, premium, deductible, co-payment, exclusions)
+- Health insurance terms (policyholder, insured, beneficiary, claims)
+- Medical coverage details (hospitalization, surgery, treatment coverage)
+- Policy terms and conditions
+- Sum insured or coverage limits
+- Waiting periods for treatments or pre-existing conditions
+- Network hospitals or healthcare providers
+- Policy exclusions and limitations
+- Insurance company name or policy number
+- Health-related benefits (maternity, ambulance, daycare procedures)
+- Terms like "policy", "insurance", "healthcare coverage", "medical expenses"
+
+Respond with ONLY "VALID" if this appears to be a health insurance policy or health policy document.
+
+Respond with ONLY "INVALID" if it appears to be:
+- Competition guidelines or rules (Techathon, Hackathon)
+- Academic papers or research documents
+- Business documents or contracts (non-health insurance)
+- Resumes, CVs, or portfolios
+- Novels, stories, or fiction
+- Random text or gibberish
+- Non-policy content
+- General medical documents (not insurance policies)
+- Technical documentation
+- Event guidelines or statements
+
+TEXT TO ANALYZE:
+${text.substring(0, 3000)}`;
+
+  try {
+    const result = await model.generateContent(prompt);
+    const response = result.response.text().trim().toUpperCase();
+    return response.includes("VALID") && !response.includes("INVALID");
+  } catch (error) {
+    console.error("Error validating policy document:", error);
+    // Fallback to keyword-based validation if API fails
+    return performBasicPolicyValidation(text);
+  }
+};
+
+// Fallback validation using keyword checking
+const performBasicPolicyValidation = (text: string): boolean => {
+  const lowerText = text.toLowerCase();
+  
+  // Required health policy keywords
+  const policyKeywords = [
+    'policy', 'insurance', 'insured', 'coverage', 'premium',
+    'deductible', 'co-payment', 'claim', 'beneficiary'
+  ];
+  
+  // Health-related keywords
+  const healthKeywords = [
+    'medical', 'health', 'hospital', 'treatment', 'surgery',
+    'doctor', 'patient', 'diagnosis', 'healthcare'
+  ];
+  
+  // Anti-keywords that indicate non-policy documents
+  const antiKeywords = [
+    'techathon', 'hackathon', 'competition', 'guideline',
+    'statement', 'event', 'participant', 'submission'
+  ];
+  
+  // Check for anti-keywords first
+  const hasAntiKeywords = antiKeywords.some(keyword => lowerText.includes(keyword));
+  if (hasAntiKeywords) {
+    return false;
+  }
+  
+  // Count matches for policy and health keywords
+  const policyMatches = policyKeywords.filter(keyword => lowerText.includes(keyword)).length;
+  const healthMatches = healthKeywords.filter(keyword => lowerText.includes(keyword)).length;
+  
+  // Document should have at least 2 policy keywords AND 1 health keyword
+  return policyMatches >= 2 && healthMatches >= 1;
+};
+
 export const queryMedicalReport = async (query: string, reportText: string) => {
   if (!query.trim()) {
     throw new Error("Please enter your question about the medical report.");

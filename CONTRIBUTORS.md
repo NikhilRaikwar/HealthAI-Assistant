@@ -244,6 +244,17 @@ _Contributors who squashed bugs_
       <br />
       <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/19">#19</a>
     </td>
+    <td align="center">
+      <a href="https://github.com/SumitRaikwar18">
+        <img src="https://github.com/SumitRaikwar18.png" width="80px;" alt="Sumit Raikwar"/>
+        <br />
+        <sub><b>Sumit Raikwar</b></sub>
+      </a>
+      <br />
+      <sub>Policy PDF Validation Bug Fix</sub>
+      <br />
+      <a href="#">#TBD</a>
+    </td>
   </tr>
 </table>
 
@@ -484,8 +495,9 @@ _Most critical bug resolution_
 
 - Add interactive medical report chat with session management - PR #5
 - Add Bento Grid layout with animated hover effects - PR #9
+- Fixed Policy Query Assistant accepting non-policy PDFs with AI-powered validation - PR #TBD
 
-**Impact:** Enhanced user experience with modern UI patterns and interactive features
+**Impact:** Enhanced user experience with modern UI patterns and interactive features. Improved data integrity by implementing policy document validation to prevent invalid PDF uploads
 
 ---
 
