@@ -101,6 +101,17 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
       <br />
       💻 💡
     </td>
+    <td align="center">
+      <a href="https://github.com/codebreakers19">
+        <img src="https://github.com/codebreakers19.png" width="80px;" alt="Code Breakers"/>
+        <br />
+        <sub><b>Code Breakers</b></sub>
+      </a>
+      <br />
+      <sub>Drug Interaction Checker Bug Fixes</sub>
+      <br />
+      💻 🐛 ⚡
+    </td>
   </tr>
 </table>
 
@@ -198,7 +209,15 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
 <table>
   <tr>
     <td align="center">
-      <sub><i>Be the first bug fixer!</i></sub>
+      <a href="https://github.com/codebreakers19">
+        <img src="https://github.com/codebreakers19.png" width="80px;" alt="Code Breakers"/>
+        <br />
+        <sub><b>Code Breakers</b></sub>
+      </a>
+      <br />
+      <sub>Drug Interaction Checker Bug Fixes</sub>
+      <br />
+      <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/19">#19</a>
     </td>
   </tr>
 </table>
@@ -299,9 +318,9 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
 
 <div align="center">
 
-![GitHub contributors](https://img.shields.io/github/contributors/NikhilRaikwar/HealthAI-Assistant?style=for-the-badge&color=blue)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/NikhilRaikwar/HealthAI-Assistant?style=for-the-badge&color=green)
-![GitHub pull requests](https://img.shields.io/github/issues-pr-closed/NikhilRaikwar/HealthAI-Assistant?style=for-the-badge&color=purple)
+!GitHub contributors
+!GitHub commit activity
+!GitHub pull requests
 
 </div>
 
@@ -322,22 +341,23 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
 ### 🥉 Bronze Contributors (2-4 PRs merged)
 *Active contributors making meaningful improvements*
 
-- **Sumit Raikwar** - [@SumitRaikwar18](https://github.com/SumitRaikwar18) - 2 PRs merged
+- **Sumit Raikwar** - @SumitRaikwar18 - 2 PRs merged
 
 ### ⭐ Rising Stars (1 PR merged)
 *New contributors who made their first valuable contribution*
 
-- **Koustubh Badshah** - [@frustateduser](https://github.com/frustateduser) - Dark Mode
-- **Shivam Soni** - [@ShivamSoni20](https://github.com/ShivamSoni20) - Chat UI Redesign
-- **Durva Kadam** - [@durvaakadam](https://github.com/durvaakadam) - Live Voice Input for Symptom Analyzer
-- **Jyothishree Rajkumar** - [@Jyothishree2k5](https://github.com/Jyothishree2k5) - Medical Report Validation
+- **Koustubh Badshah** - @frustateduser - Dark Mode
+- **Shivam Soni** - @ShivamSoni20 - Chat UI Redesign
+- **Durva Kadam** - @durvaakadam - Live Voice Input for Symptom Analyzer
+- **Jyothishree Rajkumar** - @Jyothishree2k5 - Medical Report Validation
+- **Code Breakers** - @codebreakers19 - Drug Interaction Checker Bug Fixes
 
 ---
 
 ## 💡 How to Get Featured Here
 
 1. ⭐ **Star the repository** (mandatory!)
-2. 📖 Read [CONTRIBUTING.md](./CONTRIBUTING.md)
+2. 📖 Read CONTRIBUTING.md
 3. 🔍 Find an issue or propose a new feature
 4. ⏳ Wait for assignment from maintainers
 5. 🔨 Submit a quality pull request
@@ -386,13 +406,13 @@ When you make a contribution, add yourself to the appropriate section using this
 ### 🌟 First Contributors
 *The first people to contribute in each category*
 
-- **First Code Contribution:** Sumit Raikwar ([@SumitRaikwar18](https://github.com/SumitRaikwar18))
-- **First Bug Fix:** *Awaiting*
-- **First Design Contribution:** Koustubh Badshah ([@frustateduser](https://github.com/frustateduser))
+- **First Code Contribution:** Sumit Raikwar (@SumitRaikwar18)
+- **First Bug Fix:** Code Breakers (@codebreakers19) - Drug Interaction Checker
+- **First Design Contribution:** Koustubh Badshah (@frustateduser)
 - **First Documentation:** *Awaiting*
 - **First Translation:** *Awaiting*
 - **First Test:** *Awaiting*
-- **First Accessibility Feature:** Durva Kadam ([@durvaakadam](https://github.com/durvaakadam)) - Voice Input
+- **First Accessibility Feature:** Durva Kadam (@durvaakadam) - Voice Input
 
 ### 🔥 Most Active Contributor (Monthly)
 *Contributor with the most merged PRs this month*
@@ -406,30 +426,35 @@ When you make a contribution, add yourself to the appropriate section using this
 - **Live Voice Input** by Durva Kadam - Enhanced accessibility with speech-to-text
 - **AI-powered medical report validation system** by Jyothishree Rajkumar - Implemented AI-powered medical report validation system
 
+### 🐛 Best Bug Fix
+*Most critical bug resolution*
+
+- **Drug Interaction Checker Fix** by Code Breakers - Prevented non-medical inputs and fixed dark mode color issues
+
 ---
 
 ## 📋 Detailed Contribution Records
 
-### Sumit Raikwar ([@SumitRaikwar18](https://github.com/SumitRaikwar18))
+### Sumit Raikwar (@SumitRaikwar18)
 **Contributions:**
-- Add interactive medical report chat with session management - [PR #5](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/5)
-- Add Bento Grid layout with animated hover effects - [PR #9](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/9)
+- Add interactive medical report chat with session management - PR #5
+- Add Bento Grid layout with animated hover effects - PR #9
 
 **Impact:** Enhanced user experience with modern UI patterns and interactive features
 
 ---
 
-### Koustubh Badshah ([@frustateduser](https://github.com/frustateduser))
+### Koustubh Badshah (@frustateduser)
 **Contributions:**
-- Added dark mode - [PR #10](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/10)
+- Added dark mode - PR #10
 
 **Impact:** Improved accessibility and user comfort with theme switching
 
 ---
 
-### Shivam Soni ([@ShivamSoni20](https://github.com/ShivamSoni20))
+### Shivam Soni (@ShivamSoni20)
 **Contributions:**
-- Complete chat UI redesign with glassmorphism, streaming responses, and full responsiveness - [PR #14](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/14)
+- Complete chat UI redesign with glassmorphism, streaming responses, and full responsiveness - PR #14
 - Implemented Gemini streaming API
 - Added session management and 10+ UX features
 
@@ -437,22 +462,32 @@ When you make a contribution, add yourself to the appropriate section using this
 
 ---
 
-### Durva Kadam ([@durvaakadam](https://github.com/durvaakadam))
+### Durva Kadam (@durvaakadam)
 **Contributions:**
-- Added live voice input functionality to Symptom Analyzer - [PR #TBD](#)
+- Added live voice input functionality to Symptom Analyzer - PR #TBD
 - Implemented speech-to-text integration for better accessibility
 
 **Impact:** Enhanced accessibility and user experience by enabling voice-based symptom input, making the app more inclusive for users who prefer or require voice interaction
 
 ---
 
-### Jyothishree Rajkumar ([@Jyothishree2k5](https://github.com/Jyothishree2k5))
+### Jyothishree Rajkumar (@Jyothishree2k5)
 **Contributions:**
-- Implemented AI-powered medical report validation system - [PR #15](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/15)
+- Implemented AI-powered medical report validation system - PR #15
 - Added validateMedicalReport function with intelligent content detection
 - Enhanced ReportSummarizer with validation error handling and user feedback
 
 **Impact:** Improved data quality and user experience by preventing invalid document uploads with clear error messaging
+
+---
+
+### Code Breakers (@codebreakers19)
+**Contributions:**
+- Fixed Drug Interaction Checker accepting non-medical inputs (e.g., maths, physics) - PR #
+- Resolved response color issues in Dark Mode for Drug Interaction Checker
+- Enhanced input validation to reject irrelevant queries
+
+**Impact:** Improved system reliability by preventing invalid inputs and ensuring proper color contrast in dark mode, enhancing user experience and data accuracy
 
 ---
 
@@ -506,7 +541,7 @@ We recognize all types of contributions:
 
 ### 🎉 Thank You for Making HealthAI Assistant Better! 🎉
 
-**Want to see your name here? [Start Contributing Now!](./CONTRIBUTING.md)** 🚀
+**Want to see your name here? Start Contributing Now!** 🚀
 
 ---
 
