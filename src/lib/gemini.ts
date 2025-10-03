@@ -59,11 +59,34 @@ export const analyzeSymptoms = async (symptoms: string) => {
 };
 
 export const checkDrugInteraction = async (drugs: string[]) => {
-  if (drugs.length < 2) {
-    throw new Error("Please enter at least two medications to check for interactions.");
+  if (drugs.length < 1) {
+    throw new Error("Please enter at least one medication to analyze.");
   }
 
-  const prompt = `Check interactions for: ${drugs.join(", ")}`;
+  let prompt: string;
+  
+  if (drugs.length === 1) {
+    // Single drug - provide comprehensive information
+    prompt = `Provide detailed information about the medication "${drugs[0]}" including:
+- What it is used for (indications)
+- Common dosage
+- Side effects
+- Precautions and warnings
+- Drug class/category
+Format the response in a clear, organized manner.`;
+  } else {
+    // Multiple drugs - check for interactions
+    prompt = `Analyze potential drug interactions between these medications: ${drugs.join(", ")}
+
+Provide:
+1. **Interaction Summary**: Are there any known interactions?
+2. **Severity Level**: (None/Minor/Moderate/Severe)
+3. **Details**: Explain any interactions found
+4. **Recommendations**: Any precautions or advice
+5. **Individual Drug Info**: Brief info about each medication
+
+Format the response clearly with proper headings.`;
+  }
 
   try {
     const result = await model.generateContent(getPromptInLanguage(prompt, drugs.join(", ")));
@@ -161,6 +184,43 @@ Format your response in a clear, structured manner with proper headings and bull
   } catch (error) {
     console.error("Error querying policy document:", error);
     throw new Error("Failed to analyze the policy query. Please try again.");
+  }
+};
+
+export const validateMedicationName = async (drugName: string): Promise<boolean> => {
+  if (!drugName.trim()) {
+    return false;
+  }
+
+  const prompt = `Determine if "${drugName}" is a valid medication, drug, or pharmaceutical name.
+
+Valid medication names include:
+- Generic drug names (e.g., aspirin, ibuprofen, metformin)
+- Brand names (e.g., Tylenol, Advil, Lipitor)
+- Medical supplements (e.g., Vitamin D, Calcium)
+- Over-the-counter medicines
+- Prescription medications
+- Herbal medications
+
+Respond with ONLY "VALID" if this is a legitimate medication name.
+Respond with ONLY "INVALID" if it is:
+- A non-medical term (e.g., "maths", "physics", "history")
+- Random words or gibberish
+- Food items (unless they are medicinal supplements)
+- General subjects or topics
+- Numbers or symbols only
+
+TERM TO VALIDATE: ${drugName}`;
+
+  try {
+    const result = await model.generateContent(prompt);
+    const response = result.response.text().trim().toUpperCase();
+    return response.includes('VALID') && !response.includes('INVALID');
+  } catch (error) {
+    console.error("Error validating medication name:", error);
+    // If API fails, use a simple client-side check as fallback
+    const nonMedicalTerms = ['maths', 'math', 'physics', 'chemistry', 'biology', 'history', 'geography', 'english', 'science', 'art', 'music'];
+    return !nonMedicalTerms.includes(drugName.toLowerCase().trim());
   }
 };
 

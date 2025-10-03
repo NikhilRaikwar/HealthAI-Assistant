@@ -82,6 +82,27 @@
     @apply mb-1;
   }
 
+  /* Dark mode support for prose */
+  .dark .prose {
+    @apply text-gray-300;
+  }
+  
+  .dark .prose h1, .dark .prose h2, .dark .prose h3, .dark .prose h4 {
+    @apply text-gray-100;
+  }
+  
+  .dark .prose strong {
+    @apply text-gray-200;
+  }
+  
+  .dark .prose a {
+    @apply text-blue-400;
+  }
+  
+  .dark .prose code {
+    @apply text-gray-200 bg-gray-800;
+  }
+
   .input-field {
     @apply w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow duration-150;
   }
