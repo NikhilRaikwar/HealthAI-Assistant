@@ -51,7 +51,7 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
         <sub><b>Sumit Raikwar</b></sub>
       </a>
       <br />
-      <sub>Medical Report Chat & React Router</sub>
+      <sub>Medical Report Chat, Bento Grid & React Router</sub>
       <br />
       💻 🎨 🚀
     </td>
@@ -154,7 +154,7 @@ _People who have made significant code contributions_
         <sub><b>Sumit Raikwar</b></sub>
       </a>
       <br />
-      <sub>Report Chat & React Router</sub>
+      <sub>Report Chat, Bento Grid & React Router</sub>
       <br />
       💻 🎨 🚀
     </td>
@@ -174,7 +174,7 @@ _Contributors who added new features_
         <sub><b>Sumit Raikwar</b></sub>
       </a>
       <br />
-      <sub>Medical Report Chat</sub>
+      <sub>Medical Report Chat, Bento Grid & React Router Navigation</sub>
       <br />
       <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/5">#5</a>
     </td>
@@ -224,18 +224,6 @@ _Contributors who added new features_
       <br />
       <a href="#">#TBD</a>
     </td>
-    <td align="center">
-      <a href="https://github.com/SumitRaikwar18">
-        <img src="https://github.com/SumitRaikwar18.png" width="80px;" alt="Sumit Raikwar"/>
-        <br />
-        <sub><b>Sumit Raikwar</b></sub>
-      </a>
-      <br />
-      <sub>React Router Navigation</sub>
-      <br />
-      <a href="#">#TBD</a>
-    </td>
-  </tr>
 </table>
 
 ### Bug Fixers
@@ -264,18 +252,7 @@ _Contributors who squashed bugs_
       <br />
       <sub>Policy PDF Validation Bug Fix</sub>
       <br />
-      <a href="#">#TBD</a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/SumitRaikwar18">
-        <img src="https://github.com/SumitRaikwar18.png" width="80px;" alt="Sumit Raikwar"/>
-        <br />
-        <sub><b>Sumit Raikwar</b></sub>
-      </a>
-      <br />
-      <sub>React Router Implementation</sub>
-      <br />
-      <a href="#">#TBD</a>
+      <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/29">#29</a>
     </td>
   </tr>
 </table>
@@ -518,8 +495,8 @@ _Most critical bug resolution_
 
 - Add interactive medical report chat with session management - PR #5
 - Add Bento Grid layout with animated hover effects - PR #9
-- Fixed Policy Query Assistant accepting non-policy PDFs with AI-powered validation - PR #TBD
-- Implemented React Router for URL-based navigation system - PR #TBD
+- Fixed Policy Query Assistant accepting non-policy PDFs with AI-powered validation - PR #29
+- Implemented React Router for URL-based navigation system - PR #30
 
 **Impact:** Enhanced user experience with modern UI patterns and interactive features. Improved data integrity by implementing policy document validation to prevent invalid PDF uploads. Transformed navigation architecture by implementing React Router, enabling proper URL routing, browser back/forward functionality, bookmarking support, and direct page access via URLs
 
