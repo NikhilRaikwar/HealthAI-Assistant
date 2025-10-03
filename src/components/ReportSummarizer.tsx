@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { FileText, Upload, MessageSquare, Send, Loader, Bot, User, AlertCircle, RefreshCw } from 'lucide-react';
 import { extractTextFromPdf } from '../utils/pdfUtils';
-import { queryMedicalReport } from '../lib/gemini';
+import { queryMedicalReport, validateMedicalReport } from '../lib/gemini';
 import ReactMarkdown from 'react-markdown';
 import { useDropzone } from 'react-dropzone';
 import { PageContainer } from './ui/PageContainer';
@@ -44,6 +44,17 @@ export default function ReportSummarizer() {
     
     try {
       const text = await extractTextFromPdf(file);
+      
+      // Validate if the extracted text is actually a medical report
+      const isValidMedicalReport = await validateMedicalReport(text);
+      
+      if (!isValidMedicalReport) {
+        setError('⚠️ This doesn\'t appear to be a medical report. Please upload a valid medical document.');
+        setReportText('');
+        setFileName('');
+        return;
+      }
+      
       setReportText(text);
       setMessages([{
         type: 'bot',

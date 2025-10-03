@@ -164,6 +164,45 @@ Format your response in a clear, structured manner with proper headings and bull
   }
 };
 
+export const validateMedicalReport = async (text: string): Promise<boolean> => {
+  if (!text.trim()) {
+    return false;
+  }
+
+  const prompt = `Analyze the following text and determine if it is a legitimate medical report or medical document. 
+
+Look for these medical indicators:
+- Medical terminology (diagnosis, symptoms, medications, procedures)
+- Lab results and test values
+- Patient information sections
+- Doctor/physician names or signatures
+- Medical facility information
+- Vital signs, measurements, or clinical observations
+- Treatment plans or recommendations
+- Medical codes (ICD, CPT)
+- Prescription information
+
+Respond with ONLY "VALID" if this appears to be a medical document, or "INVALID" if it appears to be:
+- A resume or CV
+- A novel, story, or fiction
+- Academic papers (non-medical)
+- Business documents
+- Random text or gibberish
+- Non-medical content
+
+TEXT TO ANALYZE:
+${text.substring(0, 2000)}`;
+
+  try {
+    const result = await model.generateContent(prompt);
+    const response = result.response.text().trim().toUpperCase();
+    return response.includes('VALID') && !response.includes('INVALID');
+  } catch (error) {
+    console.error("Error validating medical report:", error);
+    return false;
+  }
+};
+
 export const queryMedicalReport = async (query: string, reportText: string) => {
   if (!query.trim()) {
     throw new Error("Please enter your question about the medical report.");

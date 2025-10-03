@@ -77,8 +77,6 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
       <br />
       💻 🎨 ⚡
     </td>
-  </tr>
-  <tr>
     <td align="center">
       <a href="https://github.com/durvaakadam">
         <img src="https://github.com/durvaakadam.png" width="80px;" alt="Durva Kadam"/>
@@ -89,6 +87,19 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
       <sub>Live Voice Input for Symptom Analyzer</sub>
       <br />
       💻 🎤 🚀
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/Jyothishree2k5">
+        <img src="https://github.com/Jyothishree2k5.png" width="80px;" alt="Jyothishree Rajkumar"/>
+        <br />
+        <sub><b>Jyothishree Rajkumar</b></sub>
+      </a>
+      <br />
+      <sub>Medical Report Validation</sub>
+      <br />
+      💻 💡
     </td>
   </tr>
 </table>
@@ -154,8 +165,6 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
       <br />
       <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/10">#10</a>
     </td>
-  </tr>
-  <tr>
     <td align="center">
       <a href="https://github.com/durvaakadam">
         <img src="https://github.com/durvaakadam.png" width="80px;" alt="Durva Kadam"/>
@@ -166,6 +175,19 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
       <sub>Live Voice Input Feature</sub>
       <br />
       <a href="#">#TBD</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/Jyothishree2k5">
+        <img src="https://github.com/Jyothishree2k5.png" width="80px;" alt="Jyothishree Rajkumar"/>
+        <br />
+        <sub><b>Jyothishree Rajkumar</b></sub>
+      </a>
+      <br />
+      <sub>Medical Report Validation</sub>
+      <br />
+      <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/15">#15</a>
     </td>
   </tr>
 </table>
@@ -308,6 +330,7 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
 - **Koustubh Badshah** - [@frustateduser](https://github.com/frustateduser) - Dark Mode
 - **Shivam Soni** - [@ShivamSoni20](https://github.com/ShivamSoni20) - Chat UI Redesign
 - **Durva Kadam** - [@durvaakadam](https://github.com/durvaakadam) - Live Voice Input for Symptom Analyzer
+- **Jyothishree Rajkumar** - [@Jyothishree2k5](https://github.com/Jyothishree2k5) - Medical Report Validation
 
 ---
 
@@ -353,6 +376,8 @@ When you make a contribution, add yourself to the appropriate section using this
 - 🚀 New features
 - ♻️ Refactoring
 - 📝 Content
+- 🎤 Voice/Audio features
+- 💡 Innovation
 
 ---
 
@@ -363,10 +388,11 @@ When you make a contribution, add yourself to the appropriate section using this
 
 - **First Code Contribution:** Sumit Raikwar ([@SumitRaikwar18](https://github.com/SumitRaikwar18))
 - **First Bug Fix:** *Awaiting*
-- **First Design Contribution:** Koustubh Badshah ([@koustubhbadshah](https://github.com/frustateduser))
+- **First Design Contribution:** Koustubh Badshah ([@frustateduser](https://github.com/frustateduser))
 - **First Documentation:** *Awaiting*
 - **First Translation:** *Awaiting*
 - **First Test:** *Awaiting*
+- **First Accessibility Feature:** Durva Kadam ([@durvaakadam](https://github.com/durvaakadam)) - Voice Input
 
 ### 🔥 Most Active Contributor (Monthly)
 *Contributor with the most merged PRs this month*
@@ -377,6 +403,8 @@ When you make a contribution, add yourself to the appropriate section using this
 *Most impactful feature added*
 
 - **Medical Report Chat Assistant** by Sumit Raikwar - Interactive chat interface for medical reports
+- **Live Voice Input** by Durva Kadam - Enhanced accessibility with speech-to-text
+- **AI-powered medical report validation system** by Jyothishree Rajkumar - Implemented AI-powered medical report validation system
 
 ---
 
@@ -391,7 +419,7 @@ When you make a contribution, add yourself to the appropriate section using this
 
 ---
 
-### Koustubh Badshah ([@koustubhbadshah](https://github.com/frustateduser))
+### Koustubh Badshah ([@frustateduser](https://github.com/frustateduser))
 **Contributions:**
 - Added dark mode - [PR #10](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/10)
 
@@ -401,7 +429,7 @@ When you make a contribution, add yourself to the appropriate section using this
 
 ### Shivam Soni ([@ShivamSoni20](https://github.com/ShivamSoni20))
 **Contributions:**
-- Complete chat UI redesign with glassmorphism, streaming responses, and full responsiveness
+- Complete chat UI redesign with glassmorphism, streaming responses, and full responsiveness - [PR #14](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/14)
 - Implemented Gemini streaming API
 - Added session management and 10+ UX features
 
@@ -414,7 +442,17 @@ When you make a contribution, add yourself to the appropriate section using this
 - Added live voice input functionality to Symptom Analyzer - [PR #TBD](#)
 - Implemented speech-to-text integration for better accessibility
 
-**Impact:** Enhanced accessibility and user experience by enabling voice-based symptom input
+**Impact:** Enhanced accessibility and user experience by enabling voice-based symptom input, making the app more inclusive for users who prefer or require voice interaction
+
+---
+
+### Jyothishree Rajkumar ([@Jyothishree2k5](https://github.com/Jyothishree2k5))
+**Contributions:**
+- Implemented AI-powered medical report validation system - [PR #15](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/15)
+- Added validateMedicalReport function with intelligent content detection
+- Enhanced ReportSummarizer with validation error handling and user feedback
+
+**Impact:** Improved data quality and user experience by preventing invalid document uploads with clear error messaging
 
 ---
 
@@ -428,6 +466,7 @@ Every contribution, no matter how small, makes a difference! Whether you:
 - 📖 Updated documentation
 - 🧪 Wrote tests
 - 🌍 Added translations
+- 🎤 Implemented voice features
 
 **You are appreciated!** ❤️
 
@@ -458,7 +497,7 @@ We recognize all types of contributions:
 | 🔍 **Code Review** | Reviewing pull requests | Providing feedback on PRs |
 | 🌍 **Translation** | Internationalization support | Adding language support |
 | 🧪 **Testing** | Writing tests, testing features | Unit tests, integration tests |
-| ♿ **Accessibility** | Making the app more accessible | WCAG compliance improvements |
+| ♿ **Accessibility** | Making the app more accessible | WCAG compliance improvements, voice input |
 | ⚡ **Performance** | Speed and optimization improvements | Code optimization, lazy loading |
 
 ---
@@ -482,5 +521,3 @@ We recognize all types of contributions:
 **Made with ❤️ by the HealthAI Assistant Community**
 
 *Last Updated: October 2025*
-
-</div>
