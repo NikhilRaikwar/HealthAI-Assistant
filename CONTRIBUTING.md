@@ -316,8 +316,8 @@ All contributors are showcased at the end of the [README](./README.md) with thei
 **Your face will be here:**
 <p align="center">
    <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/graphs/contributors">
-      <img src="https://contrib.rocks/image?repo=NikhilRaikwar/HealthAI-Assistant" alt="Contributors"/>
-   </a>
+  <img src="https://contrib.rocks/image?repo=NikhilRaikwar/HealthAI-Assistant&max=100&columns=10" alt="Contributors"/>
+</a>
 </p>
 
 ---
