@@ -1,18 +1,11 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { FileText, Upload, MessageSquare, Send, Loader, Bot, User, AlertCircle } from 'lucide-react';
 import { extractTextFromPdf } from '../utils/pdfUtils';
-import { queryPolicyDocument } from '../lib/gemini';
+import { queryPolicyDocument, validatePolicyDocument } from '../lib/gemini';
 import ReactMarkdown from 'react-markdown';
 import { useDropzone } from 'react-dropzone';
 import { PageContainer } from './ui/PageContainer';
 import { ChatMessage } from '../types';
-
-interface PolicyQueryResponse {
-  decision: string;
-  amount?: string;
-  justification: string;
-  clauses: string[];
-}
 
 export default function PolicyQueryAssistant() {
   const [policyText, setPolicyText] = useState('');
@@ -39,9 +32,23 @@ export default function PolicyQueryAssistant() {
     setUploadLoading(true);
     setFileName(file.name);
     setError('');
+    setMessages([]);
     
     try {
+      // Extract text from PDF
       const text = await extractTextFromPdf(file);
+      
+      // Validate if the document is a health policy
+      const isValidPolicy = await validatePolicyDocument(text);
+      
+      if (!isValidPolicy) {
+        setError('⚠️ Invalid document. Please upload a valid health policy PDF.');
+        setPolicyText('');
+        setFileName('');
+        return;
+      }
+      
+      // If valid, proceed with processing
       setPolicyText(text);
       setMessages([{
         type: 'bot',
