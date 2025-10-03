@@ -78,6 +78,19 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
       💻 🎨 ⚡
     </td>
   </tr>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/durvaakadam">
+        <img src="https://github.com/durvaakadam.png" width="80px;" alt="Durva Kadam"/>
+        <br />
+        <sub><b>Durva Kadam</b></sub>
+      </a>
+      <br />
+      <sub>Live Voice Input for Symptom Analyzer</sub>
+      <br />
+      💻 🎤 🚀
+    </td>
+  </tr>
 </table>
 
 ---
@@ -140,6 +153,19 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
       <sub>Dark Mode Theme</sub>
       <br />
       <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/10">#10</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/durvaakadam">
+        <img src="https://github.com/durvaakadam.png" width="80px;" alt="Durva Kadam"/>
+        <br />
+        <sub><b>Durva Kadam</b></sub>
+      </a>
+      <br />
+      <sub>Live Voice Input Feature</sub>
+      <br />
+      <a href="#">#TBD</a>
     </td>
   </tr>
 </table>
@@ -281,6 +307,7 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
 
 - **Koustubh Badshah** - [@frustateduser](https://github.com/frustateduser) - Dark Mode
 - **Shivam Soni** - [@ShivamSoni20](https://github.com/ShivamSoni20) - Chat UI Redesign
+- **Durva Kadam** - [@durvaakadam](https://github.com/durvaakadam) - Live Voice Input for Symptom Analyzer
 
 ---
 
@@ -379,6 +406,15 @@ When you make a contribution, add yourself to the appropriate section using this
 - Added session management and 10+ UX features
 
 **Impact:** Modernized chat interface with real-time streaming and enhanced user experience
+
+---
+
+### Durva Kadam ([@durvaakadam](https://github.com/durvaakadam))
+**Contributions:**
+- Added live voice input functionality to Symptom Analyzer - [PR #TBD](#)
+- Implemented speech-to-text integration for better accessibility
+
+**Impact:** Enhanced accessibility and user experience by enabling voice-based symptom input
 
 ---
 
