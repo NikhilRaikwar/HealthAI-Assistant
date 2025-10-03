@@ -33,7 +33,6 @@ When you make a contribution, please add yourself to this file in your pull requ
 | Sumit Raikwar | [@SumitRaikwar18](https://github.com/SumitRaikwar18) | Add interactive medical report chat with session management, Add Bento Grid layout with animated hover effects | Feature |
 | Koustubh Badshah | [@koustubhbadshah](https://github.com/koustubhbadshah) | Added dark mode | Feature | 2025-10-02 |
 | Shivam Soni | [@ShivamSoni20](https://github.com/ShivamSoni20) | Implemented Gemini streaming API, redesigned chat with glassmorphism UI, added session management and 10+ UX features | Feature | 2025-10-02 |
-| Durva | [@durvaakadam](https://github.com/durvaakadam) | Enhanced Symptom Analyzer with voice input, mobile optimization, responsive design, and comprehensive error handling | Feature | 2025-10-03 |
 
 
 ### 📚 Documentation Contributors
@@ -49,7 +48,6 @@ When you make a contribution, please add yourself to this file in your pull requ
 | Koustubh Badshah | [@koustubhbadshah](https://github.com/koustubhbadshah) | Added dark mode | [#10](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/10) |
 | Sumit Raikwar | [@SumitRaikwar18](https://github.com/SumitRaikwar18) | Add Bento Grid layout with animated hover effects | [#9](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/9) |
 | Shivam Soni | [@ShivamSoni20](https://github.com/ShivamSoni20) | Complete UI redesign with modern glassmorphism, custom animations, responsive design, and accessibility improvements | [#PR](link) |
-| Durva | [@durvaakadam](https://github.com/durvaakadam) | Mobile-optimized UI design, responsive layouts, and touch-friendly interface improvements for Symptom Analyzer | [#PR](link) |
 
 ### 🐛 Bug Hunters
 
