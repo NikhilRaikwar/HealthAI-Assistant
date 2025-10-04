@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Camera, Upload, Send, AlertTriangle, Loader, Activity, TrendingUp, CheckCircle, AlertCircle, ArrowRight } from 'lucide-react';
-import { analyzeMedicalImage } from '../lib/gemini';
-import ReactMarkdown from 'react-markdown';
+import { analyzeMedicalImage, validateMedicalImage } from '../lib/gemini';
 
 interface Finding {
     finding: string;
@@ -35,10 +34,12 @@ export default function MedicalImageAnalyzer() {
     const [imagePreview, setImagePreview] = useState<string | null>(null);
     const [additionalInfo, setAdditionalInfo] = useState('');
     const [loading, setLoading] = useState(false);
+    const [validating, setValidating] = useState(false);
     const [analysis, setAnalysis] = useState<MedicalImageAnalysis | null>(null);
     const [error, setError] = useState('');
+    const [validationWarning, setValidationWarning] = useState('');
 
-    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
             if (file.type.startsWith('image/')) {
@@ -49,9 +50,32 @@ export default function MedicalImageAnalyzer() {
                 };
                 reader.readAsDataURL(file);
                 setError('');
+                setValidationWarning('');
+                
+                // Validate if it's a medical image
+                validateUploadedImage(file);
             } else {
                 setError('Please upload a valid image file');
             }
+        }
+    };
+
+    const validateUploadedImage = async (file: File) => {
+        setValidating(true);
+        try {
+            const base64Image = await convertImageToBase64(file);
+            const validation = await validateMedicalImage(base64Image);
+            
+            if (!validation.isValid) {
+                setValidationWarning(validation.message);
+            } else {
+                setValidationWarning('');
+            }
+        } catch (err) {
+            console.error('Validation error:', err);
+            // Continue even if validation fails
+        } finally {
+            setValidating(false);
         }
     };
 
@@ -74,11 +98,26 @@ export default function MedicalImageAnalyzer() {
             return;
         }
 
+        // If there's a validation warning, prevent analysis
+        if (validationWarning) {
+            setError('Cannot analyze non-medical images. Please upload a valid medical image (X-ray, CT scan, MRI, ultrasound, ECG, etc.).');
+            return;
+        }
+
         setLoading(true);
         setError('');
 
         try {
             const base64Image = await convertImageToBase64(image);
+            
+            // Final validation before analysis
+            const validation = await validateMedicalImage(base64Image);
+            if (!validation.isValid) {
+                setError(validation.message + '\n\nPlease upload a valid medical image such as X-rays, CT scans, MRI, ultrasound, or ECG images.');
+                setLoading(false);
+                return;
+            }
+            
             const result = await analyzeMedicalImage(base64Image, additionalInfo.trim());
             setAnalysis(result);
         } catch (err) {
@@ -177,19 +216,46 @@ export default function MedicalImageAnalyzer() {
                     />
                 </div>
 
+                {validationWarning && (
+                    <div className="p-4 bg-orange-50 dark:bg-orange-900/20 border-2 border-orange-500 rounded-lg">
+                        <div className="flex items-start gap-2">
+                            <AlertTriangle className="w-5 h-5 text-orange-600 dark:text-orange-400 flex-shrink-0 mt-0.5" />
+                            <div className="flex-1">
+                                <h4 className="font-semibold text-orange-800 dark:text-orange-300 mb-1">⚠️ Not a Medical Image</h4>
+                                <p className="text-sm text-orange-700 dark:text-orange-400 mb-2">{validationWarning}</p>
+                                <p className="text-sm text-orange-800 dark:text-orange-300 font-medium">
+                                    📋 Please upload valid medical images such as:
+                                </p>
+                                <ul className="text-sm text-orange-700 dark:text-orange-400 mt-1 ml-4 list-disc">
+                                    <li>X-rays (chest, bone, dental)</li>
+                                    <li>CT scans</li>
+                                    <li>MRI scans</li>
+                                    <li>Ultrasound images</li>
+                                    <li>ECG/EKG charts</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
                 {error && (
-                    <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg flex items-center gap-2">
-                        <AlertTriangle className="w-5 h-5 text-red-600 dark:text-red-400" />
-                        <p className="text-red-600 dark:text-red-400">{error}</p>
+                    <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg flex items-start gap-2">
+                        <AlertTriangle className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+                        <p className="text-red-600 dark:text-red-400 whitespace-pre-line">{error}</p>
                     </div>
                 )}
 
                 <button
                     type="submit"
-                    disabled={loading || !image}
+                    disabled={loading || !image || validating || !!validationWarning}
                     className="w-full py-3 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-colors duration-200"
                 >
-                    {loading ? (
+                    {validating ? (
+                        <>
+                            <Loader className="w-5 h-5 animate-spin" />
+                            Validating Image...
+                        </>
+                    ) : loading ? (
                         <>
                             <Loader className="w-5 h-5 animate-spin" />
                             Analyzing Medical Image...
