@@ -659,14 +659,14 @@ Return ONLY the JSON object, no additional text.`;
 
 export const validateMedicineImage = async (
   imageBase64: string
-): Promise<boolean> => {
+): Promise<{ isValid: boolean; message: string; medicineType?: string }> => {
   if (!imageBase64) {
-    return false;
+    return { isValid: false, message: "No image provided" };
   }
 
-  const prompt = `Analyze this image and determine if it contains medicine, medication, pharmaceutical products, or medicine packaging.
+  const prompt = `You are an expert pharmaceutical image validator. Analyze the provided image and determine if it contains legitimate MEDICINE or PHARMACEUTICAL PRODUCTS.
 
-Valid medicine images include:
+VALID medicine images include:
 - Medicine tablets, capsules, or pills
 - Medicine bottles or containers
 - Medicine packaging or boxes with drug information
@@ -675,19 +675,27 @@ Valid medicine images include:
 - Syringes with medication
 - Medicine vials or ampoules
 - Over-the-counter medicine packages
+- Pharmaceutical products with visible branding/labels
 
-Respond with ONLY "VALID" if this image clearly shows medicine or pharmaceutical products.
-
-Respond with ONLY "INVALID" if the image shows:
-- Random objects (toys, food, electronics, furniture, etc.)
+INVALID (NON-MEDICINE) images include:
+- Random objects (toys, food, electronics, furniture)
 - People, animals, or nature scenes
+- Screenshots of applications or websites
+- Memes, cartoons, or illustrations
 - Documents or text without medicine
-- Non-medical items
+- Medical equipment (not medicine itself)
 - Unclear or blurry images where medicine cannot be identified
-- Screenshots or memes
 - Any non-pharmaceutical content
 
-Be strict in your validation. Only approve images that clearly contain medicine or pharmaceutical products.`;
+Respond in JSON format ONLY:
+{
+  "isValid": true/false,
+  "confidence": 0-100,
+  "detectedType": "Tablets/Capsules/Bottle/Packaging/Blister Pack/Photo/Screenshot/etc.",
+  "reason": "Brief explanation of why it is or isn't a medicine image"
+}
+
+Return ONLY the JSON object, no additional text.`;
 
   try {
     const imagePart = {
@@ -698,11 +706,40 @@ Be strict in your validation. Only approve images that clearly contain medicine 
     };
 
     const result = await model.generateContent([prompt, imagePart]);
-    const response = result.response.text().trim().toUpperCase();
-    return response.includes("VALID") && !response.includes("INVALID");
+    const response = result.response.text();
+
+    let cleanedResponse = response.trim();
+    if (cleanedResponse.startsWith("```json")) {
+      cleanedResponse = cleanedResponse
+        .replace(/^```json\s*/, "")
+        .replace(/\s*```$/, "");
+    } else if (cleanedResponse.startsWith("```")) {
+      cleanedResponse = cleanedResponse
+        .replace(/^```\s*/, "")
+        .replace(/\s*```$/, "");
+    }
+
+    const validation = JSON.parse(cleanedResponse);
+
+    if (validation.isValid && validation.confidence >= 70) {
+      return {
+        isValid: true,
+        message: `Medicine detected: ${validation.detectedType}`,
+        medicineType: validation.detectedType,
+      };
+    } else {
+      return {
+        isValid: false,
+        message: `This doesn't appear to be a medicine image. Detected: ${validation.detectedType}. ${validation.reason}`,
+      };
+    }
   } catch (error) {
     console.error("Error validating medicine image:", error);
-    return false;
+    // In case of API error, allow the image but log the issue
+    return {
+      isValid: true,
+      message: "Unable to validate image type, proceeding with analysis",
+    };
   }
 };
 
