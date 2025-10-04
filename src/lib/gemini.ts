@@ -74,6 +74,39 @@ export const checkDrugInteraction = async (drugs: string[]) => {
   }
 };
 
+export const validateMedicalTerm = async (term: string): Promise<boolean> => {
+  if (!term.trim()) {
+    return false;
+  }
+
+  const prompt = `Analyze the following input and determine if it is a legitimate medical term, condition, medication, or medical code.
+
+Look for these indicators:
+- Medical terminology (diseases, conditions, symptoms)
+- Medication names (generic or brand names)
+- Medical codes (ICD-10, CPT, NDC)
+- Anatomical terms
+- Medical procedures or treatments
+- Medical abbreviations or acronyms
+
+Respond with ONLY "VALID" if this is a legitimate medical term, or "INVALID" if it is:
+- Random numbers or digits
+- Gibberish or meaningless text
+- Non-medical words
+- Common everyday words unrelated to medicine
+
+INPUT TO ANALYZE: ${term}`;
+
+  try {
+    const result = await model.generateContent(prompt);
+    const response = result.response.text().trim().toUpperCase();
+    return response.includes('VALID') && !response.includes('INVALID');
+  } catch (error) {
+    console.error("Error validating medical term:", error);
+    return false;
+  }
+};
+
 export const explainMedicalTerm = async (term: string) => {
   if (!term.trim()) {
     throw new Error("Please enter a medical term to explain.");

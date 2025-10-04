@@ -88,6 +88,17 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
       <br />
       💻 💡
     </td>
+    <td align="center">
+      <a href="https://github.com/Jyothishree2k5">
+        <img src="https://github.com/Jyothishree2k5.png" width="80px;" alt="Jyothishree Rajkumar"/>
+        <br />
+        <sub><b>Jyothishree Rajkumar</b></sub>
+      </a>
+      <br />
+      <sub>Medical Term Validation</sub>
+      <br />
+      💻 💡
+    </td>
   </tr>
 </table>
 
@@ -162,6 +173,17 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
       <sub>Medical Report Validation</sub>
       <br />
       <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/15">#15</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Jyothishree2k5">
+        <img src="https://github.com/Jyothishree2k5.png" width="80px;" alt="Jyothishree Rajkumar"/>
+        <br />
+        <sub><b>Jyothishree Rajkumar</b></sub>
+      </a>
+      <br />
+      <sub>Medical Term Validation</sub>
+      <br />
+      <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/24">#24</a>
     </td>
   </tr>
 </table>
@@ -411,6 +433,16 @@ When you make a contribution, add yourself to the appropriate section using this
 - Enhanced ReportSummarizer with validation error handling and user feedback
 
 **Impact:** Improved data quality and user experience by preventing invalid document uploads with clear error messaging
+
+---
+
+### Jyothishree Rajkumar ([@Jyothishree2k5](https://github.com/Jyothishree2k5))
+**Contributions:**
+- Implemented AI-powered medical term validation system with intelligent input detection
+- Added validateMedicalTerm function to prevent explanations for random numbers and gibberish
+- Enhanced Medical Term Explainer with validation error handling and clear user feedback
+
+**Impact:**  Improved tool credibility and user experience by filtering invalid inputs and providing meaningful error messages
 
 
 ## 🙏 Thank You
