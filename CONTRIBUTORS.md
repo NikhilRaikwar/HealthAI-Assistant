@@ -10,9 +10,7 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
 
 ### All Contributors
 
-<a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=NikhilRaikwar/HealthAI-Assistant&max=100&columns=10" alt="Contributors"/>
-</a>
+[![Contributors](https://contrib.rocks/image?repo=NikhilRaikwar/HealthAI-Assistant&anon=1&max=500)](https://github.com/NikhilRaikwar/HealthAI-Assistant/graphs/contributors)
 
 </div>
 
@@ -97,33 +95,33 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
         <sub><b>Jyothishree Rajkumar</b></sub>
       </a>
       <br />
-      <sub>Medical Report Validation</sub>
+      <sub>Medical Report Validation & Medical Term Validation</sub>
       <br />
       💻 💡
     </td>
-      <td align="center">
-        <a href="https://github.com/codebreakers19">
-          <img src="https://github.com/codebreakers19.png" width="80px;" alt="Code Breakers"/>
-          <br />
-          <sub><b>Code Breakers</b></sub>
-        </a>
+    <td align="center">
+      <a href="https://github.com/codebreakers19">
+        <img src="https://github.com/codebreakers19.png" width="80px;" alt="Code Breakers"/>
         <br />
-        <sub>Drug Interaction, Medical Image Validation & SEO Optimization</sub>
+        <sub><b>Code Breakers</b></sub>
+      </a>
+      <br />
+      <sub>Drug Interaction, Medical Image Validation & SEO Optimization</sub>
+      <br />
+      💻 🐛 ⚡ 🏥 🔍
+    </td>
+    <td align="center">
+      <a href="https://github.com/kstubhieeee">
+        <img src="https://github.com/kstubhieeee.png" width="80px;" alt="Kaustubh Vijay Bane"/>
         <br />
-        💻 🐛 ⚡ 🏥 🔍
-      </td>
-      <td align="center">
-        <a href="https://github.com/kstubhieeee">
-          <img src="https://github.com/kstubhieeee.png" width="80px;" alt="Kaustubh Vijay Bane"/>
-          <br />
-          <sub><b>Kaustubh Vijay Bane</b></sub>
-        </a>
-        <br />
-        <sub>Medical Image & Medicine Analyzer</sub>
-        <br />
-        💻 🎨 🚀
-      </td>
-    </tr>
+        <sub><b>Kaustubh Vijay Bane</b></sub>
+      </a>
+      <br />
+      <sub>Medical Image & Medicine Analyzer</sub>
+      <br />
+      💻 🎨 🚀
+    </td>
+  </tr>
 </table>
 
 ---
@@ -209,9 +207,10 @@ _Contributors who added new features_
         <sub><b>Jyothishree Rajkumar</b></sub>
       </a>
       <br />
-      <sub>Medical Report Validation</sub>
+      <sub>Medical Report Validation & Medical Term Validation</sub>
       <br />
       <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/15">#15</a>
+      <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/24">#24</a>
     </td>
     <td align="center">
       <a href="https://github.com/kstubhieeee">
@@ -224,6 +223,7 @@ _Contributors who added new features_
       <br />
       <a href="#">#TBD</a>
     </td>
+  </tr>
 </table>
 
 ### Bug Fixers
@@ -368,9 +368,9 @@ _Contributors who added tests_
 
 <div align="center">
 
-!GitHub contributors
-!GitHub commit activity
-!GitHub pull requests
+![GitHub contributors](https://img.shields.io/github/contributors/NikhilRaikwar/HealthAI-Assistant)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/NikhilRaikwar/HealthAI-Assistant)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/NikhilRaikwar/HealthAI-Assistant)
 
 </div>
 
@@ -428,11 +428,7 @@ When you make a contribution, add yourself to the appropriate section using this
 ```html
 <td align="center">
   <a href="https://github.com/YOUR_USERNAME">
-    <img
-      src="https://github.com/YOUR_USERNAME.png"
-      width="80px;"
-      alt="Your Name"
-    />
+    <img src="https://github.com/YOUR_USERNAME.png" width="80px;" alt="Your Name"/>
     <br />
     <sub><b>Your Name</b></sub>
   </a>
@@ -554,11 +550,11 @@ _Most critical bug resolution_
 
 **Contributions:**
 
-- Implemented AI-powered medical report validation system - PR #15
-- Added validateMedicalReport function with intelligent content detection
-- Enhanced ReportSummarizer with validation error handling and user feedback
+- Implemented AI-powered medical term validation system with intelligent input detection
+- Added validateMedicalTerm function to prevent explanations for random numbers and gibberish
+- Enhanced Medical Term Explainer with validation error handling and clear user feedback
 
-**Impact:** Improved data quality and user experience by preventing invalid document uploads with clear error messaging
+**Impact:** Improved tool credibility and user experience by filtering invalid inputs and providing meaningful error messages
 
 ---
 
@@ -619,18 +615,18 @@ Want to connect with other contributors?
 
 We recognize all types of contributions:
 
-| Type                 | Description                            | Example                                   |
-| -------------------- | -------------------------------------- | ----------------------------------------- |
-| 💻 **Code**          | New features, bug fixes, improvements  | Adding new components, fixing bugs        |
-| 📚 **Documentation** | README updates, guides, tutorials      | Improving setup instructions              |
-| 🎨 **Design**        | UI/UX improvements, graphics, branding | Dark mode, responsive design              |
-| 🐛 **Bug Reports**   | Finding and reporting issues           | Identifying and documenting bugs          |
-| 💡 **Ideas**         | Feature requests and suggestions       | Proposing new features                    |
-| 🔍 **Code Review**   | Reviewing pull requests                | Providing feedback on PRs                 |
-| 🌍 **Translation**   | Internationalization support           | Adding language support                   |
-| 🧪 **Testing**       | Writing tests, testing features        | Unit tests, integration tests             |
-| ♿ **Accessibility** | Making the app more accessible         | WCAG compliance improvements, voice input |
-| ⚡ **Performance**   | Speed and optimization improvements    | Code optimization, lazy loading           |
+| Type | Description | Example |
+|------|-------------|---------|
+| 💻 **Code** | New features, bug fixes, improvements | Adding new components, fixing bugs |
+| 📚 **Documentation** | README updates, guides, tutorials | Improving setup instructions |
+| 🎨 **Design** | UI/UX improvements, graphics, branding | Dark mode, responsive design |
+| 🐛 **Bug Reports** | Finding and reporting issues | Identifying and documenting bugs |
+| 💡 **Ideas** | Feature requests and suggestions | Proposing new features |
+| 🔍 **Code Review** | Reviewing pull requests | Providing feedback on PRs |
+| 🌍 **Translation** | Internationalization support | Adding language support |
+| 🧪 **Testing** | Writing tests, testing features | Unit tests, integration tests |
+| ♿ **Accessibility** | Making the app more accessible | WCAG compliance improvements, voice input |
+| ⚡ **Performance** | Speed and optimization improvements | Code optimization, lazy loading |
 
 ---
 
@@ -653,3 +649,5 @@ _This project exists thanks to all the people who contribute. Thank you! 💙_
 **Made with ❤️ by the HealthAI Assistant Community**
 
 _Last Updated: October 2025_
+
+</div>
