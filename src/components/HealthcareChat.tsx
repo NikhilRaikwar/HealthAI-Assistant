@@ -110,6 +110,12 @@ const HealthcareChat = () => {
       return () => clearTimeout(scrollTimeout);
   }, [messages]);
 
+  useEffect(() => {
+    if(!messages.length || !isLoading){
+      autoFocusOnTextArea()
+    }
+  },[isLoading ,messages])
+
   // Auto-resize textarea
   useEffect(() => {
     if (textareaRef.current) {
@@ -129,6 +135,7 @@ const HealthcareChat = () => {
 
   const autoFocusOnTextArea = ()=>{
     textareaRef.current?.focus() 
+    console.log("autofocus on textareaRef",textareaRef)
   }
   // Handle submit with streaming
   const handleSubmit = async (e: React.FormEvent) => {
@@ -145,6 +152,7 @@ const HealthcareChat = () => {
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setIsLoading(true);
+  
 
     // Create AI message placeholder for streaming
     const aiMessageId = (Date.now() + 1).toString();
@@ -155,6 +163,7 @@ const HealthcareChat = () => {
       timestamp: new Date(),
       isStreaming: true,
     };
+
 
     setMessages(prev => [...prev, aiMessage]);
 
@@ -199,7 +208,6 @@ const HealthcareChat = () => {
       setMessages(prev => [...prev, errorMessage]);
     } finally {
       setIsLoading(false)
-      autoFocusOnTextArea()
     }
   };
 
@@ -207,7 +215,7 @@ const HealthcareChat = () => {
   const handleCancel = () => {
     cancelCurrentRequest();
     setIsLoading(false);
-    autoFocusOnTextArea()
+
     
     // Remove streaming message
     setMessages(prev => prev.filter(msg => !msg.isStreaming));
@@ -220,7 +228,6 @@ const HealthcareChat = () => {
       if (confirmed) {
         setMessages([])
         setInput('')
-        autoFocusOnTextArea()
       }
     }
   };
@@ -349,7 +356,6 @@ const HealthcareChat = () => {
               disabled={isLoading}
               className="flex-1 resize-none bg-transparent border-none outline-none px-2 py-2 sm:px-3 sm:py-2 text-sm sm:text-base text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 max-h-24 sm:max-h-32 disabled:opacity-50"
               style={{ minHeight: '40px' }}
-              autoFocus
             />
             
             <button
