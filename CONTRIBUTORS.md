@@ -108,9 +108,9 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
           <sub><b>Code Breakers</b></sub>
         </a>
         <br />
-        <sub>Drug Interaction Checker Bug Fixes</sub>
+        <sub>Drug Interaction & Medical Image Validation</sub>
         <br />
-        💻 🐛 ⚡
+        💻 🐛 ⚡ 🏥
       </td>
       <td align="center">
         <a href="https://github.com/kstubhieeee">
@@ -239,7 +239,7 @@ _Contributors who squashed bugs_
         <sub><b>Code Breakers</b></sub>
       </a>
       <br />
-      <sub>Drug Interaction Checker Bug Fixes</sub>
+      <sub>Drug Interaction Checker & Medical Image Validation</sub>
       <br />
       <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/19">#19</a>
     </td>
@@ -393,7 +393,7 @@ _New contributors who made their first valuable contribution_
 - **Shivam Soni** - @ShivamSoni20 - Chat UI Redesign
 - **Durva Kadam** - @durvaakadam - Live Voice Input for Symptom Analyzer
 - **Jyothishree Rajkumar** - @Jyothishree2k5 - Medical Report Validation
-- **Code Breakers** - @codebreakers19 - Drug Interaction Checker Bug Fixes
+- **Code Breakers** - @codebreakers19 - Drug Interaction & Medical Image Validation Bug Fixes
 - **Kaustubh Vijay Bane** - @kstubhieeee - Medical Image & Medicine Analyzer
 
 ---
@@ -554,8 +554,12 @@ _Most critical bug resolution_
 - Fixed Drug Interaction Checker accepting non-medical inputs (e.g., maths, physics) - PR #19
 - Resolved response color issues in Dark Mode for Drug Interaction Checker
 - Enhanced input validation to reject irrelevant queries
+- Implemented Medical Image Analyzer validation to prevent non-medical image analysis - PR #TBD
+- Added AI-powered image validation using Gemini to detect medical vs non-medical images
+- Created user-friendly warning UI with helpful guidance for rejected images
+- Prevented analysis of screenshots, photos, memes, and non-medical content
 
-**Impact:** Improved system reliability by preventing invalid inputs and ensuring proper color contrast in dark mode, enhancing user experience and data accuracy
+**Impact:** Improved system reliability by preventing invalid inputs across multiple features. Enhanced data accuracy by ensuring only legitimate medical images (X-rays, CT scans, MRI, ultrasound, ECG) are analyzed, reducing confusion and maintaining trust in the application
 
 ---
 
