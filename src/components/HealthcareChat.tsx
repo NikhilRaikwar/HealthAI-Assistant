@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback, memo } from 'react';
-import { Send, Sparkles, Loader2, Copy, Check, X, RefreshCw } from 'lucide-react';
+import { Send, Sparkles, Loader2, Copy, Check, X, RefreshCw, Mic, MicOff } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { streamAIResponse, cancelCurrentRequest } from '../lib/gemini';
 
@@ -96,9 +96,12 @@ MessageBubble.displayName = 'MessageBubble';
 const HealthcareChat = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
+  const [interimText, setInterimText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isListening, setIsListening] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const recognitionRef = useRef<any>(null);
 
   useEffect(() => {
     const scrollTimeout = setTimeout(() => {
@@ -240,6 +243,50 @@ const HealthcareChat = () => {
     }
   };
 
+  // Voice input functionality
+  const startVoiceInput = () => {
+    if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+      alert('Speech recognition is not supported in your browser.');
+      return;
+    }
+
+    const SpeechRecognition =
+      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+
+    if (!recognitionRef.current) {
+      const recognition = new SpeechRecognition();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = 'en-US';
+
+      recognition.onstart = () => setIsListening(true);
+      recognition.onend = () => {
+        setIsListening(false);
+        setInterimText('');
+      };
+
+      recognition.onresult = (event: any) => {
+        let interimTranscript = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          const transcript = event.results[i][0].transcript;
+          if (event.results[i].isFinal) {
+            setInput(prev => prev + transcript + ' ');
+          } else {
+            interimTranscript += transcript;
+          }
+        }
+        setInterimText(interimTranscript);
+      };
+
+      recognitionRef.current = recognition;
+      recognition.start();
+    } else {
+      recognitionRef.current.stop();
+      recognitionRef.current = null;
+      setIsListening(false);
+    }
+  };
+
   return (
     <div className="flex flex-col h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       
@@ -342,13 +389,36 @@ const HealthcareChat = () => {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Input Area - Fully Responsive */}
+      {/* Input Area - Fully Responsive with Voice Input */}
       <div className="sticky bottom-20 border-t border-gray-200/50 dark:border-gray-700/50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl p-2 sm:p-4">
         <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
           <div className="relative flex items-end gap-1.5 sm:gap-2 bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-2xl shadow-gray-200/50 dark:shadow-gray-900/50 p-1.5 sm:p-2 border border-gray-200 dark:border-gray-700 focus-within:border-blue-500 dark:focus-within:border-blue-400 transition-all duration-300">
+            
+            {/* Voice Input Button with Pulse Animation */}
+            <button
+              type="button"
+              onClick={startVoiceInput}
+              disabled={isLoading}
+              className={`flex-shrink-0 p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-xl transition-all duration-300 ${
+                isListening 
+                  ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/50 scale-110' 
+                  : 'bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 text-gray-600 dark:text-gray-300 hover:from-blue-50 hover:to-indigo-50 dark:hover:from-blue-900/30 dark:hover:to-indigo-900/30 hover:text-blue-600 dark:hover:text-blue-400 hover:scale-105'
+              } disabled:opacity-50 disabled:cursor-not-allowed`}
+              title={isListening ? 'Stop listening' : 'Start voice input'}
+            >
+              {isListening ? (
+                <div className="relative">
+                  <MicOff className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span className="absolute inset-0 rounded-full bg-blue-400 animate-ping opacity-75"></span>
+                </div>
+              ) : (
+                <Mic className="w-4 h-4 sm:w-5 sm:h-5" />
+              )}
+            </button>
+
             <textarea
               ref={textareaRef}
-              value={input}
+              value={input + interimText}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Ask about symptoms, medications..."
