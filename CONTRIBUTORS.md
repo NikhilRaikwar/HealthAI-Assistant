@@ -71,9 +71,9 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
         <sub><b>Shivam Soni</b></sub>
       </a>
       <br />
-      <sub>Chat UI Redesign & Streaming</sub>
+      <sub>Chat UI Redesign, Streaming & Symptom Analyzer UX</sub>
       <br />
-      💻 🎨 ⚡
+      💻 🎨 ⚡ 🎤 ♿
     </td>
     <td align="center">
       <a href="https://github.com/durvaakadam">
@@ -307,9 +307,9 @@ _Contributors who improved the visual design_
         <sub><b>Shivam Soni</b></sub>
       </a>
       <br />
-      <sub>Glassmorphism UI</sub>
+      <sub>Glassmorphism UI & Symptom Analyzer Redesign</sub>
       <br />
-      <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/14">#14</a>
+      <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/14">#14</a> <a href="#">#TBD</a>
     </td>
   </tr>
 </table>
@@ -485,6 +485,7 @@ _Most impactful feature added_
 - **React Router Navigation System** by Sumit Raikwar - Complete URL-based routing with browser navigation support
 - **Live Voice Input** by Durva Kadam - Enhanced accessibility with speech-to-text
 - **AI-powered medical report validation system** by Jyothishree Rajkumar - Implemented AI-powered medical report validation system
+- **Comprehensive Symptom Analyzer UI/UX Redesign** by Shivam Soni - Modern chat-style interface with voice input, emergency detection, quick symptom chips, and full responsive design
 
 ### 🐛 Best Bug Fix
 
@@ -530,8 +531,13 @@ _Most critical bug resolution_
 - Fixed Medicine Analyzer white screen bug with non-medical images - PR #TBD
 - Implemented validateMedicineImage function with AI-powered validation
 - Added pre-validation to prevent invalid image analysis
+- Comprehensive Symptom Analyzer UI/UX redesign with voice input, emergency detection, and full responsiveness - PR #TBD
+- Implemented quick-select symptom chips, recent searches, and custom scrollbar
+- Added emergency keyword detection with warning banner
+- Enhanced voice input with pulse animation and real-time transcription
+- Created fully responsive design (mobile, tablet, desktop) with improved accessibility
 
-**Impact:** Modernized chat interface with real-time streaming and enhanced user experience. Improved Medicine Analyzer reliability by preventing white screen crashes when users upload non-medical images, ensuring only valid pharmaceutical images are processed
+**Impact:** Modernized chat interface with real-time streaming and enhanced user experience. Improved Medicine Analyzer reliability by preventing white screen crashes when users upload non-medical images, ensuring only valid pharmaceutical images are processed. Transformed Symptom Analyzer into a modern, accessible, and intuitive health assistant with voice capabilities, emergency alerts, and seamless multi-device experience
 
 ---
 
