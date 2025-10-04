@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://healthai-assistant.netlify.app/sitemap.xml
+Sitemap: https://health-ai-assistant.vercel.app/sitemap.xml
 
 # Prevent access to API endpoints
 Disallow: /api/
