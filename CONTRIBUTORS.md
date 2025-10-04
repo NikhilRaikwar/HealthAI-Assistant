@@ -108,9 +108,9 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
           <sub><b>Code Breakers</b></sub>
         </a>
         <br />
-        <sub>Drug Interaction & Medical Image Validation</sub>
+        <sub>Drug Interaction, Medical Image Validation & SEO Optimization</sub>
         <br />
-        💻 🐛 ⚡ 🏥
+        💻 🐛 ⚡ 🏥 🔍
       </td>
       <td align="center">
         <a href="https://github.com/kstubhieeee">
@@ -239,9 +239,9 @@ _Contributors who squashed bugs_
         <sub><b>Code Breakers</b></sub>
       </a>
       <br />
-      <sub>Drug Interaction Checker & Medical Image Validation</sub>
+      <sub>Drug Interaction Checker, Medical Image Validation & SEO Sitemap</sub>
       <br />
-      <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/19">#19</a>
+      <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/19">#19</a> <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/36">#36</a>
     </td>
     <td align="center">
       <a href="https://github.com/SumitRaikwar18">
@@ -404,7 +404,7 @@ _New contributors who made their first valuable contribution_
 - **Shivam Soni** - @ShivamSoni20 - Chat UI Redesign
 - **Durva Kadam** - @durvaakadam - Live Voice Input for Symptom Analyzer
 - **Jyothishree Rajkumar** - @Jyothishree2k5 - Medical Report Validation
-- **Code Breakers** - @codebreakers19 - Drug Interaction & Medical Image Validation Bug Fixes
+- **Code Breakers** - @codebreakers19 - Drug Interaction, Medical Image Validation & SEO Bug Fixes
 - **Kaustubh Vijay Bane** - @kstubhieeee - Medical Image & Medicine Analyzer
 
 ---
@@ -495,6 +495,7 @@ _Most impactful feature added_
 _Most critical bug resolution_
 
 - **Drug Interaction Checker Fix** by Code Breakers - Prevented non-medical inputs and fixed dark mode color issues
+- **SEO & Sitemap Optimization** by Code Breakers - Fixed outdated sitemap.xml with wrong domain and missing routes, improving search engine discoverability
 
 ---
 
@@ -565,15 +566,12 @@ _Most critical bug resolution_
 
 **Contributions:**
 
-- Fixed Drug Interaction Checker accepting non-medical inputs (e.g., maths, physics) - PR #19
-- Resolved response color issues in Dark Mode for Drug Interaction Checker
-- Enhanced input validation to reject irrelevant queries
-- Implemented Medical Image Analyzer validation to prevent non-medical image analysis - PR #TBD
-- Added AI-powered image validation using Gemini to detect medical vs non-medical images
-- Created user-friendly warning UI with helpful guidance for rejected images
-- Prevented analysis of screenshots, photos, memes, and non-medical content
+- Fixed Drug Interaction Checker with input validation and dark mode color issues - [PR #19](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/19)
+- Implemented Medical Image Analyzer validation with AI-powered detection - PR #TBD
+- Fixed outdated sitemap.xml (netlify.app → vercel.app) and added all 11 routes - [PR #36](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/36)
+- Updated robots.txt with correct domain for SEO indexing
 
-**Impact:** Improved system reliability by preventing invalid inputs across multiple features. Enhanced data accuracy by ensuring only legitimate medical images (X-rays, CT scans, MRI, ultrasound, ECG) are analyzed, reducing confusion and maintaining trust in the application
+**Impact:** Enhanced system reliability with proper input validation across features. Significantly improved SEO discoverability by fixing critical sitemap issues and ensuring all feature pages are properly indexed by search engines
 
 ---
 
