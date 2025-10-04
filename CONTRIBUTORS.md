@@ -254,6 +254,17 @@ _Contributors who squashed bugs_
       <br />
       <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/29">#29</a>
     </td>
+    <td align="center">
+      <a href="https://github.com/ShivamSoni20">
+        <img src="https://github.com/ShivamSoni20.png" width="80px;" alt="Shivam Soni"/>
+        <br />
+        <sub><b>Shivam Soni</b></sub>
+      </a>
+      <br />
+      <sub>Medicine Analyzer Image Validation</sub>
+      <br />
+      <a href="#">#TBD</a>
+    </td>
   </tr>
 </table>
 
@@ -519,8 +530,11 @@ _Most critical bug resolution_
 - Complete chat UI redesign with glassmorphism, streaming responses, and full responsiveness - PR #14
 - Implemented Gemini streaming API
 - Added session management and 10+ UX features
+- Fixed Medicine Analyzer white screen bug with non-medical images - PR #TBD
+- Implemented validateMedicineImage function with AI-powered validation
+- Added pre-validation to prevent invalid image analysis
 
-**Impact:** Modernized chat interface with real-time streaming and enhanced user experience
+**Impact:** Modernized chat interface with real-time streaming and enhanced user experience. Improved Medicine Analyzer reliability by preventing white screen crashes when users upload non-medical images, ensuring only valid pharmaceutical images are processed
 
 ---
 

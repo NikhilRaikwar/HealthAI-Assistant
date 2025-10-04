@@ -657,6 +657,92 @@ Return ONLY the JSON object, no additional text.`;
   }
 };
 
+export const validateMedicineImage = async (
+  imageBase64: string
+): Promise<{ isValid: boolean; message: string; medicineType?: string }> => {
+  if (!imageBase64) {
+    return { isValid: false, message: "No image provided" };
+  }
+
+  const prompt = `You are an expert pharmaceutical image validator. Analyze the provided image and determine if it contains legitimate MEDICINE or PHARMACEUTICAL PRODUCTS.
+
+VALID medicine images include:
+- Medicine tablets, capsules, or pills
+- Medicine bottles or containers
+- Medicine packaging or boxes with drug information
+- Prescription medication labels
+- Medicine strips or blister packs
+- Syringes with medication
+- Medicine vials or ampoules
+- Over-the-counter medicine packages
+- Pharmaceutical products with visible branding/labels
+
+INVALID (NON-MEDICINE) images include:
+- Random objects (toys, food, electronics, furniture)
+- People, animals, or nature scenes
+- Screenshots of applications or websites
+- Memes, cartoons, or illustrations
+- Documents or text without medicine
+- Medical equipment (not medicine itself)
+- Unclear or blurry images where medicine cannot be identified
+- Any non-pharmaceutical content
+
+Respond in JSON format ONLY:
+{
+  "isValid": true/false,
+  "confidence": 0-100,
+  "detectedType": "Tablets/Capsules/Bottle/Packaging/Blister Pack/Photo/Screenshot/etc.",
+  "reason": "Brief explanation of why it is or isn't a medicine image"
+}
+
+Return ONLY the JSON object, no additional text.`;
+
+  try {
+    const imagePart = {
+      inlineData: {
+        data: imageBase64,
+        mimeType: "image/jpeg",
+      },
+    };
+
+    const result = await model.generateContent([prompt, imagePart]);
+    const response = result.response.text();
+
+    let cleanedResponse = response.trim();
+    if (cleanedResponse.startsWith("```json")) {
+      cleanedResponse = cleanedResponse
+        .replace(/^```json\s*/, "")
+        .replace(/\s*```$/, "");
+    } else if (cleanedResponse.startsWith("```")) {
+      cleanedResponse = cleanedResponse
+        .replace(/^```\s*/, "")
+        .replace(/\s*```$/, "");
+    }
+
+    const validation = JSON.parse(cleanedResponse);
+
+    if (validation.isValid && validation.confidence >= 70) {
+      return {
+        isValid: true,
+        message: `Medicine detected: ${validation.detectedType}`,
+        medicineType: validation.detectedType,
+      };
+    } else {
+      return {
+        isValid: false,
+        message: `This doesn't appear to be a medicine image. Detected: ${validation.detectedType}. ${validation.reason}`,
+      };
+    }
+  } catch (error) {
+    console.error("Error validating medicine image:", error);
+    // In case of API error, allow the image but log the issue
+    return {
+      isValid: true,
+      message: "Unable to validate image type, proceeding with analysis",
+    };
+  }
+};
+
 export const analyzeMedicine = async (
   imageBase64: string,
   additionalInfo?: string

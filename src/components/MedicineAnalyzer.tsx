@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Pill, Upload, Send, AlertTriangle, Loader, Clock, Heart, Shield, Utensils, RefreshCw } from 'lucide-react';
-import { analyzeMedicine } from '../lib/gemini';
+import { analyzeMedicine, validateMedicineImage } from '../lib/gemini';
 
 interface MedicineAnalysis {
   medicineName: string;
@@ -28,8 +28,10 @@ export default function MedicineAnalyzer() {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [additionalInfo, setAdditionalInfo] = useState('');
   const [loading, setLoading] = useState(false);
+  const [validating, setValidating] = useState(false);
   const [analysis, setAnalysis] = useState<MedicineAnalysis | null>(null);
   const [error, setError] = useState('');
+  const [validationWarning, setValidationWarning] = useState('');
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -42,9 +44,33 @@ export default function MedicineAnalyzer() {
         };
         reader.readAsDataURL(file);
         setError('');
+        setValidationWarning('');
+        setAnalysis(null);
+        
+        // Validate the uploaded image
+        validateUploadedImage(file);
       } else {
         setError('Please upload a valid image file');
       }
+    }
+  };
+
+  const validateUploadedImage = async (file: File) => {
+    setValidating(true);
+    try {
+      const base64Image = await convertImageToBase64(file);
+      const validation = await validateMedicineImage(base64Image);
+      
+      if (!validation.isValid) {
+        setValidationWarning(validation.message);
+      } else {
+        setValidationWarning('');
+      }
+    } catch (err) {
+      console.error('Validation error:', err);
+      // Continue even if validation fails
+    } finally {
+      setValidating(false);
     }
   };
 
@@ -67,11 +93,26 @@ export default function MedicineAnalyzer() {
       return;
     }
 
+    // If there's a validation warning, prevent analysis
+    if (validationWarning) {
+      setError('Cannot analyze non-medicine images. Please upload a valid medicine image (tablets, capsules, bottles, packaging, etc.).');
+      return;
+    }
+
     setLoading(true);
     setError('');
 
     try {
       const base64Image = await convertImageToBase64(image);
+      
+      // Final validation before analysis
+      const validation = await validateMedicineImage(base64Image);
+      if (!validation.isValid) {
+        setError(validation.message + '\n\nPlease upload a clear image of medicine packaging, tablets, capsules, or medicine bottles.');
+        setLoading(false);
+        return;
+      }
+      
       const result = await analyzeMedicine(base64Image, additionalInfo.trim());
       setAnalysis(result);
     } catch (err) {
@@ -114,6 +155,7 @@ export default function MedicineAnalyzer() {
                 onClick={() => {
                   setImage(null);
                   setImagePreview(null);
+                  setValidationWarning('');
                 }}
                 className="px-4 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               >
@@ -159,19 +201,46 @@ export default function MedicineAnalyzer() {
           />
         </div>
 
+        {validationWarning && (
+          <div className="p-4 bg-orange-50 dark:bg-orange-900/20 border-2 border-orange-500 rounded-lg">
+            <div className="flex items-start gap-2">
+              <AlertTriangle className="w-5 h-5 text-orange-600 dark:text-orange-400 flex-shrink-0 mt-0.5" />
+              <div className="flex-1">
+                <h4 className="font-semibold text-orange-800 dark:text-orange-300 mb-1">⚠️ Not a Medicine Image</h4>
+                <p className="text-sm text-orange-700 dark:text-orange-400 mb-2">{validationWarning}</p>
+                <p className="text-sm text-orange-800 dark:text-orange-300 font-medium">
+                  💊 Please upload valid medicine images such as:
+                </p>
+                <ul className="text-sm text-orange-700 dark:text-orange-400 mt-1 ml-4 list-disc">
+                  <li>Medicine tablets or capsules</li>
+                  <li>Medicine bottles or containers</li>
+                  <li>Medicine packaging or boxes</li>
+                  <li>Prescription labels</li>
+                  <li>Blister packs or strips</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
+
         {error && (
-          <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5 text-red-600 dark:text-red-400" />
-            <p className="text-red-600 dark:text-red-400">{error}</p>
+          <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg flex items-start gap-2">
+            <AlertTriangle className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+            <p className="text-red-600 dark:text-red-400 whitespace-pre-line">{error}</p>
           </div>
         )}
 
         <button
           type="submit"
-          disabled={loading || !image}
+          disabled={loading || !image || validating || !!validationWarning}
           className="w-full py-3 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-colors duration-200"
         >
-          {loading ? (
+          {validating ? (
+            <>
+              <Loader className="w-5 h-5 animate-spin" />
+              Validating Image...
+            </>
+          ) : loading ? (
             <>
               <Loader className="w-5 h-5 animate-spin" />
               Analyzing Medicine...
