@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Pill, Plus, X, Loader, AlertCircle } from 'lucide-react';
-import { checkDrugInteraction } from '../lib/gemini';
+import { checkDrugInteraction, validateMedicationName } from '../lib/gemini';
 import ReactMarkdown from 'react-markdown';
 
 export default function DrugInteraction() {
@@ -9,12 +9,39 @@ export default function DrugInteraction() {
   const [analysis, setAnalysis] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [validating, setValidating] = useState(false);
 
-  const addDrug = () => {
-    if (currentDrug.trim() && !drugs.includes(currentDrug.trim())) {
-      setDrugs([...drugs, currentDrug.trim()]);
+  const addDrug = async () => {
+    const drugName = currentDrug.trim();
+    
+    if (!drugName) {
+      return;
+    }
+    
+    if (drugs.includes(drugName)) {
+      setError('This medication has already been added.');
+      return;
+    }
+
+    setValidating(true);
+    setError('');
+    
+    try {
+      const isValid = await validateMedicationName(drugName);
+      
+      if (!isValid) {
+        setError('⚠️ Invalid input. Please enter a valid medication name.');
+        setValidating(false);
+        return;
+      }
+      
+      setDrugs([...drugs, drugName]);
       setCurrentDrug('');
       setError('');
+    } catch (error) {
+      setError('Error validating medication name. Please try again.');
+    } finally {
+      setValidating(false);
     }
   };
 
@@ -31,8 +58,8 @@ export default function DrugInteraction() {
   };
 
   const handleCheck = async () => {
-    if (drugs.length < 2) {
-      setError('Please enter at least two medications to check for interactions.');
+    if (drugs.length < 1) {
+      setError('Please enter at least one medication to analyze.');
       return;
     }
 
@@ -42,7 +69,7 @@ export default function DrugInteraction() {
       const result = await checkDrugInteraction(drugs);
       setAnalysis(result);
     } catch (error) {
-      setError(error instanceof Error ? error.message : 'Error checking drug interactions. Please try again.');
+      setError(error instanceof Error ? error.message : 'Error analyzing medications. Please try again.');
       setAnalysis('');
     }
     setLoading(false);
@@ -61,14 +88,16 @@ export default function DrugInteraction() {
           value={currentDrug}
           onChange={(e) => setCurrentDrug(e.target.value)}
           onKeyPress={handleKeyPress}
-          className="flex-1 p-3 border border-gray-300 dark:border-gray-600 dark:bg-slate-500 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          disabled={validating}
+          className="flex-1 p-3 border border-gray-300 dark:border-gray-600 dark:bg-slate-500 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50"
           placeholder="Enter medication name and press Enter"
         />
         <button
           onClick={addDrug}
-          className="p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
+          disabled={validating}
+          className="p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
         >
-          <Plus className="w-5 h-5" />
+          {validating ? <Loader className="w-5 h-5 animate-spin" /> : <Plus className="w-5 h-5" />}
         </button>
       </div>
 
@@ -98,23 +127,25 @@ export default function DrugInteraction() {
 
       <button
         onClick={handleCheck}
-        disabled={loading || drugs.length < 2}
+        disabled={loading || drugs.length < 1}
         className="w-full py-3 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transition-colors duration-200"
       >
         {loading ? (
           <>
             <Loader className="w-5 h-5 animate-spin" />
-            Checking Interactions...
+            {drugs.length === 1 ? 'Analyzing Medication...' : 'Checking Interactions...'}
           </>
         ) : (
-          'Check Interactions'
+          drugs.length === 1 ? 'Get Medication Info' : 'Check Interactions'
         )}
       </button>
 
       {analysis && (
         <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-900/50 rounded-lg border border-gray-100 dark:border-gray-700">
-          <h3 className="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">Interaction Analysis:</h3>
-          <div className="prose prose-blue max-w-none">
+          <h3 className="text-lg font-semibold mb-2 text-gray-800 dark:text-gray-200">
+            {drugs.length === 1 ? 'Medication Information:' : 'Interaction Analysis:'}
+          </h3>
+          <div className="prose prose-blue max-w-none dark:prose-invert">
             <ReactMarkdown>{analysis}</ReactMarkdown>
           </div>
         </div>

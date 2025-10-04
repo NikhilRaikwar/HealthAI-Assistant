@@ -51,9 +51,9 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
         <sub><b>Sumit Raikwar</b></sub>
       </a>
       <br />
-      <sub>Medical Report Chat & Bento Grid</sub>
+      <sub>Medical Report Chat, Bento Grid & React Router</sub>
       <br />
-      💻 🎨
+      💻 🎨 🚀
     </td>
     <td align="center">
       <a href="https://github.com/frustateduser">
@@ -78,16 +78,18 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
       💻 🎨 ⚡
     </td>
     <td align="center">
-      <a href="https://github.com/Jyothishree2k5">
-        <img src="https://github.com/Jyothishree2k5.png" width="80px;" alt="Jyothishree Rajkumar"/>
+      <a href="https://github.com/durvaakadam">
+        <img src="https://github.com/durvaakadam.png" width="80px;" alt="Durva Kadam"/>
         <br />
-        <sub><b>Jyothishree Rajkumar</b></sub>
+        <sub><b>Durva Kadam</b></sub>
       </a>
       <br />
-      <sub>Medical Report Validation</sub>
+      <sub>Live Voice Input for Symptom Analyzer</sub>
       <br />
-      💻 💡
+      💻 🎤 🚀
     </td>
+  </tr>
+  <tr>
     <td align="center">
       <a href="https://github.com/Jyothishree2k5">
         <img src="https://github.com/Jyothishree2k5.png" width="80px;" alt="Jyothishree Rajkumar"/>
@@ -95,11 +97,34 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
         <sub><b>Jyothishree Rajkumar</b></sub>
       </a>
       <br />
-      <sub>Medical Term Validation</sub>
+      <sub>Medical Report Validation & Medical Term Validation</sub>
       <br />
       💻 💡
     </td>
   </tr>
+      <td align="center">
+        <a href="https://github.com/codebreakers19">
+          <img src="https://github.com/codebreakers19.png" width="80px;" alt="Code Breakers"/>
+          <br />
+          <sub><b>Code Breakers</b></sub>
+        </a>
+        <br />
+        <sub>Drug Interaction, Medical Image Validation & SEO Optimization</sub>
+        <br />
+        💻 🐛 ⚡ 🏥 🔍
+      </td>
+      <td align="center">
+        <a href="https://github.com/kstubhieeee">
+          <img src="https://github.com/kstubhieeee.png" width="80px;" alt="Kaustubh Vijay Bane"/>
+          <br />
+          <sub><b>Kaustubh Vijay Bane</b></sub>
+        </a>
+        <br />
+        <sub>Medical Image & Medicine Analyzer</sub>
+        <br />
+        💻 🎨 🚀
+      </td>
+    </tr>
 </table>
 
 ---
@@ -107,7 +132,8 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
 ## 💻 Code Contributors
 
 ### Core Contributors
-*People who have made significant code contributions*
+
+_People who have made significant code contributions_
 
 <table>
   <tr>
@@ -129,15 +155,16 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
         <sub><b>Sumit Raikwar</b></sub>
       </a>
       <br />
-      <sub>Report Chat & Bento Grid</sub>
+      <sub>Report Chat, Bento Grid & React Router</sub>
       <br />
-      💻 🎨
+      💻 🎨 🚀
     </td>
   </tr>
 </table>
 
 ### Feature Contributors
-*Contributors who added new features*
+
+_Contributors who added new features_
 
 <table>
   <tr>
@@ -148,7 +175,7 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
         <sub><b>Sumit Raikwar</b></sub>
       </a>
       <br />
-      <sub>Medical Report Chat</sub>
+      <sub>Medical Report Chat, Bento Grid & React Router Navigation</sub>
       <br />
       <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/5">#5</a>
     </td>
@@ -164,16 +191,18 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
       <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/10">#10</a>
     </td>
     <td align="center">
-      <a href="https://github.com/Jyothishree2k5">
-        <img src="https://github.com/Jyothishree2k5.png" width="80px;" alt="Jyothishree Rajkumar"/>
+      <a href="https://github.com/durvaakadam">
+        <img src="https://github.com/durvaakadam.png" width="80px;" alt="Durva Kadam"/>
         <br />
-        <sub><b>Jyothishree Rajkumar</b></sub>
+        <sub><b>Durva Kadam</b></sub>
       </a>
       <br />
-      <sub>Medical Report Validation</sub>
+      <sub>Live Voice Input Feature</sub>
       <br />
-      <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/15">#15</a>
+      <a href="#">#TBD</a>
     </td>
+  </tr>
+  <tr>
     <td align="center">
       <a href="https://github.com/Jyothishree2k5">
         <img src="https://github.com/Jyothishree2k5.png" width="80px;" alt="Jyothishree Rajkumar"/>
@@ -181,20 +210,62 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
         <sub><b>Jyothishree Rajkumar</b></sub>
       </a>
       <br />
-      <sub>Medical Term Validation</sub>
+      <sub>Medical Report Validation & Medical Term Validation</sub>
       <br />
+      <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/15">#15</a>
       <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/24">#24</a>
     </td>
   </tr>
+      <a href="https://github.com/kstubhieeee">
+        <img src="https://github.com/kstubhieeee.png" width="80px;" alt="Kaustubh Vijay Bane"/>
+        <br />
+        <sub><b>Kaustubh Vijay Bane</b></sub>
+      </a>
+      <br />
+      <sub>Medical Image & Medicine Analyzer</sub>
+      <br />
+      <a href="#">#TBD</a>
+    </td>
 </table>
 
 ### Bug Fixers
-*Contributors who squashed bugs*
+
+_Contributors who squashed bugs_
 
 <table>
   <tr>
     <td align="center">
-      <sub><i>Be the first bug fixer!</i></sub>
+      <a href="https://github.com/codebreakers19">
+        <img src="https://github.com/codebreakers19.png" width="80px;" alt="Code Breakers"/>
+        <br />
+        <sub><b>Code Breakers</b></sub>
+      </a>
+      <br />
+      <sub>Drug Interaction Checker, Medical Image Validation & SEO Sitemap</sub>
+      <br />
+      <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/19">#19</a> <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/36">#36</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/SumitRaikwar18">
+        <img src="https://github.com/SumitRaikwar18.png" width="80px;" alt="Sumit Raikwar"/>
+        <br />
+        <sub><b>Sumit Raikwar</b></sub>
+      </a>
+      <br />
+      <sub>Policy PDF Validation Bug Fix</sub>
+      <br />
+      <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/29">#29</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/ShivamSoni20">
+        <img src="https://github.com/ShivamSoni20.png" width="80px;" alt="Shivam Soni"/>
+        <br />
+        <sub><b>Shivam Soni</b></sub>
+      </a>
+      <br />
+      <sub>Medicine Analyzer Image Validation</sub>
+      <br />
+      <a href="#">#TBD</a>
     </td>
   </tr>
 </table>
@@ -204,7 +275,8 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
 ## 🎨 Design Contributors
 
 ### UI/UX Designers
-*Contributors who improved the visual design*
+
+_Contributors who improved the visual design_
 
 <table>
   <tr>
@@ -249,7 +321,8 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
 ## 📚 Documentation Contributors
 
 ### Documentation Writers
-*Contributors who improved documentation*
+
+_Contributors who improved documentation_
 
 <table>
   <tr>
@@ -264,7 +337,8 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
 ## 🌍 Translation Contributors
 
 ### Translators
-*Contributors who added language support*
+
+_Contributors who added language support_
 
 <table>
   <tr>
@@ -279,7 +353,8 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
 ## 🧪 Testing Contributors
 
 ### Test Writers
-*Contributors who added tests*
+
+_Contributors who added tests_
 
 <table>
   <tr>
@@ -295,9 +370,9 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
 
 <div align="center">
 
-![GitHub contributors](https://img.shields.io/github/contributors/NikhilRaikwar/HealthAI-Assistant?style=for-the-badge&color=blue)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/NikhilRaikwar/HealthAI-Assistant?style=for-the-badge&color=green)
-![GitHub pull requests](https://img.shields.io/github/issues-pr-closed/NikhilRaikwar/HealthAI-Assistant?style=for-the-badge&color=purple)
+!GitHub contributors
+!GitHub commit activity
+!GitHub pull requests
 
 </div>
 
@@ -306,32 +381,40 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
 ## 🏆 Contribution Levels
 
 ### 🥇 Gold Contributors (10+ PRs merged)
-*Major contributors who have significantly shaped the project*
 
-- *No gold contributors yet - be the first!*
+_Major contributors who have significantly shaped the project_
+
+- _No gold contributors yet - be the first!_
 
 ### 🥈 Silver Contributors (5-9 PRs merged)
-*Regular contributors who consistently help improve the project*
 
-- *No silver contributors yet - aim for this level!*
+_Regular contributors who consistently help improve the project_
+
+- _No silver contributors yet - aim for this level!_
 
 ### 🥉 Bronze Contributors (2-4 PRs merged)
-*Active contributors making meaningful improvements*
 
-- **Sumit Raikwar** - [@SumitRaikwar18](https://github.com/SumitRaikwar18) - 2 PRs merged
+_Active contributors making meaningful improvements_
+
+- **Sumit Raikwar** - @SumitRaikwar18 - 3 PRs merged
 
 ### ⭐ Rising Stars (1 PR merged)
-*New contributors who made their first valuable contribution*
 
-- **Koustubh Badshah** - [@frustateduser](https://github.com/frustateduser) - Dark Mode
-- **Shivam Soni** - [@ShivamSoni20](https://github.com/ShivamSoni20) - Chat UI Redesign
+_New contributors who made their first valuable contribution_
+
+- **Koustubh Badshah** - @frustateduser - Dark Mode
+- **Shivam Soni** - @ShivamSoni20 - Chat UI Redesign
+- **Durva Kadam** - @durvaakadam - Live Voice Input for Symptom Analyzer
+- **Jyothishree Rajkumar** - @Jyothishree2k5 - Medical Report Validation
+- **Code Breakers** - @codebreakers19 - Drug Interaction, Medical Image Validation & SEO Bug Fixes
+- **Kaustubh Vijay Bane** - @kstubhieeee - Medical Image & Medicine Analyzer
 
 ---
 
 ## 💡 How to Get Featured Here
 
 1. ⭐ **Star the repository** (mandatory!)
-2. 📖 Read [CONTRIBUTING.md](./CONTRIBUTING.md)
+2. 📖 Read CONTRIBUTING.md
 3. 🔍 Find an issue or propose a new feature
 4. ⏳ Wait for assignment from maintainers
 5. 🔨 Submit a quality pull request
@@ -347,7 +430,11 @@ When you make a contribution, add yourself to the appropriate section using this
 ```html
 <td align="center">
   <a href="https://github.com/YOUR_USERNAME">
-    <img src="https://github.com/YOUR_USERNAME.png" width="80px;" alt="Your Name"/>
+    <img
+      src="https://github.com/YOUR_USERNAME.png"
+      width="80px;"
+      alt="Your Name"
+    />
     <br />
     <sub><b>Your Name</b></sub>
   </a>
@@ -359,6 +446,7 @@ When you make a contribution, add yourself to the appropriate section using this
 ```
 
 **Emoji Guide for Contributions:**
+
 - 💻 Code
 - 🎨 Design
 - 📖 Documentation
@@ -370,69 +458,97 @@ When you make a contribution, add yourself to the appropriate section using this
 - 🚀 New features
 - ♻️ Refactoring
 - 📝 Content
+- 🎤 Voice/Audio features
+- 💡 Innovation
 
 ---
 
 ## 🎖️ Special Recognition
 
 ### 🌟 First Contributors
-*The first people to contribute in each category*
 
-- **First Code Contribution:** Sumit Raikwar ([@SumitRaikwar18](https://github.com/SumitRaikwar18))
-- **First Bug Fix:** *Awaiting*
-- **First Design Contribution:** Koustubh Badshah ([@koustubhbadshah](https://github.com/frustateduser))
-- **First Documentation:** *Awaiting*
-- **First Translation:** *Awaiting*
-- **First Test:** *Awaiting*
+_The first people to contribute in each category_
+
+- **First Code Contribution:** Sumit Raikwar (@SumitRaikwar18)
+- **First Bug Fix:** Code Breakers (@codebreakers19) - Drug Interaction Checker
+- **First Design Contribution:** Koustubh Badshah (@frustateduser)
+- **First Documentation:** _Awaiting_
+- **First Translation:** _Awaiting_
+- **First Test:** _Awaiting_
+- **First Accessibility Feature:** Durva Kadam (@durvaakadam) - Voice Input
 
 ### 🔥 Most Active Contributor (Monthly)
-*Contributor with the most merged PRs this month*
 
-- **October 2025:** Sumit Raikwar - 2 PRs
+_Contributor with the most merged PRs this month_
+
+- **October 2025:** Sumit Raikwar - 3 PRs
 
 ### 💡 Best Feature Addition
-*Most impactful feature added*
+
+_Most impactful feature added_
 
 - **Medical Report Chat Assistant** by Sumit Raikwar - Interactive chat interface for medical reports
+- **React Router Navigation System** by Sumit Raikwar - Complete URL-based routing with browser navigation support
+- **Live Voice Input** by Durva Kadam - Enhanced accessibility with speech-to-text
+- **AI-powered medical report validation system** by Jyothishree Rajkumar - Implemented AI-powered medical report validation system
+
+### 🐛 Best Bug Fix
+
+_Most critical bug resolution_
+
+- **Drug Interaction Checker Fix** by Code Breakers - Prevented non-medical inputs and fixed dark mode color issues
+- **SEO & Sitemap Optimization** by Code Breakers - Fixed outdated sitemap.xml with wrong domain and missing routes, improving search engine discoverability
 
 ---
 
 ## 📋 Detailed Contribution Records
 
-### Sumit Raikwar ([@SumitRaikwar18](https://github.com/SumitRaikwar18))
-**Contributions:**
-- Add interactive medical report chat with session management - [PR #5](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/5)
-- Add Bento Grid layout with animated hover effects - [PR #9](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/9)
+### Sumit Raikwar (@SumitRaikwar18)
 
-**Impact:** Enhanced user experience with modern UI patterns and interactive features
+**Contributions:**
+
+- Add interactive medical report chat with session management - PR #5
+- Add Bento Grid layout with animated hover effects - PR #9
+- Fixed Policy Query Assistant accepting non-policy PDFs with AI-powered validation - PR #29
+- Implemented React Router for URL-based navigation system - PR #31
+
+**Impact:** Enhanced user experience with modern UI patterns and interactive features. Improved data integrity by implementing policy document validation to prevent invalid PDF uploads. Transformed navigation architecture by implementing React Router, enabling proper URL routing, browser back/forward functionality, bookmarking support, and direct page access via URLs
 
 ---
 
-### Koustubh Badshah ([@koustubhbadshah](https://github.com/frustateduser))
+### Koustubh Badshah (@frustateduser)
+
 **Contributions:**
-- Added dark mode - [PR #10](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/10)
+
+- Added dark mode - PR #10
 
 **Impact:** Improved accessibility and user comfort with theme switching
 
 ---
 
-### Shivam Soni ([@ShivamSoni20](https://github.com/ShivamSoni20))
+### Shivam Soni (@ShivamSoni20)
+
 **Contributions:**
-- Complete chat UI redesign with glassmorphism, streaming responses, and full responsiveness
+
+- Complete chat UI redesign with glassmorphism, streaming responses, and full responsiveness - PR #14
 - Implemented Gemini streaming API
 - Added session management and 10+ UX features
+- Fixed Medicine Analyzer white screen bug with non-medical images - PR #TBD
+- Implemented validateMedicineImage function with AI-powered validation
+- Added pre-validation to prevent invalid image analysis
 
-**Impact:** Modernized chat interface with real-time streaming and enhanced user experience
+**Impact:** Modernized chat interface with real-time streaming and enhanced user experience. Improved Medicine Analyzer reliability by preventing white screen crashes when users upload non-medical images, ensuring only valid pharmaceutical images are processed
 
 ---
 
-### Jyothishree Rajkumar ([@Jyothishree2k5](https://github.com/Jyothishree2k5))
-**Contributions:**
-- Implemented AI-powered medical report validation system
-- Added validateMedicalReport function with intelligent content detection
-- Enhanced ReportSummarizer with validation error handling and user feedback
+### Durva Kadam (@durvaakadam)
 
-**Impact:** Improved data quality and user experience by preventing invalid document uploads with clear error messaging
+**Contributions:**
+
+- Added live voice input functionality to Symptom Analyzer - PR #TBD
+- Implemented speech-to-text integration for better accessibility
+
+**Impact:** Enhanced accessibility and user experience by enabling voice-based symptom input, making the app more inclusive for users who prefer or require voice interaction
 
 ---
 
@@ -444,6 +560,31 @@ When you make a contribution, add yourself to the appropriate section using this
 
 **Impact:**  Improved tool credibility and user experience by filtering invalid inputs and providing meaningful error messages
 
+### Code Breakers (@codebreakers19)
+
+**Contributions:**
+
+- Fixed Drug Interaction Checker with input validation and dark mode color issues - [PR #19](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/19)
+- Implemented Medical Image Analyzer validation with AI-powered detection - PR #TBD
+- Fixed outdated sitemap.xml (netlify.app → vercel.app) and added all 11 routes - [PR #36](https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/36)
+- Updated robots.txt with correct domain for SEO indexing
+
+**Impact:** Enhanced system reliability with proper input validation across features. Significantly improved SEO discoverability by fixing critical sitemap issues and ensuring all feature pages are properly indexed by search engines
+
+---
+
+### Kaustubh Vijay Bane (@kstubhieeee)
+
+**Contributions:**
+
+- Implemented Medical Image Analyzer feature with Gemini Vision API - PR #TBD
+- Created Medicine Analyzer for scanning and analyzing medicine packages
+- Added image upload, OCR, and structured analysis for medical images and medicines
+- Integrated features into Health Services dropdown and homepage bento grid
+
+**Impact:** Expanded HealthAI Assistant's real-world medical utility by enabling users to analyze X-rays, CT scans, MRI, ultrasound images, and medicine packages for comprehensive health insights
+
+---
 
 ## 🙏 Thank You
 
@@ -455,6 +596,7 @@ Every contribution, no matter how small, makes a difference! Whether you:
 - 📖 Updated documentation
 - 🧪 Wrote tests
 - 🌍 Added translations
+- 🎤 Implemented voice features
 
 **You are appreciated!** ❤️
 
@@ -475,18 +617,18 @@ Want to connect with other contributors?
 
 We recognize all types of contributions:
 
-| Type | Description | Example |
-|------|-------------|---------|
-| 💻 **Code** | New features, bug fixes, improvements | Adding new components, fixing bugs |
-| 📚 **Documentation** | README updates, guides, tutorials | Improving setup instructions |
-| 🎨 **Design** | UI/UX improvements, graphics, branding | Dark mode, responsive design |
-| 🐛 **Bug Reports** | Finding and reporting issues | Identifying and documenting bugs |
-| 💡 **Ideas** | Feature requests and suggestions | Proposing new features |
-| 🔍 **Code Review** | Reviewing pull requests | Providing feedback on PRs |
-| 🌍 **Translation** | Internationalization support | Adding language support |
-| 🧪 **Testing** | Writing tests, testing features | Unit tests, integration tests |
-| ♿ **Accessibility** | Making the app more accessible | WCAG compliance improvements |
-| ⚡ **Performance** | Speed and optimization improvements | Code optimization, lazy loading |
+| Type                 | Description                            | Example                                   |
+| -------------------- | -------------------------------------- | ----------------------------------------- |
+| 💻 **Code**          | New features, bug fixes, improvements  | Adding new components, fixing bugs        |
+| 📚 **Documentation** | README updates, guides, tutorials      | Improving setup instructions              |
+| 🎨 **Design**        | UI/UX improvements, graphics, branding | Dark mode, responsive design              |
+| 🐛 **Bug Reports**   | Finding and reporting issues           | Identifying and documenting bugs          |
+| 💡 **Ideas**         | Feature requests and suggestions       | Proposing new features                    |
+| 🔍 **Code Review**   | Reviewing pull requests                | Providing feedback on PRs                 |
+| 🌍 **Translation**   | Internationalization support           | Adding language support                   |
+| 🧪 **Testing**       | Writing tests, testing features        | Unit tests, integration tests             |
+| ♿ **Accessibility** | Making the app more accessible         | WCAG compliance improvements, voice input |
+| ⚡ **Performance**   | Speed and optimization improvements    | Code optimization, lazy loading           |
 
 ---
 
@@ -494,7 +636,7 @@ We recognize all types of contributions:
 
 ### 🎉 Thank You for Making HealthAI Assistant Better! 🎉
 
-**Want to see your name here? [Start Contributing Now!](./CONTRIBUTING.md)** 🚀
+**Want to see your name here? Start Contributing Now!** 🚀
 
 ---
 
@@ -504,10 +646,8 @@ We recognize all types of contributions:
 
 ---
 
-*This project exists thanks to all the people who contribute. Thank you! 💙*
+_This project exists thanks to all the people who contribute. Thank you! 💙_
 
 **Made with ❤️ by the HealthAI Assistant Community**
 
-*Last Updated: October 2025*
-
-</div>
+_Last Updated: October 2025_
