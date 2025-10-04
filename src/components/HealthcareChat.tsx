@@ -100,17 +100,21 @@ const HealthcareChat = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  // Auto-scroll with performance optimization
   useEffect(() => {
     const scrollTimeout = setTimeout(() => {
-      messagesEndRef.current?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'end',
-      });
+    messagesEndRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+    });
     }, 100);
-
-    return () => clearTimeout(scrollTimeout);
+      return () => clearTimeout(scrollTimeout);
   }, [messages]);
+
+  useEffect(() => {
+    if(!messages.length || !isLoading){
+      autoFocusOnTextArea()
+    }
+  },[isLoading ,messages])
 
   // Auto-resize textarea
   useEffect(() => {
@@ -129,6 +133,10 @@ const HealthcareChat = () => {
     }
   }, []);
 
+  const autoFocusOnTextArea = ()=>{
+    textareaRef.current?.focus() 
+    console.log("autofocus on textareaRef",textareaRef)
+  }
   // Handle submit with streaming
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -144,6 +152,7 @@ const HealthcareChat = () => {
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setIsLoading(true);
+  
 
     // Create AI message placeholder for streaming
     const aiMessageId = (Date.now() + 1).toString();
@@ -154,6 +163,7 @@ const HealthcareChat = () => {
       timestamp: new Date(),
       isStreaming: true,
     };
+
 
     setMessages(prev => [...prev, aiMessage]);
 
@@ -197,7 +207,7 @@ const HealthcareChat = () => {
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
   };
 
@@ -205,6 +215,7 @@ const HealthcareChat = () => {
   const handleCancel = () => {
     cancelCurrentRequest();
     setIsLoading(false);
+
     
     // Remove streaming message
     setMessages(prev => prev.filter(msg => !msg.isStreaming));
@@ -215,8 +226,8 @@ const HealthcareChat = () => {
     if (messages.length > 0) {
       const confirmed = window.confirm('Start a new session? This will clear all messages.');
       if (confirmed) {
-        setMessages([]);
-        setInput('');
+        setMessages([])
+        setInput('')
       }
     }
   };
@@ -290,7 +301,7 @@ const HealthcareChat = () => {
       </div>
 
       {/* Messages Container - Responsive */}
-      <div className="flex-1 overflow-y-auto px-2 sm:px-4 md:px-6 py-3 sm:py-6 space-y-3 sm:space-y-6 scroll-smooth">
+      <div className = {`flex-1 ${messages.length>0 && "overflow-y-auto"} px-2 sm:px-4 md:px-6 py-3 sm:py-6 space-y-3 sm:space-y-6 scroll-smooth`}>
         {messages.length === 0 && (
           <div className="h-full flex items-center justify-center px-4">
             <div className="text-center space-y-3 sm:space-y-4 max-w-md animate-fade-in">
@@ -332,7 +343,7 @@ const HealthcareChat = () => {
       </div>
 
       {/* Input Area - Fully Responsive */}
-      <div className="border-t border-gray-200/50 dark:border-gray-700/50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl p-2 sm:p-4">
+      <div className="sticky bottom-20 border-t border-gray-200/50 dark:border-gray-700/50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl p-2 sm:p-4">
         <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
           <div className="relative flex items-end gap-1.5 sm:gap-2 bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-2xl shadow-gray-200/50 dark:shadow-gray-900/50 p-1.5 sm:p-2 border border-gray-200 dark:border-gray-700 focus-within:border-blue-500 dark:focus-within:border-blue-400 transition-all duration-300">
             <textarea
