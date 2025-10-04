@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BookOpen, Loader, AlertCircle } from 'lucide-react';
-import { explainMedicalTerm, validateMedicalTerm } from '../lib/gemini';
+import { explainMedicalTerm } from '../lib/gemini';
 import ReactMarkdown from 'react-markdown';
 
 export default function MedicalTermExplainer() {
@@ -19,23 +19,13 @@ export default function MedicalTermExplainer() {
     setLoading(true);
     setError('');
     try {
-      // Validate if the input is a legitimate medical term
-      const isValidMedicalTerm = await validateMedicalTerm(term);
-      
-      if (!isValidMedicalTerm) {
-        setError('⚠️ The input you provided is not recognized as a valid medical term. Please enter a valid term or code.');
-        setExplanation('');
-        return;
-      }
-      
       const result = await explainMedicalTerm(term);
       setExplanation(result);
     } catch (error) {
       setError(error instanceof Error ? error.message : 'Error explaining term. Please try again.');
       setExplanation('');
-    } finally {
-      setLoading(false);
     }
+    setLoading(false);
   };
 
   return (
