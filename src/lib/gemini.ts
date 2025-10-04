@@ -657,6 +657,55 @@ Return ONLY the JSON object, no additional text.`;
   }
 };
 
+export const validateMedicineImage = async (
+  imageBase64: string
+): Promise<boolean> => {
+  if (!imageBase64) {
+    return false;
+  }
+
+  const prompt = `Analyze this image and determine if it contains medicine, medication, pharmaceutical products, or medicine packaging.
+
+Valid medicine images include:
+- Medicine tablets, capsules, or pills
+- Medicine bottles or containers
+- Medicine packaging or boxes with drug information
+- Prescription medication labels
+- Medicine strips or blister packs
+- Syringes with medication
+- Medicine vials or ampoules
+- Over-the-counter medicine packages
+
+Respond with ONLY "VALID" if this image clearly shows medicine or pharmaceutical products.
+
+Respond with ONLY "INVALID" if the image shows:
+- Random objects (toys, food, electronics, furniture, etc.)
+- People, animals, or nature scenes
+- Documents or text without medicine
+- Non-medical items
+- Unclear or blurry images where medicine cannot be identified
+- Screenshots or memes
+- Any non-pharmaceutical content
+
+Be strict in your validation. Only approve images that clearly contain medicine or pharmaceutical products.`;
+
+  try {
+    const imagePart = {
+      inlineData: {
+        data: imageBase64,
+        mimeType: "image/jpeg",
+      },
+    };
+
+    const result = await model.generateContent([prompt, imagePart]);
+    const response = result.response.text().trim().toUpperCase();
+    return response.includes("VALID") && !response.includes("INVALID");
+  } catch (error) {
+    console.error("Error validating medicine image:", error);
+    return false;
+  }
+};
+
 export const analyzeMedicine = async (
   imageBase64: string,
   additionalInfo?: string

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Pill, Upload, Send, AlertTriangle, Loader, Clock, Heart, Shield, Utensils, RefreshCw } from 'lucide-react';
-import { analyzeMedicine } from '../lib/gemini';
+import { analyzeMedicine, validateMedicineImage } from '../lib/gemini';
 
 interface MedicineAnalysis {
   medicineName: string;
@@ -72,6 +72,16 @@ export default function MedicineAnalyzer() {
 
     try {
       const base64Image = await convertImageToBase64(image);
+      
+      // Validate if the image contains medicine
+      const isValid = await validateMedicineImage(base64Image);
+      
+      if (!isValid) {
+        setError('The uploaded image does not appear to contain medicine or pharmaceutical products. Please upload a clear image of medicine packaging, tablets, or medicine bottles.');
+        setLoading(false);
+        return;
+      }
+      
       const result = await analyzeMedicine(base64Image, additionalInfo.trim());
       setAnalysis(result);
     } catch (err) {
