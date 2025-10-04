@@ -71,7 +71,7 @@ Thank you to all the amazing people who have contributed to HealthAI Assistant! 
         <sub><b>Shivam Soni</b></sub>
       </a>
       <br />
-      <sub>Chat UI Redesign, Streaming & Symptom Analyzer UX</sub>
+      <sub>Chat UI, Voice Input & Symptom Analyzer UX</sub>
       <br />
       💻 🎨 ⚡ 🎤 ♿
     </td>
@@ -536,8 +536,11 @@ _Most critical bug resolution_
 - Added emergency keyword detection with warning banner
 - Enhanced voice input with pulse animation and real-time transcription
 - Created fully responsive design (mobile, tablet, desktop) with improved accessibility
+- Added voice input feature to Chat Assistant with pulse animation and real-time transcription - PR #TBD
+- Implemented Web Speech API integration for hands-free interaction
+- Created seamless toggle between voice and text input with visual feedback
 
-**Impact:** Modernized chat interface with real-time streaming and enhanced user experience. Improved Medicine Analyzer reliability by preventing white screen crashes when users upload non-medical images, ensuring only valid pharmaceutical images are processed. Transformed Symptom Analyzer into a modern, accessible, and intuitive health assistant with voice capabilities, emergency alerts, and seamless multi-device experience
+**Impact:** Modernized chat interface with real-time streaming and enhanced user experience. Improved Medicine Analyzer reliability by preventing white screen crashes when users upload non-medical images, ensuring only valid pharmaceutical images are processed. Transformed Symptom Analyzer into a modern, accessible, and intuitive health assistant with voice capabilities, emergency alerts, and seamless multi-device experience. Enhanced Chat Assistant accessibility by adding voice input, enabling hands-free interaction for users with mobility issues or those preferring speech-based communication
 
 ---
 
