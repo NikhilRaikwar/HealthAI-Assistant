@@ -485,25 +485,39 @@ export async function* streamAIResponse(
   conversationHistory: Message[] = []
 ): AsyncGenerator<string, void, unknown> {
   try {
+    // Reset cancellation flag
+    shouldCancelStream = false;
+    
     const context = buildContext(conversationHistory);
     const prompt = `${SYSTEM_PROMPT}\n\nConversation History:\n${context}\n\nUser: ${userMessage}\n\nAssistant:`;
 
     const result = await model.generateContentStream(prompt);
 
     for await (const chunk of result.stream) {
+      // Check if cancellation was requested
+      if (shouldCancelStream) {
+        shouldCancelStream = false; // Reset flag
+        throw new Error("Request cancelled by user");
+      }
+      
       const chunkText = chunk.text();
       yield chunkText;
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error("Gemini API Streaming Error:", error);
+    if (error.message === "Request cancelled by user") {
+      throw error; // Re-throw cancellation error
+    }
     throw new Error("Failed to stream response from AI");
   }
 }
 
 // Cancel current request
 let currentController: AbortController | null = null;
+let shouldCancelStream = false;
 
 export function cancelCurrentRequest() {
+  shouldCancelStream = true;
   if (currentController) {
     currentController.abort();
     currentController = null;
