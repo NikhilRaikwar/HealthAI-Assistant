@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback, memo } from 'react';
-import { Send, Sparkles, Loader2, Copy, Check, X, RefreshCw, Mic, MicOff } from 'lucide-react';
+import { Send, Sparkles, Copy, Check, X, RefreshCw, Mic, MicOff, Edit2 } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { streamAIResponse, cancelCurrentRequest } from '../lib/gemini';
 
@@ -14,17 +14,51 @@ interface Message {
 // Memoized Message Component for Performance
 const MessageBubble = memo(({ 
   message, 
-  onCopy 
+  onCopy,
+  onEdit,
+  onSaveEdit
 }: { 
   message: Message; 
   onCopy: (text: string) => void;
+  onEdit?: (messageId: string, content: string) => void;
+  onSaveEdit?: (messageId: string, newContent: string) => void;
 }) => {
   const [copied, setCopied] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedContent, setEditedContent] = useState(message.content);
+  const editTextareaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleCopy = async () => {
     await onCopy(message.content);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleEdit = () => {
+    setIsEditing(true);
+    setEditedContent(message.content);
+    setTimeout(() => editTextareaRef.current?.focus(), 0);
+  };
+
+  const handleSave = () => {
+    if (editedContent.trim() && onSaveEdit) {
+      onSaveEdit(message.id, editedContent.trim());
+      setIsEditing(false);
+    }
+  };
+
+  const handleCancel = () => {
+    setIsEditing(false);
+    setEditedContent(message.content);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSave();
+    } else if (e.key === 'Escape') {
+      handleCancel();
+    }
   };
 
   return (
@@ -48,12 +82,40 @@ const MessageBubble = memo(({
             : 'bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 shadow-xl shadow-gray-200/50 dark:shadow-gray-900/50'
         } rounded-2xl px-3 py-2 sm:px-5 sm:py-3 transition-all duration-300 hover:scale-[1.02]`}
       >
-        <p className="text-sm sm:text-[15px] leading-relaxed whitespace-pre-wrap break-words">
-          {message.content}
-          {message.isStreaming && (
-            <span className="inline-block w-1.5 sm:w-2 h-4 sm:h-5 ml-1 bg-blue-500 animate-pulse"></span>
-          )}
-        </p>
+        {isEditing ? (
+          <div className="space-y-2">
+            <textarea
+              ref={editTextareaRef}
+              value={editedContent}
+              onChange={(e) => setEditedContent(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="w-full bg-white/10 dark:bg-black/20 text-white placeholder-blue-100 border border-white/30 rounded-lg px-3 py-2 text-sm sm:text-[15px] leading-relaxed resize-none focus:outline-none focus:ring-2 focus:ring-white/50"
+              rows={3}
+              style={{ minHeight: '60px' }}
+            />
+            <div className="flex gap-2 justify-end">
+              <button
+                onClick={handleCancel}
+                className="px-3 py-1 text-xs sm:text-sm bg-white/20 hover:bg-white/30 rounded-lg transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleSave}
+                className="px-3 py-1 text-xs sm:text-sm bg-white hover:bg-white/90 text-blue-600 rounded-lg transition-colors font-medium"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        ) : (
+          <p className="text-sm sm:text-[15px] leading-relaxed whitespace-pre-wrap break-words">
+            {message.content}
+            {message.isStreaming && (
+              <span className="inline-block w-1.5 sm:w-2 h-4 sm:h-5 ml-1 bg-blue-500 animate-pulse"></span>
+            )}
+          </p>
+        )}
         
         <div className="flex items-center gap-2 mt-2 pt-2 border-t border-white/20 dark:border-gray-700/50">
           <span className={`text-xs ${
@@ -75,6 +137,16 @@ const MessageBubble = memo(({
               ) : (
                 <Copy className="w-4 h-4 text-gray-500 dark:text-gray-400" />
               )}
+            </button>
+          )}
+
+          {message.role === 'user' && onEdit && !isEditing && (
+            <button
+              onClick={handleEdit}
+              className="ml-auto p-1.5 rounded-lg hover:bg-white/20 dark:hover:bg-white/10 transition-colors opacity-0 group-hover:opacity-100"
+              title="Edit message"
+            >
+              <Edit2 className="w-4 h-4 text-blue-100" />
             </button>
           )}
         </div>
@@ -135,6 +207,82 @@ const HealthcareChat = () => {
       console.error('Copy failed:', error);
     }
   }, []);
+
+  // Handle save edited message
+  const handleSaveEditedMessage = useCallback(async (messageId: string, newContent: string) => {
+    // Update the message content
+    setMessages(prev => {
+      const messageIndex = prev.findIndex(msg => msg.id === messageId);
+      if (messageIndex === -1) return prev;
+      
+      // Update the edited message and remove all messages after it
+      const updatedMessages = prev.slice(0, messageIndex + 1);
+      updatedMessages[messageIndex] = {
+        ...updatedMessages[messageIndex],
+        content: newContent,
+        timestamp: new Date(),
+      };
+      
+      return updatedMessages;
+    });
+
+    // Regenerate AI response for the edited message
+    setIsLoading(true);
+
+    // Create AI message placeholder for streaming
+    const aiMessageId = Date.now().toString();
+    const aiMessage: Message = {
+      id: aiMessageId,
+      role: 'assistant',
+      content: '',
+      timestamp: new Date(),
+      isStreaming: true,
+    };
+
+    setMessages(prev => [...prev, aiMessage]);
+
+    try {
+      // Get conversation history up to the edited message
+      const conversationHistory = messages.filter(msg => msg.id !== messageId);
+      
+      let fullResponse = '';
+      
+      for await (const chunk of streamAIResponse(newContent, conversationHistory)) {
+        fullResponse += chunk;
+        
+        setMessages(prev =>
+          prev.map(msg =>
+            msg.id === aiMessageId
+              ? { ...msg, content: fullResponse, isStreaming: true }
+              : msg
+          )
+        );
+      }
+
+      // Mark streaming as complete
+      setMessages(prev =>
+        prev.map(msg =>
+          msg.id === aiMessageId
+            ? { ...msg, isStreaming: false }
+            : msg
+        )
+      );
+    } catch (error: any) {
+      console.error('AI Response Error:', error);
+      
+      setMessages(prev => prev.filter(msg => msg.id !== aiMessageId));
+      
+      const errorMessage: Message = {
+        id: Date.now().toString(),
+        role: 'assistant',
+        content: '⚠️ Sorry, I encountered an error. Please try again.',
+        timestamp: new Date(),
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [messages]);
 
   const autoFocusOnTextArea = ()=>{
     textareaRef.current?.focus() 
@@ -218,10 +366,15 @@ const HealthcareChat = () => {
   const handleCancel = () => {
     cancelCurrentRequest();
     setIsLoading(false);
-
     
-    // Remove streaming message
-    setMessages(prev => prev.filter(msg => !msg.isStreaming));
+    // Mark the streaming message as cancelled
+    setMessages(prev =>
+      prev.map(msg =>
+        msg.isStreaming
+          ? { ...msg, content: msg.content || '❌ Response cancelled', isStreaming: false }
+          : msg
+      )
+    );
   };
 
   // Start new session
@@ -333,16 +486,6 @@ const HealthcareChat = () => {
               </div>
             </div>
             
-            {/* Cancel Button - Right Side */}
-            {isLoading && (
-              <button
-                onClick={handleCancel}
-                className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 p-1.5 sm:p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-red-500 transition-colors"
-                title="Cancel"
-              >
-                <X className="w-4 h-4 sm:w-5 sm:h-5" />
-              </button>
-            )}
           </div>
         </div>
       </div>
@@ -383,6 +526,8 @@ const HealthcareChat = () => {
             key={message.id}
             message={message}
             onCopy={handleCopy}
+            onEdit={message.role === 'user' && !isLoading ? () => {} : undefined}
+            onSaveEdit={message.role === 'user' && !isLoading ? handleSaveEditedMessage : undefined}
           />
         ))}
 
@@ -428,17 +573,24 @@ const HealthcareChat = () => {
               style={{ minHeight: '40px' }}
             />
             
-            <button
-              type="submit"
-              disabled={!input.trim() || isLoading}
-              className="flex-shrink-0 p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105 active:scale-95"
-            >
-              {isLoading ? (
-                <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
-              ) : (
+            {isLoading ? (
+              <button
+                type="button"
+                onClick={handleCancel}
+                className="flex-shrink-0 p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-red-500 to-red-600 text-white shadow-lg shadow-red-500/30 hover:shadow-xl hover:shadow-red-500/40 transition-all duration-300 hover:scale-105 active:scale-95"
+                title="Cancel"
+              >
+                <X className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
+            ) : (
+              <button
+                type="submit"
+                disabled={!input.trim()}
+                className="flex-shrink-0 p-2 sm:p-3 rounded-lg sm:rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105 active:scale-95"
+              >
                 <Send className="w-4 h-4 sm:w-5 sm:h-5" />
-              )}
-            </button>
+              </button>
+            )}
           </div>
           
           <p className="text-[10px] sm:text-xs text-center text-gray-500 dark:text-gray-400 mt-2 sm:mt-3 px-2">
