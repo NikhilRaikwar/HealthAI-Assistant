@@ -65,19 +65,19 @@
   .prose {
     @apply text-gray-700 leading-relaxed;
   }
-  
+
   .prose h1, .prose h2, .prose h3, .prose h4 {
     @apply text-gray-900 font-semibold mb-4;
   }
-  
+
   .prose p {
     @apply mb-4;
   }
-  
+
   .prose ul {
     @apply list-disc list-inside mb-4 space-y-1;
   }
-  
+
   .prose li {
     @apply mb-1;
   }
@@ -86,19 +86,19 @@
   .dark .prose {
     @apply text-gray-300;
   }
-  
+
   .dark .prose h1, .dark .prose h2, .dark .prose h3, .dark .prose h4 {
     @apply text-gray-100;
   }
-  
+
   .dark .prose strong {
     @apply text-gray-200;
   }
-  
+
   .dark .prose a {
     @apply text-blue-400;
   }
-  
+
   .dark .prose code {
     @apply text-gray-200 bg-gray-800;
   }
@@ -129,8 +129,6 @@
   }
 }
 
-
-
 @layer base {
   * {
     @apply border-border;
@@ -138,4 +136,9 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+::view-transition-old(root), ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
 }

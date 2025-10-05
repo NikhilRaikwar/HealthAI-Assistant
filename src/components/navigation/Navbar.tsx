@@ -3,7 +3,7 @@ import { Menu } from 'lucide-react';
 import { NavLogo } from './NavLogo';
 import { MobileMenu } from './MobileMenu';
 import { navigationItems } from '../../config/navigation';
-import { ThemeToggle } from './ThemeToggle';
+import { AnimatedThemeToggler } from '@/components/ui/animated-theme-toggler';
 import { useNavigationContext } from '../../context/NavigationContext';
 import {
   NavigationMenu,
@@ -19,7 +19,6 @@ import { cn } from '@/lib/utils';
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { activeTab, setActiveTab } = useNavigationContext();
-
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 shadow-sm">
@@ -89,11 +88,11 @@ export function Navbar() {
                   </NavigationMenuList>
                 </NavigationMenu>
               ))}
-              <ThemeToggle />
+              <AnimatedThemeToggler className="p-2 rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-100 dark:hover:bg-gray-800 transition-colors duration-200" />
             </nav>
 
             <div className="flex lg:hidden items-center space-x-2">
-              <ThemeToggle />
+              <AnimatedThemeToggler className="p-2 rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-100 dark:hover:bg-gray-800 transition-colors duration-200" />
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
