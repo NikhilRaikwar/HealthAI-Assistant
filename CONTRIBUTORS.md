@@ -307,7 +307,7 @@ _Contributors who improved the visual design_
         <sub><b>Shivam Soni</b></sub>
       </a>
       <br />
-      <sub>Glassmorphism UI & Symptom Analyzer Redesign</sub>
+      <sub>Glassmorphism UI, Symptom Analyzer Redesign & Animated Theme Toggle</sub>
       <br />
       <a href="https://github.com/NikhilRaikwar/HealthAI-Assistant/pull/14">#14</a> <a href="#">#TBD</a>
     </td>
@@ -539,8 +539,11 @@ _Most critical bug resolution_
 - Added voice input feature to Chat Assistant with pulse animation and real-time transcription - PR #TBD
 - Implemented Web Speech API integration for hands-free interaction
 - Created seamless toggle between voice and text input with visual feedback
+- Implemented AnimatedThemeToggler with View Transition API and circular reveal animation - PR #TBD
+- Added smooth 700ms theme transition with dynamic clip-path calculation
+- Integrated modern animation effects while maintaining full accessibility and responsive design
 
-**Impact:** Modernized chat interface with real-time streaming and enhanced user experience. Improved Medicine Analyzer reliability by preventing white screen crashes when users upload non-medical images, ensuring only valid pharmaceutical images are processed. Transformed Symptom Analyzer into a modern, accessible, and intuitive health assistant with voice capabilities, emergency alerts, and seamless multi-device experience. Enhanced Chat Assistant accessibility by adding voice input, enabling hands-free interaction for users with mobility issues or those preferring speech-based communication
+**Impact:** Modernized chat interface with real-time streaming and enhanced user experience. Improved Medicine Analyzer reliability by preventing white screen crashes when users upload non-medical images, ensuring only valid pharmaceutical images are processed. Transformed Symptom Analyzer into a modern, accessible, and intuitive health assistant with voice capabilities, emergency alerts, and seamless multi-device experience. Enhanced Chat Assistant accessibility by adding voice input, enabling hands-free interaction for users with mobility issues or those preferring speech-based communication. Elevated theme switching experience with smooth circular reveal animations using View Transition API, making the app feel more premium and polished while maintaining full accessibility across all devices
 
 ---
 
