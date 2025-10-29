@@ -15,6 +15,67 @@ const COMMON_SYMPTOMS = [
   'Nausea', 'Dizziness', 'Sore throat', 'Body aches'
 ];
 
+// Comprehensive symptom database for the autocomplete to work
+const SYMPTOM_DATABASE = [
+  'Headache', 'Fever', 'Cough', 'Fatigue', 'Nausea', 'Dizziness', 'Sore throat', 'Body aches',
+  'Chest pain', 'Shortness of breath', 'Difficulty breathing', 'Wheezing', 'Rapid heartbeat',
+  'Abdominal pain', 'Stomach pain', 'Cramping', 'Bloating', 'Constipation', 'Diarrhea',
+  'Vomiting', 'Loss of appetite', 'Weight loss', 'Weight gain', 'Night sweats',
+  'Chills', 'Sweating', 'Hot flashes', 'Cold hands or feet', 'Numbness', 'Tingling',
+  'Joint pain', 'Muscle pain', 'Back pain', 'Neck pain', 'Shoulder pain', 'Knee pain',
+  'Weakness', 'Fatigue', 'Lethargy', 'Drowsiness', 'Insomnia', 'Sleep disturbances',
+  'Anxiety', 'Depression', 'Mood swings', 'Irritability', 'Confusion', 'Memory problems',
+  'Blurred vision', 'Double vision', 'Eye pain', 'Sensitivity to light', 'Vision loss',
+  'Ear pain', 'Hearing loss', 'Ringing in ears', 'Earache', 'Ear discharge',
+  'Runny nose', 'Stuffy nose', 'Sneezing', 'Nasal congestion', 'Postnasal drip',
+  'Dry mouth', 'Difficulty swallowing', 'Hoarseness', 'Voice changes', 'Swollen glands',
+  'Skin rash', 'Itching', 'Hives', 'Red skin', 'Dry skin', 'Peeling skin', 'Blisters',
+  'Bruising', 'Pale skin', 'Yellowing of skin', 'Jaundice', 'Swelling',
+  'Hair loss', 'Brittle nails', 'Nail discoloration', 'Scalp itching',
+  'Frequent urination', 'Painful urination', 'Blood in urine', 'Dark urine', 'Cloudy urine',
+  'Irregular periods', 'Heavy periods', 'Missed periods', 'Painful periods', 'Vaginal discharge',
+  'Erectile dysfunction', 'Testicular pain', 'Breast pain', 'Breast lump',
+  'Difficulty concentrating', 'Forgetfulness', 'Mental fog', 'Disorientation',
+  'Loss of balance', 'Coordination problems', 'Tremors', 'Seizures', 'Fainting',
+  'Palpitations', 'Irregular heartbeat', 'Rapid pulse', 'Slow pulse',
+  'High blood pressure', 'Low blood pressure', 'Lightheadedness',
+  'Swollen feet', 'Swollen ankles', 'Swollen legs', 'Leg cramps',
+  'Mouth sores', 'Bleeding gums', 'Toothache', 'Bad breath',
+  'Excessive thirst', 'Increased hunger', 'Decreased appetite',
+  'Sensitivity to cold', 'Sensitivity to heat', 'Temperature changes',
+  'Burning sensation', 'Sharp pain', 'Dull ache', 'Throbbing pain',
+  'Stiffness', 'Limited range of motion', 'Swollen joints',
+  'Red eyes', 'Watery eyes', 'Dry eyes', 'Crusty eyelids',
+  'Nosebleeds', 'Loss of smell', 'Loss of taste', 'Metallic taste',
+  'Frequent headaches', 'Migraine', 'Tension headache', 'Cluster headache',
+  'Panic attacks', 'Racing thoughts', 'Restlessness', 'Agitation',
+  'Shortness of breath on exertion', 'Persistent cough', 'Coughing up blood',
+  'Excessive sweating', 'Cold sweats', 'Clammy skin',
+  'Heartburn', 'Acid reflux', 'Indigestion', 'Gas', 'Burping',
+  'Difficulty breathing when lying down', 'Waking up short of breath',
+  'Swollen lymph nodes', 'Tender lymph nodes', 'Lumps under skin',
+  'Sunken eyes', 'Puffy eyes', 'Dark circles under eyes',
+  'Muscle cramps', 'Muscle spasms', 'Muscle twitching',
+  'Delayed wound healing', 'Easy bleeding', 'Easy bruising',
+  'Frequent infections', 'Slow recovery from illness',
+  'Changes in bowel habits', 'Blood in stool', 'Black stool', 'Pale stool',
+  'Feeling of fullness', 'Early satiety', 'Difficulty eating',
+  'Painful swallowing', 'Food getting stuck', 'Regurgitation',
+  'Excessive gas', 'Flatulence', 'Belching',
+  'Urinary incontinence', 'Urinary urgency', 'Weak urine stream',
+  'Unable to empty bladder', 'Leaking urine',
+  'Genital itching', 'Genital pain', 'Genital discharge', 'Genital sores',
+  'Loss of consciousness', 'Blackouts', 'Near-fainting spells',
+  'Jerking movements', 'Involuntary movements', 'Tics',
+  'Sensitivity to noise', 'Sensitivity to touch', 'Heightened senses',
+  'Hallucinations', 'Delusions', 'Paranoia',
+  'Suicidal thoughts', 'Self-harm thoughts', 'Hopelessness',
+  'Excessive worry', 'Panic', 'Fear', 'Phobias',
+  'Social withdrawal', 'Loss of interest', 'Anhedonia',
+  'Hyperactivity', 'Impulsivity', 'Attention problems',
+  'Obsessive thoughts', 'Compulsive behaviors', 'Intrusive thoughts',
+];
+
 const EMERGENCY_KEYWORDS = [
   'chest pain', 'difficulty breathing', 'severe bleeding', 'unconscious',
   'stroke', 'heart attack', 'seizure', 'severe pain', 'can\'t breathe'
@@ -29,9 +90,13 @@ export default function SymptomAnalyzer() {
   const [showEmergencyBanner, setShowEmergencyBanner] = useState(false);
   const [showInfoTooltip, setShowInfoTooltip] = useState(false);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
+  const [showAutocomplete, setShowAutocomplete] = useState(false);
+  const [filteredSymptoms, setFilteredSymptoms] = useState<string[]>([]);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   const recognitionRef = useRef<any>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const autocompleteRef = useRef<HTMLDivElement>(null);
 
   // Auto-scroll to bottom when messages change
   useEffect(() => {
@@ -65,6 +130,41 @@ export default function SymptomAnalyzer() {
     const hasEmergency = EMERGENCY_KEYWORDS.some(keyword => inputLower.includes(keyword));
     setShowEmergencyBanner(hasEmergency);
   }, [input]);
+
+  // Autocomplete filtering logic
+  useEffect(() => {
+    const lastWord = input.split(',').pop()?.trim() || '';
+    
+    if (lastWord.length >= 2) {
+      const matches = SYMPTOM_DATABASE.filter(symptom =>
+        symptom.toLowerCase().includes(lastWord.toLowerCase())
+      ).slice(0, 8); // Limit to 8 suggestions
+      
+      setFilteredSymptoms(matches);
+      setShowAutocomplete(matches.length > 0);
+    } else {
+      setShowAutocomplete(false);
+      setFilteredSymptoms([]);
+    }
+    setSelectedIndex(-1);
+  }, [input]);
+
+  // Click outside to close autocomplete
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        autocompleteRef.current &&
+        !autocompleteRef.current.contains(event.target as Node) &&
+        textareaRef.current &&
+        !textareaRef.current.contains(event.target as Node)
+      ) {
+        setShowAutocomplete(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleAnalyze = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -176,10 +276,38 @@ export default function SymptomAnalyzer() {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (showAutocomplete && filteredSymptoms.length > 0) {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        setSelectedIndex(prev => 
+          prev < filteredSymptoms.length - 1 ? prev + 1 : prev
+        );
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        setSelectedIndex(prev => (prev > 0 ? prev - 1 : -1));
+      } else if (e.key === 'Enter' && selectedIndex >= 0) {
+        e.preventDefault();
+        handleSelectSymptom(filteredSymptoms[selectedIndex]);
+        return;
+      } else if (e.key === 'Escape') {
+        setShowAutocomplete(false);
+        setSelectedIndex(-1);
+      }
+    }
+    
+    if (e.key === 'Enter' && !e.shiftKey && selectedIndex === -1) {
       e.preventDefault();
       handleAnalyze(e as any);
     }
+  };
+
+  const handleSelectSymptom = (symptom: string) => {
+    const words = input.split(',');
+    words[words.length - 1] = ' ' + symptom;
+    setInput(words.join(',') + ', ');
+    setShowAutocomplete(false);
+    setSelectedIndex(-1);
+    textareaRef.current?.focus();
   };
 
   return (
@@ -351,6 +479,35 @@ export default function SymptomAnalyzer() {
           {/* Main Input Container - Responsive */}
           <div className="relative flex items-end gap-1.5 sm:gap-2 bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-2xl shadow-blue-500/10 dark:shadow-blue-500/5 p-1.5 sm:p-2 border-2 border-gray-200 dark:border-gray-700 focus-within:border-blue-500 dark:focus-within:border-blue-400 focus-within:shadow-blue-500/20 transition-all duration-300">
             
+            {/* Autocomplete Dropdown */}
+            {showAutocomplete && filteredSymptoms.length > 0 && (
+              <div
+                ref={autocompleteRef}
+                className="absolute bottom-full left-0 right-0 mb-2 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border-2 border-blue-200 dark:border-blue-700 max-h-64 overflow-y-auto z-50 animate-fade-in"
+              >
+                <div className="p-2 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
+                  <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-blue-500" />
+                    Suggested Symptoms
+                  </p>
+                </div>
+                {filteredSymptoms.map((symptom, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => handleSelectSymptom(symptom)}
+                    className={`w-full text-left px-4 py-2.5 text-sm transition-colors duration-150 ${
+                      index === selectedIndex
+                        ? 'bg-blue-500 text-white'
+                        : 'text-gray-800 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-700'
+                    } ${index === filteredSymptoms.length - 1 ? '' : 'border-b border-gray-100 dark:border-gray-700'}`}
+                  >
+                    <span className="font-medium">{symptom}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+            
             {/* Voice Input Button with Pulse Animation - Responsive */}
             <button
               type="button"
@@ -471,6 +628,19 @@ export default function SymptomAnalyzer() {
         }
         .animate-slide-down {
           animation: slide-down 0.3s ease-out;
+        }
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fade-in {
+          animation: fade-in 0.2s ease-out;
         }
       `}</style>
     </div>
