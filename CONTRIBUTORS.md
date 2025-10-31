@@ -198,6 +198,17 @@ _Contributors who added new features_
       <br />
       <a href="#">#TBD</a>
     </td>
+        <td align="center">
+      <a href="https://github.com/Akshitwadhwa">
+        <img src="https://github.com/Akshitwadhwa.png" width="80px;" alt="Akshit Wadhwa"/>
+        <br />
+        <sub><b>Akshit Wadhwa</b></sub>
+      </a>
+      <br />
+      <sub>AutoComplete Feature For Symptom Input</sub>
+      <br />
+      <a href="#">#TBD</a>
+    </td>
   </tr>
   <tr>
     <td align="center">
